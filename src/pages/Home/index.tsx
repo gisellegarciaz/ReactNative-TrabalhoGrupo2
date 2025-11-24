@@ -88,8 +88,6 @@ export function Home() {
         );
     }
 
-
-
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7' }} edges={['top', 'left', 'right']} >
             {/* <HeaderComponent nomeUsuario={user.name} /> */}
@@ -135,6 +133,22 @@ export function Home() {
                     onPress={() => navigation.navigate('Checklist')}>
                     <Text style={styles.actionButtonText}>
                         Faça o seu checklist
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('Nutrição')}>
+                    <Text style={styles.actionButtonText}>
+                        Dicas de alimentação
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('Curiosidade')}>
+                    <Text style={styles.actionButtonText}>
+                        Confira curiosidades
                     </Text>
                 </TouchableOpacity>
 

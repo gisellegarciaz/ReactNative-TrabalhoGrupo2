@@ -5,6 +5,8 @@ import { Location } from "../pages/Location";
 import CustomTabBar from "../components/CustomTabBar";
 import ChecklistScreen from "../pages/Checklist";
 import Compatibilidade from "../pages/Compatibilidade";
+import Nutricao from "../pages/Nutricao";
+import Curiosidade from "../pages/Curiosidades";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +19,8 @@ export const TabRouters = () => {
             <Tab.Screen name="Profile" component={Profile} />
             <Tab.Screen name="Checklist" component={ChecklistScreen} />
             <Tab.Screen name="Compatibilidade" component={Compatibilidade}/>
+            <Tab.Screen name="Nutricao" component={Nutricao} />
+            <Tab.Screen name="Curiosidade" component={Curiosidade} />
 
         </Tab.Navigator>
     )

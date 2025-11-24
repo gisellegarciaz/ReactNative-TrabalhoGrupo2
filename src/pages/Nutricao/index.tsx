@@ -35,7 +35,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, children, icon }) => (
  * Componente principal do Guia de Nutrição para Doação de Sangue.
  * Usa um SafeAreaView para garantir que o conteúdo não fique escondido.
  */
-const App: React.FC = () => {
+const Nutricao: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Container principal com ScrollView para permitir rolagem vertical */}
@@ -172,4 +172,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Nutricao;

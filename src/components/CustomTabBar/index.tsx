@@ -37,6 +37,12 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigat
                 if(route.key.includes("Compatibilidade")){
                     return
                 }
+                if(route.key.includes("Nutricao")){
+                    return
+                }
+                if(route.key.includes("Curiosidade")){
+                    return
+                }
                 const onPress = () => {
                     const event = navigation.emit({
                         type: 'tabPress',

@@ -74,7 +74,7 @@ const CuriosityCard: React.FC<CuriosityCardProps> = ({ item }) => {
 };
 
 // Componente principal da aplicação
-const App = () => {
+const Curiosidade = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" backgroundColor="#C62828" />
@@ -94,4 +94,4 @@ const App = () => {
     </SafeAreaView>
   );
 };
-export default App;
+export default Curiosidade;
