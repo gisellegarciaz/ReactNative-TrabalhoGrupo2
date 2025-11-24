@@ -4,15 +4,13 @@ import { styles, itemStyles } from './style'; // Importa estilos
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-// Interface para um item do checklist
+
 interface ChecklistItem {
   id: number;
   text: string;
   completed: boolean;
 }
 
-// === PRÉ-REQUISITOS PARA DOAR SANGUE (INTEGRADOS NO CHECKLIST) ===
-// Agora, os requisitos de doação estão diretamente neste checklist.
 const PRE_DONATION_STEPS: ChecklistItem[] = [
   { id: 1, text: "Estar em boas condições de saúde.", completed: false },
   { id: 2, text: "Ter entre 16 e 69 anos (menores de 18 precisam de consentimento).", completed: false },
@@ -21,11 +19,10 @@ const PRE_DONATION_STEPS: ChecklistItem[] = [
   { id: 5, text: "Estar alimentado (evitar jejum e alimentos gordurosos 4h antes).", completed: false },
   { id: 6, text: "Apresentar documento oficial com foto (RG, CNH, etc.).", completed: false },
   { id: 7, text: "Ter respeitado o intervalo entre doações (90 dias para mulheres, 60 para homens).", completed: false },
-  // Você pode adicionar outros itens do seu checklist original aqui, se desejar.
-  // Exemplo: { id: 8, text: "Verifiquei o endereço e horário do meu agendamento.", completed: false },
+  
 ];
 
-// Componente simples de Checkbox
+
 const Checkbox: React.FC<{ checked: boolean, onPress: () => void }> = ({ checked, onPress }) => (
     <TouchableOpacity 
         style={[itemStyles.checkbox, checked && itemStyles.checked]} 
@@ -35,18 +32,18 @@ const Checkbox: React.FC<{ checked: boolean, onPress: () => void }> = ({ checked
     </TouchableOpacity>
 );
 
-// DEFINIÇÃO DA TIPAGEM DAS ROTAS PARA NAVEGAÇÃO INTERNA:
+
 export type RootStackParamList = {
     Compatibilidade: undefined; 
-    Checklist: undefined; // Rota atual
-    Home: undefined; // Rota de destino
+    Checklist: undefined; 
+    Home: undefined; 
 };
 
 const ChecklistScreen: React.FC = ( ) => {
   const [list, setList] = useState<ChecklistItem[]>(PRE_DONATION_STEPS);
   const navigation = useNavigation<any>(); 
 
-  // Função para alternar o estado de conclusão de um item
+ 
   const toggleItem = (id: number) => {
     setList(list.map(item => 
       item.id === id ? { ...item, completed: !item.completed } : item

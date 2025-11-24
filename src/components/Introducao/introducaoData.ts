@@ -16,7 +16,7 @@ export const introSlides: SlideData[] = [
         buttonText: 'Iniciar',
     },
     {
-        id: 1,
+       id: 1,
         title: 'O que Fazer Antes de Doar',
         description: 'Te ajudamos na preparação para doar sangue com um passo a passo.',
         image: MascoteOQueFazer as ImageSourcePropType,
