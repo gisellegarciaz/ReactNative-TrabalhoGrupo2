@@ -1,28 +1,29 @@
 
 import React, { useState, useEffect } from 'react';
-import { 
-    View, 
-    Text, 
-    TextInput, 
-    TouchableOpacity, 
-    ActivityIndicator, 
-    Alert 
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    ActivityIndicator,
+    Alert
 } from 'react-native';
-import MapView, { Marker, Region } from 'react-native-maps'; 
+import MapView, { Marker, Region } from 'react-native-maps';
 import { styles } from './style';
 import { MaterialIcons } from '@expo/vector-icons';
-import { 
-    fetchAddressByCep, 
-    fetchHemocenters, 
-    Hemocenter, 
-    CepAddress 
+import {
+    fetchAddressByCep,
+    fetchHemocenters,
+    Hemocenter,
+    CepAddress
 } from '../../services/location';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const INITIAL_REGION: Region = {
-    latitude: -22.5050, 
+    latitude: -22.5050,
     longitude: -43.1810,
-    latitudeDelta: 0.2, 
+    latitudeDelta: 0.2,
     longitudeDelta: 0.2,
 };
 
@@ -37,13 +38,13 @@ export function Location() {
     useEffect(() => {
         if (hemocenters.length > 0) {
             const firstHemocenter = hemocenters[0];
-            
-           
+
+
             if (firstHemocenter.latitude && firstHemocenter.longitude) {
-                 setMapRegion({
+                setMapRegion({
                     latitude: firstHemocenter.latitude,
                     longitude: firstHemocenter.longitude,
-                    latitudeDelta: 0.05, 
+                    latitudeDelta: 0.05,
                     longitudeDelta: 0.05,
                 });
             }
@@ -62,7 +63,7 @@ export function Location() {
         setSearchLocation('');
 
         try {
-        
+
             const address: CepAddress | null = await fetchAddressByCep(cep);
 
             if (!address) {
@@ -71,16 +72,16 @@ export function Location() {
                 return;
             }
 
-            const locationToSearch = address.localidade || address.uf; 
+            const locationToSearch = address.localidade || address.uf;
 
-      
+
             const list = await fetchHemocenters(locationToSearch);
 
             setHemocenters(list);
             setSearchLocation(locationToSearch);
 
             if (list.length === 0) {
-                 Alert.alert('Aviso', `Nenhum hemocentro encontrado para ${locationToSearch}.`);
+                Alert.alert('Aviso', `Nenhum hemocentro encontrado para ${locationToSearch}.`);
             }
 
         } catch (error) {
@@ -91,7 +92,7 @@ export function Location() {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
@@ -102,7 +103,7 @@ export function Location() {
                     onChangeText={setCep}
                     editable={!loading}
                 />
-                <TouchableOpacity 
+                <TouchableOpacity
                     style={styles.searchButton}
                     onPress={handleSearch}
                     disabled={loading}
@@ -114,17 +115,17 @@ export function Location() {
                     )}
                 </TouchableOpacity>
             </View>
-            
-    
+
+
             <MapView
-                style={styles.map} 
+                style={styles.map}
                 region={mapRegion}
                 onRegionChangeComplete={setMapRegion}
-                showsUserLocation={true} 
+                showsUserLocation={true}
                 loadingEnabled={true}
             >
                 {hemocenters.map((hemocenter) => (
-           
+
                     (hemocenter.latitude && hemocenter.longitude) ? (
                         <Marker
                             key={hemocenter.id}
@@ -134,16 +135,16 @@ export function Location() {
                             }}
                             title={hemocenter.nome}
                             description={`${hemocenter.endereco}, ${hemocenter.cidade}`}
-                            pinColor="#E74C3C" 
+                            pinColor="#E74C3C"
                         />
                     ) : null
                 ))}
             </MapView>
-            
-   
+
+
             {searchLocation && !loading && (
                 <Text style={styles.statusMessage}>
-                    {hemocenters.length > 0 
+                    {hemocenters.length > 0
                         ? `Hemocentros encontrados em: **${searchLocation}**`
                         : `Nenhum hemocentro encontrado para ${searchLocation}.`
                     }
@@ -152,9 +153,9 @@ export function Location() {
 
             {loading && (
                 <View style={styles.loadingOverlay}>
-                     <ActivityIndicator size="large" color="#E74C3C" />
+                    <ActivityIndicator size="large" color="#E74C3C" />
                 </View>
             )}
-        </View>
+        </SafeAreaView>
     );
 }

@@ -4,24 +4,25 @@ import { useNavigation } from '@react-navigation/native';
 import { format, addDays, differenceInDays } from 'date-fns';
 
 import { styles } from './style';
-import { useAuth } from '../../hooks/useAuth'; 
+import { useAuth } from '../../hooks/useAuth';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type NavigationProps = {
     navigate: (screen: string) => void;
 };
 
 const DONATION_INTERVAL_MALE = 60;
-const DONATION_INTERVAL_FEMALE = 90; 
+const DONATION_INTERVAL_FEMALE = 90;
 
 export function Home() {
     const navigation = useNavigation<NavigationProps>();
-    
+
     const { user, logout } = useAuth();
-    
+
     const [statusMessage, setStatusMessage] = useState('Atualize seu perfil para calcular seu prazo.');
     const [nextDonationDate, setNextDonationDate] = useState<string | null>(null);
     const [isReady, setIsReady] = useState(false);
-    
+
     const calculateNextDate = useCallback(() => {
         if (!user || !user.lastDonation || !user.gender) {
             setStatusMessage('Seus dados estão incompletos. Por favor, atualize seu perfil.');
@@ -33,20 +34,20 @@ export function Home() {
         try {
             const lastDonationDate = new Date(user.lastDonation);
             const interval = user.gender === 'male' ? DONATION_INTERVAL_MALE : DONATION_INTERVAL_FEMALE;
-            
+
 
             const nextPossibleDate = addDays(lastDonationDate, interval);
             const today = new Date();
-            
+
             const daysRemaining = differenceInDays(nextPossibleDate, today);
 
             if (daysRemaining <= 0) {
-   
+
                 setStatusMessage('Você está APTO para doar sangue!');
                 setNextDonationDate(`Data da Última Doação: ${format(lastDonationDate, 'dd/MM/yyyy')}`);
                 setIsReady(true);
             } else {
-       
+
                 setStatusMessage(`Faltam **${daysRemaining} dias** para você poder doar novamente.`);
                 setNextDonationDate(format(nextPossibleDate, 'dd/MM/yyyy'));
                 setIsReady(false);
@@ -70,14 +71,14 @@ export function Home() {
             [
                 { text: "Cancelar", style: "cancel" },
 
-                { text: "Sim, Sair", onPress: logout, style: "destructive" }, 
+                { text: "Sim, Sair", onPress: logout, style: "destructive" },
             ]
         );
     };
 
 
     if (!user) {
-         return (
+        return (
             <View style={styles.loadingContainer}>
                 <ActivityIndicator size="large" color="#E74C3C" />
                 <Text style={styles.loadingText}>Carregando dados do usuário...</Text>
@@ -86,6 +87,7 @@ export function Home() {
     }
 
     return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7'}} edges={['top', 'left', 'right']} >
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Olá, {user.name}!</Text>
@@ -96,12 +98,12 @@ export function Home() {
 
             <View style={styles.statusCard}>
                 <Text style={styles.statusTitle}>Seu Status Atual:</Text>
-                
+
                 {isReady ? (
                     <>
                         <Text style={styles.readyText}>APTO</Text>
                         <Text style={styles.statusMessage}>
-                           {statusMessage}
+                            {statusMessage}
                         </Text>
                         <Text style={styles.subText}>{nextDonationDate}</Text>
                     </>
@@ -121,8 +123,8 @@ export function Home() {
                 )}
             </View>
 
-            <TouchableOpacity 
-                style={styles.actionButton} 
+            <TouchableOpacity
+                style={styles.actionButton}
                 onPress={() => navigation.navigate('Profile')}
             >
                 <Text style={styles.actionButtonText}>
@@ -130,8 +132,8 @@ export function Home() {
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity 
-                style={styles.actionButton} 
+            <TouchableOpacity
+                style={styles.actionButton}
                 onPress={() => navigation.navigate('Location')}
             >
                 <Text style={styles.actionButtonText}>
@@ -140,5 +142,6 @@ export function Home() {
             </TouchableOpacity>
 
         </ScrollView>
+        </SafeAreaView>
     );
 }

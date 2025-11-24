@@ -38,16 +38,10 @@ function StackNavigator() {
 
 
     return (
-        <Stack.Navigator
-            screenOptions={{
-                headerStyle: { backgroundColor: '#E74C3C' },
-                headerTintColor: '#fff',
-                headerTitleAlign: 'center',
-            }}
-        >
+        <Stack.Navigator >
             {isAuthenticated ? (
 
-                    <Stack.Screen name='StackHome' component={TabRouters}/>
+                    <Stack.Screen name='StackHome' component={TabRouters} options={{ headerShown: false }}/>
 
             ) : (
                 <>
