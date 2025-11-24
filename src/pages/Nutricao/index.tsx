@@ -1,54 +1,37 @@
 import React from 'react';
-import { View, Text, ScrollView, Dimensions, SafeAreaView } from 'react-native';
-import { styles } from './styles'; // Importa a folha de estilos
-
-// --- Tipos de Componentes ---
-
-/**
- * Propriedades para o componente InfoCard.
- */
+import { View, Text, ScrollView, SafeAreaView } from 'react-native';
+import { styles } from './styles'; 
 interface InfoCardProps {
   title: string;
   icon: string;
   children: React.ReactNode;
 }
 
-// --- Componentes ---
-
-/**
- * Componente Card para os itens de informação e dicas.
- */
 const InfoCard: React.FC<InfoCardProps> = ({ title, children, icon }) => (
   <View style={styles.cardContainer}>
     <View style={styles.cardHeader}>
-      {/* Ícone de emoji */}
-      <Text style={styles.cardIcon}>{icon}</Text>
-      {/* Título do Card */}
-      <Text style={styles.cardTitle}>{title}</Text>
+          <Text style={styles.cardIcon}>{icon}</Text>
+         <Text style={styles.cardTitle}>{title}</Text>
     </View>
-    {/* Conteúdo do Card */}
     <View style={styles.cardContent}>{children}</View>
   </View>
 );
 
-/**
- * Componente principal do Guia de Nutrição para Doação de Sangue.
- * Usa um SafeAreaView para garantir que o conteúdo não fique escondido.
- */
+
 const Nutricao: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* Container principal com ScrollView para permitir rolagem vertical */}
+     
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          {/* Título Principal */}
+        
           <Text style={styles.h1}>🩸 Guia de Nutrição para Doação de Sangue</Text>
-          {/* Subtítulo */}
+         
           <Text style={styles.subtitle}>Recomendações essenciais para antes e depois do seu ato de generosidade.</Text>
         </View>
 
         <View style={styles.mainContent}>
-          {/* Seção 1: PRÉ-DOAÇÃO */}
+          
           <View style={styles.section}>
             <Text style={styles.h2}>1. Nutrição PRÉ-DOAÇÃO</Text>
             <Text style={styles.sectionText}>
@@ -56,7 +39,7 @@ const Nutricao: React.FC = () => {
             </Text>
 
             <View style={styles.cardsRow}>
-              {/* Card Hidratação */}
+              
               <InfoCard title="Hidratação é a Chave" icon="💧">
                 <Text style={styles.listText}>Um corpo bem hidratado mantém o volume sanguíneo, o que facilita a coleta e reduz o risco de reações adversas (tonturas, desmaios).</Text>
                 <View style={styles.listItem}>
@@ -69,7 +52,7 @@ const Nutricao: React.FC = () => {
                 </View>
               </InfoCard>
 
-              {/* Card Ferro e Vitamina C */}
+              
               <InfoCard title="Foco no Ferro e Vitamina C" icon="🥦">
                 <Text style={styles.listText}>O ferro é vital para repor as células vermelhas. A Vitamina C potencializa a sua absorção.</Text>
                 <View style={styles.listItem}>
@@ -107,7 +90,7 @@ const Nutricao: React.FC = () => {
             </View>
           </View>
 
-          {/* Seção 2: PÓS-DOAÇÃO */}
+         
           <View style={styles.section}>
             <Text style={styles.h2}>2. Nutrição PÓS-DOAÇÃO</Text>
             <Text style={styles.sectionText}>
@@ -115,7 +98,7 @@ const Nutricao: React.FC = () => {
             </Text>
 
             <View style={styles.cardsRow}>
-              {/* Card Reposição Imediata */}
+          
               <InfoCard title="Reposição Imediata de Fluidos" icon="🥤">
                 <Text style={styles.listText}>A reposição do volume de plasma é a prioridade zero após a doação.</Text>
                 <View style={styles.listItem}>
@@ -132,7 +115,7 @@ const Nutricao: React.FC = () => {
                 </View>
               </InfoCard>
 
-              {/* Card Refeição de Recuperação */}
+             
               <InfoCard title="Refeição de Recuperação" icon="🍽️">
                 <Text style={styles.listText}>Faça uma refeição completa para iniciar a regeneração celular.</Text>
                 <View style={styles.listItem}>
@@ -151,7 +134,7 @@ const Nutricao: React.FC = () => {
             </View>
           </View>
 
-          {/* Alerta de Segurança */}
+         
           <View style={styles.alertBox}>
             <View style={styles.alertHeader}>
               <Text style={styles.alertIcon}>⚠️</Text>
@@ -163,7 +146,7 @@ const Nutricao: React.FC = () => {
           </View>
         </View>
 
-        {/* Rodapé */}
+       
         <View style={styles.footer}>
           <Text style={styles.footerText}>A sua doação salva vidas. Este guia foi elaborado para otimizar a sua segurança e recuperação.</Text>
         </View>
