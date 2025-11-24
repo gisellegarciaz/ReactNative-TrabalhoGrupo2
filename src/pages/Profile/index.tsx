@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { 
-    View, 
-    Text, 
-    ScrollView, 
-    TouchableOpacity, 
-    TextInput, 
+import {
+    View,
+    Text,
+    ScrollView,
+    TouchableOpacity,
+    TextInput,
     Alert,
-    ActivityIndicator 
+    ActivityIndicator
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
 import { format } from 'date-fns';
+import { styles } from './styles';
+import { useAuth } from '@/src/hooks/useAuth';
 
-import { styles } from './style';
-import { useAuth } from '../hooks/useAuth';
 
 type GenderType = 'male' | 'female' | '';
 
 export function Profile() {
     const navigation = useNavigation();
-    
-    const { user, saveDonorData } = useAuth(); 
+
+    const { user, saveDonorData } = useAuth();
 
     const [gender, setGender] = useState<GenderType>(user?.gender || '');
     const [birthDate, setBirthDate] = useState<Date | null>(user?.birthDate ? new Date(user.birthDate) : null);
     const [lastDonation, setLastDonation] = useState<Date | null>(user?.lastDonation ? new Date(user.lastDonation) : null);
     const [loading, setLoading] = useState(false);
-    
+
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [datePickerField, setDatePickerField] = useState<'birthDate' | 'lastDonation' | null>(null);
 
@@ -48,7 +48,7 @@ export function Profile() {
             }
         }
     };
-    
+
     const showPicker = (field: 'birthDate' | 'lastDonation') => {
         setDatePickerField(field);
         setShowDatePicker(true);
@@ -72,7 +72,7 @@ export function Profile() {
 
         if (success) {
             Alert.alert('Sucesso', 'Dados do doador atualizados!');
-            navigation.goBack(); 
+            navigation.goBack();
         } else {
             Alert.alert('Erro', 'Falha ao salvar os dados. Tente novamente.');
         }
@@ -82,18 +82,18 @@ export function Profile() {
 
     if (!user) {
         return (
-             <View style={styles.loadingContainer}>
+            <View style={styles.loadingContainer}>
                 <ActivityIndicator size="large" color="#E74C3C" />
                 <Text style={styles.subtitle}>Carregando perfil...</Text>
             </View>
         );
     }
-    
+
     return (
         <ScrollView contentContainerStyle={styles.contentContainer}>
             <Text style={styles.headerTitle}>Meus Dados</Text>
             <Text style={styles.subtitle}>Atualize suas informações para calcularmos seu prazo de doação.</Text>
-            
+
             <Text style={styles.label}>Nome de Usuário (login):</Text>
             <TextInput
                 style={[styles.input, { backgroundColor: '#EEE' }]}
@@ -121,7 +121,7 @@ export function Profile() {
             </View>
 
             <Text style={styles.label}>Data de Nascimento:</Text>
-            <TouchableOpacity 
+            <TouchableOpacity
                 style={styles.datePickerButton}
                 onPress={() => showPicker('birthDate')}
                 disabled={loading}
@@ -132,7 +132,7 @@ export function Profile() {
             </TouchableOpacity>
 
             <Text style={styles.label}>Data da Última Doação (Opcional):</Text>
-            <TouchableOpacity 
+            <TouchableOpacity
                 style={styles.datePickerButton}
                 onPress={() => showPicker('lastDonation')}
                 disabled={loading}
@@ -152,8 +152,8 @@ export function Profile() {
                 />
             )}
 
-            <TouchableOpacity 
-                style={styles.saveButton} 
+            <TouchableOpacity
+                style={styles.saveButton}
                 onPress={handleSave}
                 disabled={loading}
             >
