@@ -7,6 +7,8 @@ import { styles } from './style';
 import { useAuth } from '../../hooks/useAuth';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+// import HeaderComponent from '../../components/Header';
+
 type NavigationProps = {
     navigate: (screen: string) => void;
 };
@@ -86,81 +88,57 @@ export function Home() {
         );
     }
 
+
+
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7'}} edges={['top', 'left', 'right']} >
-        <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headerTitle}>Olá, {user.name}!</Text>
-                <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-                    <Text style={styles.logoutButtonText}>Sair</Text>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7' }} edges={['top', 'left', 'right']} >
+            {/* <HeaderComponent nomeUsuario={user.name} /> */}
+            <ScrollView contentContainerStyle={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.headerTitle}>Olá, {user.name}!</Text>
+                    <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+                        <Text style={styles.logoutButtonText}>Sair</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('Profile')}
+                >
+                    <Text style={styles.actionButtonText}>
+                        Atualizar Dados e Última Doação
+                    </Text>
                 </TouchableOpacity>
-            </View>
 
-            <View style={styles.statusCard}>
-                <Text style={styles.statusTitle}>Seu Status Atual:</Text>
-
-                {isReady ? (
-                    <>
-                        <Text style={styles.readyText}>APTO</Text>
-                        <Text style={styles.statusMessage}>
-                            {statusMessage}
-                        </Text>
-                        <Text style={styles.subText}>{nextDonationDate}</Text>
-                    </>
-                ) : (
-                    <>
-                        <Text style={styles.waitText}>AGUARDANDO</Text>
-                        <Text style={styles.statusMessage}>
-                            {statusMessage.replace(/\*\*/g, '')}
-                        </Text>
-                        {nextDonationDate && (
-                            <View>
-                                <Text style={styles.subText}>Você poderá doar a partir de:</Text>
-                                <Text style={styles.nextDateText}>{nextDonationDate}</Text>
-                            </View>
-                        )}
-                    </>
-                )}
-            </View>
-
-            <TouchableOpacity
-                style={styles.actionButton}
-                onPress={() => navigation.navigate('Profile')}
-            >
-                <Text style={styles.actionButtonText}>
-                    Atualizar Dados e Última Doação
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.actionButton}
-                onPress={() => navigation.navigate('Location')}
-            >
-                <Text style={styles.actionButtonText}>
-                    Encontrar Hemocentros Próximos
-                </Text>
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('Location')}
+                >
+                    <Text style={styles.actionButtonText}>
+                        Encontrar Hemocentros Próximos
+                    </Text>
                 </TouchableOpacity>
 
 
-            <TouchableOpacity
-                style={styles.actionButton}
-                onPress={() => navigation.navigate('Compatibilidade')}
-            >
-                <Text style={styles.actionButtonText}>
-                   Teste sua compatibilidade 
-                </Text>
-            </TouchableOpacity>          
-            
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('Compatibilidade')}
+                >
+                    <Text style={styles.actionButtonText}>
+                        Teste sua compatibilidade
+                    </Text>
+                </TouchableOpacity>
 
-                  <TouchableOpacity
-                style={styles.actionButton}
-                onPress={() => navigation.navigate('Checklist')}>
-                <Text style={styles.actionButtonText}>
-                    Faça o seu checklist
-                </Text>
-            </TouchableOpacity>
 
-        </ScrollView>
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('Checklist')}>
+                    <Text style={styles.actionButtonText}>
+                        Faça o seu checklist
+                    </Text>
+                </TouchableOpacity>
+
+            </ScrollView>
         </SafeAreaView>
     );
 }

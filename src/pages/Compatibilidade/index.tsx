@@ -22,7 +22,7 @@ const BLOOD_TYPES: BloodType[] = [
   { type: 'AB-', prevalence: '1%', donateTo: ['AB+', 'AB-'], receiveFrom: ['A-', 'B-', 'AB-', 'O-'], description: 'O tipo mais raro. Recetor universal negativo.', color: COLORS.yellow700 },
 ];
 
-export default function App() {
+export default function Compatibilidade() {
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
   const selectedData = useMemo(
