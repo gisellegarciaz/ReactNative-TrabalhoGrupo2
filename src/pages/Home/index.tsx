@@ -138,7 +138,7 @@ export function Home() {
 
                 <TouchableOpacity
                     style={styles.actionButton}
-                    onPress={() => navigation.navigate('Nutrição')}>
+                    onPress={() => navigation.navigate('Nutricao')}>
                     <Text style={styles.actionButtonText}>
                         Dicas de alimentação
                     </Text>

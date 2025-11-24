@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
 import { styles } from './styles';
 
-// Estrutura de dados para as curiosidades sobre doação de sangue
+
 const curiosities = [
   {
     id: '1',
@@ -42,7 +42,7 @@ const curiosities = [
   },
 ];
 
-// Componente do Cartão de Curiosidade
+
 interface CuriosityCardProps {
   item: typeof curiosities[0];
 }
@@ -56,14 +56,14 @@ const CuriosityCard: React.FC<CuriosityCardProps> = ({ item }) => {
 
   return (
     <View style={styles.cardContainer}>
-      {/* O TouchableOpacity torna o cabeçalho clicável para expandir/recolher */}
+    
       <TouchableOpacity onPress={toggleExpand} style={styles.cardHeader}>
         <Text style={styles.cardIcon}>{item.icon}</Text>
         <Text style={styles.cardTitle}>{item.title}</Text>
         <Text style={styles.expandIndicator}>{isExpanded ? '▲' : '▼'}</Text>
       </TouchableOpacity>
 
-      {/* Conteúdo da descrição, visível apenas quando expandido */}
+   
       {isExpanded && (
         <View style={styles.cardContent}>
           <Text style={styles.cardDescription}>{item.description}</Text>
@@ -73,7 +73,7 @@ const CuriosityCard: React.FC<CuriosityCardProps> = ({ item }) => {
   );
 };
 
-// Componente principal da aplicação
+
 const Curiosidade = () => {
   return (
     <SafeAreaView style={styles.safeArea}>

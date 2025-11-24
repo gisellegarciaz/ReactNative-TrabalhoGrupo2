@@ -45,7 +45,7 @@ export default function Compatibilidade() {
       <Text style={styles.title}>🩸 Compatibilidade Sanguínea</Text>
       <Text style={styles.subtitle}>Selecione o seu tipo sanguíneo:</Text>
 
-      {/* BOTÕES DE TIPOS SANGUÍNEOS */}
+      
       <View style={styles.buttonsBox}>
         {BLOOD_TYPES.map(b => (
           <TouchableOpacity
@@ -63,8 +63,7 @@ export default function Compatibilidade() {
         ))}
       </View>
 
-      {/* CONTEÚDO */}
-      {selectedData ? (
+          {selectedData ? (
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Seu Tipo Selecionado: {selectedData.type}</Text>
 
@@ -75,13 +74,12 @@ export default function Compatibilidade() {
 
           <Text style={styles.description}>"{selectedData.description}"</Text>
 
-          {/* Box Doação */}
+         
           <View style={styles.boxDonate}>
             <Text style={styles.boxTitle}>Você pode doar para:</Text>
             {renderCompatibilityList(selectedData.donateTo)}
           </View>
 
-          {/* Box Receber */}
           <View style={styles.boxReceive}>
             <Text style={styles.boxTitle}>Você pode receber de:</Text>
             {renderCompatibilityList(selectedData.receiveFrom)}
