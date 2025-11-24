@@ -6,32 +6,24 @@ export const styles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#E74C3C',
-        paddingVertical: 50,
+        backgroundColor: '#FFF8E7',
+        paddingVertical: 40,
     },
-
     header: {
-        marginBottom: 40,
         alignItems: 'center',
+        marginBottom: 40,
     },
-    title: {
-        fontSize: 48,
-        fontWeight: 'bold',
-        color: '#fff',
-        marginBottom: 5,
+    logo: {
+        width: 290,
+        height: 160,
+        marginBottom: 20,
     },
-    subtitle: {
-        fontSize: 18,
-        color: '#f0f0f0',
-    },
-
     card: {
-        width: '90%',
+        width: '85%',
         maxWidth: 400,
-        backgroundColor: '#fff',
         borderRadius: 15,
-        padding: 25,
-        shadowColor: '#000',
+        paddingHorizontal: 25,
+        shadowColor: '#212121ff',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.1,
         shadowRadius: 5,
@@ -39,12 +31,17 @@ export const styles = StyleSheet.create({
     },
     cardTitle: {
         fontSize: 22,
-        fontWeight: '600',
-        color: '#333',
+        fontWeight: '500',
+        color: '#3b3b3b',
         marginBottom: 20,
         textAlign: 'center',
     },
-
+    cardLabel: {
+        fontSize: 16,
+        fontWeight: '300',
+        color: '#3b3b3b',
+        paddingVertical: 5,
+    },
     input: {
         height: 50,
         backgroundColor: '#f7f7f7',
@@ -55,10 +52,9 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ddd',
     },
-
     loginButton: {
         height: 50,
-        backgroundColor: '#C0392B',
+        backgroundColor: '#CA1741',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -69,14 +65,21 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
-
-    registerButton: {
+    registerContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 5,
         marginTop: 20,
     },
+    registerText: {
+        color: '#3b3b3b',
+        fontSize: 15,
+        fontWeight: '500',       
+    },
     registerButtonText: {
-        color: '#E74C3C',
-        fontSize: 16,
-        textAlign: 'center',
-        fontWeight: '500',
+        color: '#FE5F5F',
+        fontSize: 15,
+        fontWeight: '600',
     }
 });
