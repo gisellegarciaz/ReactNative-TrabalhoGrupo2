@@ -6,11 +6,13 @@ import { styles, PRIMARY_COLOR, INACTIVE_COLOR } from './styles';
 
 
 const iconMap: { [key: string]: string } = {
-    Home: 'home-outline', 
+    Home: 'water-outline', 
     Location: 'medkit-outline',
     TabHome2: 'add',
     TabHome3: 'person-outline',
     Profile: 'person-circle-outline',
+    Checklist: 'checkmark-done-circle-outline',
+    Compatibilidade: 'person-outline',
 };
 
 const labelMap: { [key: string]: string } = {
@@ -19,6 +21,7 @@ const labelMap: { [key: string]: string } = {
     TabHome2: '',
     TabHome3: 'Questionário',
     Profile: 'Perfil',
+    Checklist: 'Checklist',
 };
 
 
@@ -31,6 +34,9 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigat
                 const isFocused = state.index === index;
                 const isCentralButton = route.name === 'TabHome2';
 
+                if(route.key.includes("Compatibilidade")){
+                    return
+                }
                 const onPress = () => {
                     const event = navigation.emit({
                         type: 'tabPress',

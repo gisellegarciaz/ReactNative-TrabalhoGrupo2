@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
-import { StackScreenProps } from '@react-navigation/stack';
 import { styles, itemStyles } from './style'; // Importa estilos
+import { useNavigation } from '@react-navigation/native';
 
 // Interface para um item do checklist
 interface ChecklistItem {
@@ -40,12 +40,10 @@ export type RootStackParamList = {
     Checklist: undefined; // Rota atual
     Home: undefined; // Rota de destino
 };
-// Usando os nomes de rota em português
-type ChecklistScreenProps = StackScreenProps<RootStackParamList, 'Checklist'>;
 
-
-const ChecklistScreen: React.FC<ChecklistScreenProps> = ({ navigation }) => {
+const ChecklistScreen: React.FC = ( ) => {
   const [list, setList] = useState<ChecklistItem[]>(PRE_DONATION_STEPS);
+  const navigation = useNavigation<any>(); 
 
   // Função para alternar o estado de conclusão de um item
   const toggleItem = (id: number) => {
