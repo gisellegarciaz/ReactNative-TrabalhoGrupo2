@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
 import { styles } from './styles';
 
-
+// Estrutura de dados para as curiosidades sobre doação de sangue
 const curiosities = [
   {
     id: '1',
