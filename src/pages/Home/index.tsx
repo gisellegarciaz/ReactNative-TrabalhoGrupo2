@@ -7,7 +7,7 @@ import { styles } from './style';
 import { useAuth } from '../../hooks/useAuth';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-// import HeaderComponent from '../../components/Header';
+import HeaderComponent from '../../components/Header';
 
 type NavigationProps = {
     navigate: (screen: string) => void;
@@ -89,15 +89,15 @@ export function Home() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7' }} edges={['top', 'left', 'right']} >
-            {/* <HeaderComponent nomeUsuario={user.name} /> */}
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7' }} edges={['left', 'right']} >
+            <HeaderComponent username={user.name} logoff={handleLogout}/>
             <ScrollView contentContainerStyle={styles.container}>
-                <View style={styles.header}>
+                {/* <View style={styles.header}>
                     <Text style={styles.headerTitle}>Olá, {user.name}!</Text>
                     <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
                         <Text style={styles.logoutButtonText}>Sair</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
                 <TouchableOpacity
                     style={styles.actionButton}
@@ -138,7 +138,7 @@ export function Home() {
 
                 <TouchableOpacity
                     style={styles.actionButton}
-                    onPress={() => navigation.navigate('Nutrição')}>
+                    onPress={() => navigation.navigate('Nutricao')}>
                     <Text style={styles.actionButtonText}>
                         Dicas de alimentação
                     </Text>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styles, itemStyles } from './style'; // Importa estilos
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Interface para um item do checklist
 interface ChecklistItem {
@@ -55,11 +56,12 @@ const ChecklistScreen: React.FC = ( ) => {
   const allCompleted = list.every(item => item.completed);
   const remainingCount = list.filter(i => !i.completed).length;
 
+  //Troquei o export do SafeAreaView para sair o aviso de deprecated
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} edges={['top', 'right', 'left']}> 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.container}>
-          <Text style={styles.title}>Checklist Pré-Doação</Text> {/* Título ajustado */}
+          <Text style={styles.title}>Checklist Pré-Doação</Text> 
           <Text style={styles.subtitle}>
             Marque todos os itens que você cumpre para confirmar sua elegibilidade e preparação para doar.
           </Text>

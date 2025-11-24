@@ -1,35 +1,39 @@
-// import React from 'react';
-// import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-// import { styles } from './styles'
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { styles } from './styles'
+import { useAuth } from '@/src/hooks/useAuth';
 
-// const SimpleHeader: React.FC = () => {
-//     return (
-//         // O container principal define a linha e a separação
-//         <View style={styles.headerContainer}>
-
-//             {/* 1. Lado Esquerdo: Texto "Olá" */}
-//             <View style={styles.leftContent}>
-//                 <Text style={styles.greetingText}>Olá</Text>
-//             </View>
-
-//             {/* 2. Lado Direito: Botão/Ação */}
-//             <TouchableOpacity
-//                 style={styles.button}
-//                 onPress={() => console.log('Botão Pressionado')}
-//             >
-//                 <Text style={styles.buttonText}>Ação</Text>
-//             </TouchableOpacity>
-
-//             <View style={styles.header}>
-//                 <Text style={styles.headerTitle}>Olá, {user.name}!</Text>
-//                 <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-//                     <Text style={styles.logoutButtonText}>Sair</Text>
-//                 </TouchableOpacity>
-//             </View>
+type HeaderProps = {
+    username: string
+    logoff: () => void
+}
 
 
-//         </View>
-//     );
-// };
+const HeaderComponent: React.FC<HeaderProps> = ({ username, logoff }) => {
+    return (
+        <View style={styles.headerContainer}>
 
-// export default SimpleHeader;
+            <View style={styles.leftContent}>
+                <Image
+                    source={require('../../assets/Mascote/MascoteComCapa.png')}
+                    style={styles.logoImage}
+                />
+                <View style={styles.rightContent}>
+                    <Text style={styles.greetingText1}>Olá, </Text>
+                    <Text style={styles.greetingText2}>{username}!</Text>
+                </View>
+            </View>
+
+            <TouchableOpacity
+                style={styles.button}
+                onPress={logoff} //Foi só tirar a arrow function (() =>) de antes da função
+            >
+                <Text style={styles.buttonText}>Sair</Text>
+            </TouchableOpacity>
+
+
+        </View>
+    );
+};
+
+export default HeaderComponent;

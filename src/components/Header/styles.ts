@@ -2,69 +2,55 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
     headerContainer: {
-        // ESSENCIAL: Coloca os filhos (Olá e Botão) em linha
         flexDirection: 'row',
-        
-        // ESSENCIAL: Coloca o máximo de espaço entre eles (Olá na esquerda, Botão na direita)
         justifyContent: 'space-between',
-        
-        // Alinha verticalmente no centro
         alignItems: 'center', 
-        
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        backgroundColor: '#FFFFFF', // Fundo branco
-        
-        // Opcional: Para dar um pequeno destaque visual
+        paddingHorizontal: 30,
+        paddingTop: 60, 
+        paddingBottom: 20,
+        backgroundColor: '#F7F7F7',
         borderBottomWidth: 1,
-        borderBottomColor: '#EEEEEE',
+        borderColor: '#E0E0E0',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 5,
     },
-    
     leftContent: {
-        // Estilos para o container do 'Olá', se necessário
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        gap: 5
     },
-    
-    greetingText: {
-        fontSize: 18,
+    logoImage: {
+        width: 60, 
+        height: 60,
+        marginRight: 10,
+        resizeMode: 'contain',
+    },
+    rightContent: {
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+    },
+    greetingText1: {
+        fontSize: 22,
+        fontWeight: 'regular',
+        color: '#333333',
+    },
+    greetingText2: {
+        fontSize: 25,
         fontWeight: 'bold',
         color: '#333333',
     },
-    
     button: {
         paddingHorizontal: 10,
         paddingVertical: 5,
-        backgroundColor: '#007AFF', // Azul padrão
+        backgroundColor: '#31C9EB',
         borderRadius: 5,
     },
-    
     buttonText: {
         color: '#FFFFFF',
         fontSize: 14,
         fontWeight: '600',
-    },
-        // --- Header (Título e Botão Sair) ---
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#F7F7F7',
-        padding: 15,
-        marginBottom: 30,
-
-    },
-    headerTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#E74C3C',
-    },
-    logoutButton: {
-        paddingVertical: 5,
-        paddingHorizontal: 15,
-        backgroundColor: '#CCC',
-        borderRadius: 5,
-    },
-    logoutButtonText: {
-        color: '#444',
-        fontWeight: 'bold',
     },
 });
