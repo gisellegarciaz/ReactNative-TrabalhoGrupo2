@@ -139,6 +139,25 @@ export function Home() {
                 <Text style={styles.actionButtonText}>
                     Encontrar Hemocentros Próximos
                 </Text>
+                </TouchableOpacity>
+
+
+            <TouchableOpacity
+                style={styles.actionButton}
+                onPress={() => navigation.navigate('Compatibilidade')}
+            >
+                <Text style={styles.actionButtonText}>
+                   Teste sua compatibilidade 
+                </Text>
+            </TouchableOpacity>          
+            
+
+                  <TouchableOpacity
+                style={styles.actionButton}
+                onPress={() => navigation.navigate('Checklist')}>
+                <Text style={styles.actionButtonText}>
+                    Faça o seu checklist
+                </Text>
             </TouchableOpacity>
 
         </ScrollView>
