@@ -14,13 +14,13 @@ export const itemStyles = StyleSheet.create({
     },
     skipButton: {
         position: 'absolute',
-        top: 5, // Ajuste dependendo da sua StatusBar
+        top: 5,
         left: 110,
-        zIndex: 10, // Garante que fique por cima de outros elementos
+        zIndex: 10,
         padding: 5,
     },
     skipText: {
-        color: '#999', // Cinza discreto
+        color: '#999',
         fontSize: 16,
         fontWeight: 'bold',
     },
