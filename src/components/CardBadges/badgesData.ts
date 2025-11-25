@@ -1,5 +1,5 @@
 import { ImageSourcePropType } from 'react-native';
-import BadgeSuperDoador from '../../assets/Badges/BadgePrimeiraDoacaoActive.png';
+import BadgeSuperDoador from '../../assets/Badges/BadgePrimeiraDoacao.png';
 import BadgeJump from '../../assets/Badges/BadgeSalvaVidasActive.png';
 import BadgeBatDoador from '../../assets/Badges/BadgeBatmanActive.png';
 import BadgeSalvadorDeVidas from '../../assets/Badges/BadgeSalvaVidasActive.png'

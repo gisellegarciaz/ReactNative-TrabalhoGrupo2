@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator, FlatList, ImageSourcePropType } from 'react-native';
+import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 import { format, addDays, differenceInDays } from 'date-fns';
 
@@ -11,6 +12,12 @@ import HeaderComponent from '../../components/Header';
 
 import { Badge } from '../../components/CardBadges';
 import { BADGES_DATA } from '../../components/CardBadges/badgesData';
+import { CardHome } from '../../components/CardHome';
+
+import MascoteNutricao from '../../assets/CardHomeImages/MascoteNutricao.png';
+import MascoteDoador from '../../assets/CardHomeImages/MascoteDoador.png';
+import MascoteRegistro from '../../assets/Mascote/MascoteRegistro.png';
+import MascoteCuriosidades from '../../assets/CardHomeImages/MascoteCuriosidades.png';
 
 type NavigationProps = {
     navigate: (screen: string) => void;
@@ -28,6 +35,12 @@ export function Home() {
     const [statusMessage, setStatusMessage] = useState('Atualize seu perfil para calcular seu prazo.');
     const [nextDonationDate, setNextDonationDate] = useState<string | null>(null);
     const [isReady, setIsReady] = useState(false);
+
+    const [fontsLoaded] = useFonts({
+        'NeulisRegular': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Regular.otf'),
+        'NeulisSemiBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Semi_Bold.otf'),
+        'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
+    });
 
     const calculateNextDate = useCallback(() => {
         if (!user || !user.lastDonation || !user.gender) {
@@ -76,7 +89,6 @@ export function Home() {
             "Tem certeza que deseja sair da sua conta?",
             [
                 { text: "Cancelar", style: "cancel" },
-
                 { text: "Sim, Sair", onPress: logout, style: "destructive" },
             ]
         );
@@ -88,7 +100,7 @@ export function Home() {
                         label={item.label}
                         imageSrc={item.image}
                         goal={item.goal}
-                        donations={1}  //user.donations.length
+                        donations={5}  //user.donations.length
                     />
                 </View>
             );
@@ -104,8 +116,11 @@ export function Home() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7'}} edges={['left', 'right']} >
+        <SafeAreaView style={{ flexGrow: 1, backgroundColor: '#FFF8E7'}} edges={['left', 'right']} >
             <HeaderComponent username={user.name} logoff={handleLogout} />
+            <View style={{ width: '100%' }}>
+                <Text style={styles.badgesText}> Badges conquistadas: </Text>
+            </View>
             <FlatList
                 data={BADGES_DATA}
                 keyExtractor={(item) => item.id}
@@ -114,62 +129,44 @@ export function Home() {
                 style={{flexGrow: 0}}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
+                scrollEnabled={true}
+                bounces={false}
             />
 
-            <ScrollView contentContainerStyle={styles.container}>
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => navigation.navigate('Profile')}
-                >
-                    <Text style={styles.actionButtonText}>
-                        Atualizar Dados e Última Doação
-                    </Text>
-                </TouchableOpacity>
+            <ScrollView
+                contentContainerStyle={[ styles.container, {flexGrow: 0, paddingBottom: 120}  ]}
+                showsVerticalScrollIndicator={false}>
 
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => navigation.navigate('Location')}
-                >
-                    <Text style={styles.actionButtonText}>
-                        Encontrar Hemocentros Próximos
-                    </Text>
-                </TouchableOpacity>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+                
+                <View>
+                    <Text style={styles.homeText}> Mantenha-se informado: </Text>
+                </View>
 
+                <CardHome 
+                    imageSrc={MascoteDoador as ImageSourcePropType}
+                    title="Quando posso doar novamente?"
+                    onPress={() => navigation.navigate('PossoDoar')}
+                />
 
-                <TouchableOpacity
-                    style={styles.actionButton}
+                <CardHome 
+                    imageSrc={MascoteNutricao as ImageSourcePropType}
+                    title="Dicas de Alimentação"
+                    onPress={() => navigation.navigate('Nutricao')}
+                />
+                
+                <CardHome 
+                    imageSrc={MascoteDoador as ImageSourcePropType}
+                    title="Quem doa para quem?"
                     onPress={() => navigation.navigate('Compatibilidade')}
-                >
-                    <Text style={styles.actionButtonText}>
-                        Teste sua compatibilidade
-                    </Text>
-                </TouchableOpacity>
+                />
 
-
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => navigation.navigate('Checklist')}>
-                    <Text style={styles.actionButtonText}>
-                        Faça o seu checklist
-                    </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => navigation.navigate('Nutricao')}>
-                    <Text style={styles.actionButtonText}>
-                        Dicas de alimentação
-                    </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={() => navigation.navigate('Curiosidade')}>
-                    <Text style={styles.actionButtonText}>
-                        Confira curiosidades
-                    </Text>
-                </TouchableOpacity>
-
+                <CardHome 
+                    imageSrc={MascoteCuriosidades as ImageSourcePropType}
+                    title="Curiosidades sobre o sangue"
+                    onPress={() => navigation.navigate('Curiosidade')}
+                />
+            </View>
             </ScrollView>
         </SafeAreaView>
     );

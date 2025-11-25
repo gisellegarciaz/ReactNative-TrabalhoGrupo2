@@ -17,7 +17,7 @@ export const TabRouters = () => {
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Location" component={Location} />
             <Tab.Screen name="Profile" component={Profile} />
-            <Tab.Screen name="Checklist" component={ChecklistScreen} />
+            <Tab.Screen name="PossoDoar" component={ChecklistScreen}/>
             <Tab.Screen name="Compatibilidade" component={Compatibilidade}/>
             <Tab.Screen name="Nutricao" component={Nutricao} />
             <Tab.Screen name="Curiosidade" component={Curiosidade} />
