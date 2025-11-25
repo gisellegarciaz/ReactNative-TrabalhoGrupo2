@@ -13,7 +13,7 @@ import { CardHome } from '../../components/CardHome';
 
 import MascoteNutricao from '../../assets/CardHomeImages/MascoteNutricao.png';
 import MascoteDoador from '../../assets/CardHomeImages/MascoteDoador.png';
-import MascoteRegistro from '../../assets/Mascote/MascoteRegistro.png';
+import Quemdoa from '../../assets/Mascote/Quemdoapraquem.png';
 import MascoteCuriosidades from '../../assets/CardHomeImages/MascoteCuriosidades.png';
 
 type NavigationProps = {
@@ -146,7 +146,7 @@ export function Home() {
                 />
                 
                 <CardHome 
-                    imageSrc={MascoteDoador as ImageSourcePropType}
+                    imageSrc={Quemdoa as ImageSourcePropType}
                     title="Quem doa para quem?"
                     onPress={() => navigation.navigate('Compatibilidade')}
                 />
