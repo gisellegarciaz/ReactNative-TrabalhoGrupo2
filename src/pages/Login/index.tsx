@@ -5,7 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { useNavigation } from '@react-navigation/native';
 
 export function Login() {
-    const [user, setUser] = useState('');
+    const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const navigation = useNavigation<any>();
@@ -13,18 +13,17 @@ export function Login() {
     const { login } = useAuth();
 
     const handleLogin = async () => {
-        if (!user || !password) {
-            Alert.alert('Erro', 'Preencha usuário e senha.');
+        if (!email || !password) {
+            Alert.alert('Erro', 'Preencha e-mail e senha.');
             return;
         }
 
         setLoading(true);
 
-
-        const success = await login({ user, password });
+        const success = await login({ email, password });
 
         if (!success) {
-            Alert.alert('Erro', 'Usuário ou senha inválidos. Tente novamente.');
+            Alert.alert('Erro', 'E-mail ou senha inválidos. Tente novamente.');
         } else {
             navigation.replace('StackHome');
         }
@@ -41,20 +40,16 @@ export function Login() {
                     style={styles.logo}
                     resizeMode="contain"
                 />
-                {/* <Text style={styles.title}>DoeMais</Text>
-                <Text style={styles.subtitle}>Seu lembrete de doação</Text> */}
             </View>
 
             <View style={styles.card}>
-                {/* <Text style={styles.cardTitle}>Acesse sua Conta</Text> */}
-
                 <Text style={styles.cardLabel}>E-mail</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="exemplo@email.com"
                     placeholderTextColor="#999"
-                    value={user}
-                    onChangeText={setUser}
+                    value={email}
+                    onChangeText={setEmail}
                     autoCapitalize="none"
                     editable={!loading}
                 />

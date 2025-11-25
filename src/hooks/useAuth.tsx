@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Auth from '../services/auth';
-import { LoginCredentials, Donor } from '../services/auth';
+import { LoginCredentials, Donor, DonorRegistrationData } from '../services/auth'; // Usando as tipagens de Email
 
 // --- Tipagens ---
 
@@ -10,6 +10,7 @@ interface AuthContextData {
     isAuthenticated: boolean;
     loading: boolean;
     login(credentials: LoginCredentials): Promise<boolean>;
+    register(data: DonorRegistrationData): Promise<boolean>;
     logout(): Promise<void>;
     saveDonorData(data: Partial<Donor>): Promise<boolean>;
 }
@@ -35,7 +36,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 ]);
 
                 if (storageUser && storageToken) {
-
                     const parsedUser: Donor = JSON.parse(storageUser);
                     setUser(parsedUser);
                 }
@@ -52,15 +52,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const login = async (credentials: LoginCredentials): Promise<boolean> => {
         try {
-
-            const response = await Auth.signIn(credentials);
+            // credentials agora é { email: string, password: string }
+            const response = await Auth.signIn(credentials); 
 
             if (response.success && response.user) {
-
                 setUser(response.user);
-
                 await AsyncStorage.setItem('@BloodCycle:user', JSON.stringify(response.user));
-
                 return true;
             }
             return false;
@@ -69,6 +66,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             return false;
         }
     };
+
+    const register = async (data: DonorRegistrationData): Promise<boolean> => {
+        try {
+            // data agora é { name, email, password, gender, birthDate }
+            const response = await Auth.registerDonor(data);
+
+            if (response.success) {
+                return true; 
+            }
+            return false;
+        } catch (error) {
+            console.error("Falha ao registrar:", error);
+            return false;
+        }
+    };
+
 
     const logout = async (): Promise<void> => {
         await Auth.signOut();
@@ -80,12 +93,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         try {
             const updatedUser: Donor = { ...user, ...data };
-
             const success = await Auth.updateDonor(updatedUser);
 
             if (success) {
                 setUser(updatedUser);
-
                 await AsyncStorage.setItem('@BloodCycle:user', JSON.stringify(updatedUser));
                 return true;
             }
@@ -103,6 +114,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 isAuthenticated: !!user,
                 loading,
                 login,
+                register,
                 logout,
                 saveDonorData
             }}

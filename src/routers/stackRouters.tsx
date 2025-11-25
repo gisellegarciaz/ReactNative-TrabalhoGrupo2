@@ -3,6 +3,8 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { AuthProvider, useAuth } from '../hooks/useAuth';
+// CORREÇÃO: Voltamos à importação nomeada ({}) para Login, Home e Location
+// e incluímos o SignUp aqui também para consistência.
 import { Login } from '../pages/Login';
 import { SignUp } from '../pages/SignUp';
 import { Home } from '../pages/Home';
@@ -39,7 +41,7 @@ function StackNavigator() {
         <Stack.Navigator >
             {isAuthenticated ? (
 
-                    <Stack.Screen name='StackHome' component={TabRouters} options={{ headerShown: false }}/>
+                <Stack.Screen name='StackHome' component={TabRouters} options={{ headerShown: false }}/>
             ) : (
                 <>
                     <Stack.Screen name="Introducao" component={Intro} options={{ headerShown: false }} />
@@ -56,6 +58,3 @@ export function StackRouters() {
         <StackNavigator />
     );
 }
-
-
-

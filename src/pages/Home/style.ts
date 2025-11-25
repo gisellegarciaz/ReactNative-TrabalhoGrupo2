@@ -20,12 +20,12 @@ export const styles = StyleSheet.create({
         color: '#666',
     },
     columnWrapper: {
-        justifyContent: 'space-around', // Distribui o espaço entre as colunas
-        marginBottom: 24, // Espaço vertical entre as LINHAS de badges
+        justifyContent: 'space-around',
+        marginBottom: 24,
     },
     gridItem: {
-        flex: 1, // Cada item ocupa 50% da largura (pois são 2 colunas)
-        alignItems: 'center', // Centraliza a Badge horizontalmente
+        flex: 1,
+        alignItems: 'center',
     },
 
     listContent: {
@@ -34,23 +34,53 @@ export const styles = StyleSheet.create({
         gap: 6,
     },
 
-    // Status: APTO (READY)
-    readyText: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: '#2ECC71', // Verde
-        textAlign: 'center',
-        marginBottom: 10,
+    // --- NOVOS ESTILOS PARA O STATUS BOX ---
+    statusBox: {
+        marginHorizontal: 20,
+        padding: 16,
+        borderRadius: 12,
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // Estilos de sombra para dar profundidade
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 5,
     },
+    statusBoxReady: {
+        backgroundColor: '#E74C3C', // Usando sua cor principal para status pronto (impacto)
+    },
+    statusBoxWaiting: {
+        backgroundColor: '#F39C12', // Usando sua cor de aviso/aguardando
+    },
+    statusMessageContainer: {
+        marginBottom: 4,
+    },
+    statusMessageText: {
+        fontSize: 18,
+        textAlign: 'center',
+        color: 'white', // Cor branca para contraste com os fundos
+    },
+    statusMessageBold: {
+        fontWeight: '900', // Um negrito mais forte para o destaque
+        // Cor do texto de destaque muda dependendo do box
+        // A cor do texto para ready (Fundo E74C3C) será herdada (White)
+    },
+    statusDateText: {
+        fontSize: 14,
+        textAlign: 'center',
+        color: 'white',
+    },
+    // --- FIM DOS NOVOS ESTILOS ---
 
-    // Status: AGUARDANDO (WAIT)
-    waitText: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: '#F39C12', // Amarelo/Laranja
-        textAlign: 'center',
-        marginBottom: 10,
-    },
+    // Status: APTO (READY) - Removidos para usar o statusBoxReady
+    // readyText: { ... },
+
+    // Status: AGUARDANDO (WAIT) - Removidos para usar o statusBoxWaiting
+    // waitText: { ... },
+
     subText: {
         fontSize: 14,
         color: '#666',
