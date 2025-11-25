@@ -2,14 +2,14 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1, // Permite scroll se o conteúdo for maior que a tela
         backgroundColor: '#FFF8E7',
         padding: 20,
     },
     title: {
         fontSize: 24,
         color: '#E74C3C',
-        fontFamily: 'NeulisBold', 
+        fontFamily: 'NeulisBold',
         textAlign: 'center',
         marginTop: 20,
         marginBottom: 10,
@@ -42,11 +42,6 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    dateText: {
-        fontSize: 16,
-        color: '#333',
-        fontFamily: 'NeulisRegular',
-    },
     genderContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -62,7 +57,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     genderButtonSelected: {
-        backgroundColor: '#31C9EB', // Azul destaque
+        backgroundColor: '#31C9EB',
         borderColor: '#31C9EB',
     },
     genderText: {
@@ -121,9 +116,5 @@ export const styles = StyleSheet.create({
         color: '#666',
         textAlign: 'center',
         fontFamily: 'NeulisRegular',
-    },
-    aptoText: {
-        color: '#27AE60',
-        fontWeight: 'bold',
     },
 });

@@ -91,7 +91,7 @@ export function Home() {
                         label={item.label}
                         imageSrc={item.image}
                         goal={item.goal}
-                        donations={5}  //user.donations.length
+                        donations={user?.totalDonations || 0}  //user.donations.length
                     />
                 </View>
             );
@@ -136,7 +136,7 @@ export function Home() {
                 <CardHome 
                     imageSrc={MascoteDoador as ImageSourcePropType}
                     title="Quando posso doar novamente?"
-                    onPress={() => navigation.navigate('PossoDoar')}
+                    onPress={() => navigation.navigate('ProximaDoacao')}
                 />
 
                 <CardHome 
