@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         backgroundColor: '#FFF8E7',
         padding: 20,
         paddingBottom: 90
-        
+
     },
     loadingContainer: {
         flex: 1,
@@ -19,59 +19,21 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         color: '#666',
     },
-    
-    // --- Header (Título e Botão Sair) ---
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#F7F7F7',
-        padding: 15,
-        marginBottom: 30,
+    columnWrapper: {
+        justifyContent: 'space-around', // Distribui o espaço entre as colunas
+        marginBottom: 24, // Espaço vertical entre as LINHAS de badges
+    },
+    gridItem: {
+        flex: 1, // Cada item ocupa 50% da largura (pois são 2 colunas)
+        alignItems: 'center', // Centraliza a Badge horizontalmente
+    },
 
-    },
-    headerTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#E74C3C',
-    },
-    logoutButton: {
-        paddingVertical: 5,
+    listContent: {
         paddingHorizontal: 15,
-        backgroundColor: '#CCC',
-        borderRadius: 5,
-    },
-    logoutButtonText: {
-        color: '#444',
-        fontWeight: 'bold',
+        paddingTop: 20,
+        gap: 6,
     },
 
-    // --- Card de Status de Doação ---
-    statusCard: {
-        backgroundColor: 'white',
-        borderRadius: 10,
-        padding: 20,
-        marginBottom: 30,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    statusTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        color: '#333',
-        textAlign: 'center',
-    },
-    statusMessage: {
-        fontSize: 16,
-        color: '#A93226',
-        textAlign: 'center',
-        lineHeight: 24,
-    },
-    
     // Status: APTO (READY)
     readyText: {
         fontSize: 22,
