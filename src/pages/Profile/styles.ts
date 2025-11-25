@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         backgroundColor: '#F7F7F7',
-    },
-    contentContainer: {
-        padding: 20,
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        paddingBottom: 40,
     },
     
     loadingContainer: {
@@ -15,89 +15,216 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F7F7F7',
     },
-    headerTitle: {
+    
+    loadingText: {
+        marginTop: 10,
+        fontSize: 16,
+        color: '#666',
+    },
+
+    profileHeader: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 20,
+        marginBottom: 20,
+        marginTop: 20,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+
+    greeting: {
+        fontSize: 18,
+        color: '#666',
+        marginBottom: 8,
+        fontWeight: '500',
+    },
+
+    userInfo: {
+        marginTop: 4,
+    },
+
+    userName: {
         fontSize: 24,
         fontWeight: 'bold',
         color: '#333',
-        marginBottom: 5,
-    },
-    subtitle: {
-        fontSize: 14,
-        color: '#666',
-        marginBottom: 20,
-    },
-    label: {
-        fontSize: 16,
-        color: '#333',
-        marginTop: 15,
-        marginBottom: 5,
-        fontWeight: 'bold',
-    },
-    input: {
-        height: 50,
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        paddingHorizontal: 15,
-        fontSize: 16,
-        borderWidth: 1,
-        borderColor: '#ccc',
+        marginBottom: 4,
     },
 
-    genderContainer: {
+    userDetails: {
+        fontSize: 16,
+        color: '#666',
+        marginBottom: 6,
+    },
+
+    donorLevel: {
+        fontSize: 14,
+        color: '#E74C3C',
+        fontWeight: '600',
+    },
+
+    statsContainer: {
+        flexDirection: 'row',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 20,
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+
+    statItem: {
+        flex: 1,
+        alignItems: 'center',
+    },
+
+    statNumber: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#E74C3C',
+        marginBottom: 4,
+    },
+
+    statLabel: {
+        fontSize: 12,
+        color: '#666',
+        textAlign: 'center',
+    },
+
+    section: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 20,
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 15,
+    },
+
+    donationCard: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 5,
-        marginBottom: 10,
+        alignItems: 'center',
+        backgroundColor: '#F8F9FA',
+        borderRadius: 8,
+        padding: 16,
+        borderLeftWidth: 4,
+        borderLeftColor: '#2ECC71',
     },
-    genderButton: {
+
+    donationInfo: {
         flex: 1,
-        height: 50,
+    },
+
+    donationDate: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#333',
+        marginBottom: 6,
+    },
+
+    hospitalTag: {
+        alignSelf: 'flex-start',
+        backgroundColor: '#E8F5E8',
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+        borderRadius: 4,
+    },
+
+    hospitalText: {
+        fontSize: 12,
+        color: '#2ECC71',
+        fontWeight: '500',
+    },
+
+    checkbox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#2ECC71',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        marginHorizontal: 5,
+        backgroundColor: '#FFFFFF',
     },
-    genderSelected: {
+
+    checkboxChecked: {
+        width: 10,
+        height: 10,
+        borderRadius: 2,
+        backgroundColor: '#2ECC71',
+    },
+
+    actionsSection: {
+        gap: 12,
+    },
+
+    primaryButton: {
+        height: 55,
         backgroundColor: '#E74C3C',
-        borderColor: '#C0392B',
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 3,
     },
-    genderText: {
+
+    primaryButtonText: {
+        color: '#FFFFFF',
         fontSize: 16,
-        color: '#333',
-    },
-    textSelected: {
-        color: '#fff',
         fontWeight: 'bold',
     },
 
-    datePickerButton: {
-        height: 50,
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        paddingHorizontal: 15,
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: '#ccc',
-    },
-    datePickerText: {
-        fontSize: 16,
-        color: '#333',
-    },
-
-    saveButton: {
-        marginTop: 30,
+    secondaryButton: {
         height: 55,
-        backgroundColor: '#2ECC71',
+        backgroundColor: '#FFFFFF',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#E74C3C',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 3,
     },
-    saveButtonText: {
-        color: '#fff',
-        fontSize: 18,
+
+    secondaryButtonText: {
+        color: '#E74C3C',
+        fontSize: 16,
         fontWeight: 'bold',
     },
 });
