@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         width: 330,
         height: 120,
         marginBottom: 5,
-        marginTop: 40
+        marginTop: 40,
     },
     label: {
         alignSelf: 'flex-start',
@@ -34,7 +34,64 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 15,
         fontSize: 16,
         color: '#333',
+        marginBottom: 10,
     },
+    
+
+    dropdown: {
+        width: '100%',
+        height: 50,
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#E0E0E0',
+        paddingHorizontal: 15,
+        marginBottom: 10, 
+    },
+    placeholderStyle: {
+        fontSize: 16,
+        color: '#999',
+    },
+    selectedTextStyle: {
+        fontSize: 16,
+        color: '#333',
+    },
+
+    genderContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        marginBottom: 10,
+        marginTop: 5,
+    },
+    genderButton: {
+        flex: 1,
+        height: 50,
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 5,
+        borderWidth: 1,
+    },
+    genderButtonActive: {
+        backgroundColor: '#CA1741',
+        borderColor: '#CA1741',
+    },
+    genderButtonInactive: {
+        backgroundColor: '#fff',
+        borderColor: '#ddd',
+    },
+    genderButtonText: {
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    genderButtonTextActive: {
+        color: '#fff',
+    },
+    genderButtonTextInactive: {
+        color: '#3b3b3b',
+    },
+
     TipoGeneroWrapper: {
         flexDirection: 'row',
         width: '100%',
@@ -45,27 +102,11 @@ export const styles = StyleSheet.create({
         width: '45%',
         gap: 0
     },
-    dropdown: {
-        width: '100%',
-        height: 50,
-        backgroundColor: '#FFF',
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#E0E0E0',
-        paddingHorizontal: 15,
-    },
-    placeholderStyle: {
-        fontSize: 16,
-        color: '#999',
-    },
-    selectedTextStyle: {
-        fontSize: 16,
-        color: '#333',
-    },
+    
     button: {
         width: '100%',
         height: 55,
-        backgroundColor: '#31C9EB',
+        backgroundColor: '#CA1741', 
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center',
@@ -81,5 +122,23 @@ export const styles = StyleSheet.create({
         color: '#FFF',
         fontSize: 20,
         fontWeight: 'bold',
+    },
+
+    loginLinkContainer: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    loginText: {
+        fontSize: 15,
+        color: '#3b3b3b',
+    },
+    loginButton: {
+        fontSize: 15,
+        fontWeight: '600',
+        color: '#FE5F5F',
+        marginLeft: 5,
     },
 });

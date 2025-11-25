@@ -9,7 +9,6 @@ import { Routers } from './src/routers';
 export default function App() {
   return (
 
-    // <Introducao />
       <AuthProvider>
         <Routers/>
       </AuthProvider>

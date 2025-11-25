@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { format, addDays, differenceInDays } from 'date-fns';
-
 import { styles } from './style';
 import { useAuth } from '../../hooks/useAuth';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-// import HeaderComponent from '../../components/Header';
+import HeaderComponent from '../../components/Header';
+import Badge from '../../components/CardBadges/index';
+import { BADGES_DATA } from '../../components/CardBadges/badgesData';
 
 type NavigationProps = {
     navigate: (screen: string) => void;
@@ -18,7 +18,6 @@ const DONATION_INTERVAL_FEMALE = 90;
 
 export function Home() {
     const navigation = useNavigation<NavigationProps>();
-
     const { user, logout } = useAuth();
 
     const [statusMessage, setStatusMessage] = useState('Atualize seu perfil para calcular seu prazo.');
@@ -37,20 +36,17 @@ export function Home() {
             const lastDonationDate = new Date(user.lastDonation);
             const interval = user.gender === 'male' ? DONATION_INTERVAL_MALE : DONATION_INTERVAL_FEMALE;
 
-
             const nextPossibleDate = addDays(lastDonationDate, interval);
             const today = new Date();
 
             const daysRemaining = differenceInDays(nextPossibleDate, today);
 
             if (daysRemaining <= 0) {
-
                 setStatusMessage('Você está APTO para doar sangue!');
                 setNextDonationDate(`Data da Última Doação: ${format(lastDonationDate, 'dd/MM/yyyy')}`);
                 setIsReady(true);
             } else {
-
-                setStatusMessage(`Faltam **${daysRemaining} dias** para você poder doar novamente.`);
+                setStatusMessage(`Faltam ${daysRemaining} dias para você poder doar novamente.`);
                 setNextDonationDate(format(nextPossibleDate, 'dd/MM/yyyy'));
                 setIsReady(false);
             }
@@ -65,19 +61,27 @@ export function Home() {
         calculateNextDate();
     }, [user, calculateNextDate]);
 
-
     const handleLogout = () => {
         Alert.alert(
             "Sair",
             "Tem certeza que deseja sair da sua conta?",
             [
                 { text: "Cancelar", style: "cancel" },
-
                 { text: "Sim, Sair", onPress: logout, style: "destructive" },
             ]
         );
     };
 
+    const renderBadge = ({ item }: { item: typeof BADGES_DATA[0] }) => (
+        <View style={styles.gridItem}>
+            <Badge
+                label={item.label}
+                imageSrc={item.image}
+                goal={item.goal}
+                donations={user?.totalDonations ?? 0}
+            />
+        </View>
+    );
 
     if (!user) {
         return (
@@ -89,15 +93,20 @@ export function Home() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7' }} edges={['top', 'left', 'right']} >
-            {/* <HeaderComponent nomeUsuario={user.name} /> */}
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7'}} edges={['left', 'right']} >
+            <HeaderComponent username={user.name} logoff={handleLogout} />
+
+            <FlatList
+                data={BADGES_DATA}
+                keyExtractor={(item) => item.id}
+                renderItem={renderBadge}
+                contentContainerStyle={styles.listContent}
+                style={{ flexGrow: 0 }}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+            />
+
             <ScrollView contentContainerStyle={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>Olá, {user.name}!</Text>
-                    <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-                        <Text style={styles.logoutButtonText}>Sair</Text>
-                    </TouchableOpacity>
-                </View>
 
                 <TouchableOpacity
                     style={styles.actionButton}
@@ -117,7 +126,6 @@ export function Home() {
                     </Text>
                 </TouchableOpacity>
 
-
                 <TouchableOpacity
                     style={styles.actionButton}
                     onPress={() => navigation.navigate('Compatibilidade')}
@@ -127,10 +135,10 @@ export function Home() {
                     </Text>
                 </TouchableOpacity>
 
-
                 <TouchableOpacity
                     style={styles.actionButton}
-                    onPress={() => navigation.navigate('Checklist')}>
+                    onPress={() => navigation.navigate('Checklist')}
+                >
                     <Text style={styles.actionButtonText}>
                         Faça o seu checklist
                     </Text>
@@ -138,7 +146,8 @@ export function Home() {
 
                 <TouchableOpacity
                     style={styles.actionButton}
-                    onPress={() => navigation.navigate('Nutrição')}>
+                    onPress={() => navigation.navigate('Nutricao')}
+                >
                     <Text style={styles.actionButtonText}>
                         Dicas de alimentação
                     </Text>
@@ -146,7 +155,8 @@ export function Home() {
 
                 <TouchableOpacity
                     style={styles.actionButton}
-                    onPress={() => navigation.navigate('Curiosidade')}>
+                    onPress={() => navigation.navigate('Curiosidade')}
+                >
                     <Text style={styles.actionButtonText}>
                         Confira curiosidades
                     </Text>

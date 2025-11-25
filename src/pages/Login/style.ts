@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -75,7 +74,7 @@ export const styles = StyleSheet.create({
     registerText: {
         color: '#3b3b3b',
         fontSize: 15,
-        fontWeight: '500',       
+        fontWeight: '500',         
     },
     registerButtonText: {
         color: '#FE5F5F',

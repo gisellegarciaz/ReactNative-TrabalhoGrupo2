@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         backgroundColor: '#FFF8E7',
         padding: 20,
         paddingBottom: 90
-        
+
     },
     loadingContainer: {
         flex: 1,
@@ -19,76 +19,57 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         color: '#666',
     },
-    
-    // --- Header (Título e Botão Sair) ---
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    columnWrapper: {
+        justifyContent: 'space-around',
+        marginBottom: 24,
+    },
+    gridItem: {
+        flex: 1,
         alignItems: 'center',
-        backgroundColor: '#F7F7F7',
-        padding: 15,
-        marginBottom: 30,
+    },
 
-    },
-    headerTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#E74C3C',
-    },
-    logoutButton: {
-        paddingVertical: 5,
+    listContent: {
         paddingHorizontal: 15,
-        backgroundColor: '#CCC',
-        borderRadius: 5,
-    },
-    logoutButtonText: {
-        color: '#444',
-        fontWeight: 'bold',
+        paddingTop: 20,
+        gap: 6,
     },
 
-    // --- Card de Status de Doação ---
-    statusCard: {
-        backgroundColor: 'white',
-        borderRadius: 10,
-        padding: 20,
-        marginBottom: 30,
+    statusBox: {
+        marginHorizontal: 20,
+        padding: 16,
+        borderRadius: 12,
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
-        shadowRadius: 3.84,
+        shadowRadius: 3,
         elevation: 5,
     },
-    statusTitle: {
+    statusBoxReady: {
+        backgroundColor: '#E74C3C',
+    },
+    statusBoxWaiting: {
+        backgroundColor: '#F39C12', 
+    },
+    statusMessageContainer: {
+        marginBottom: 4,
+    },
+    statusMessageText: {
         fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        color: '#333',
         textAlign: 'center',
+        color: 'white', 
     },
-    statusMessage: {
-        fontSize: 16,
-        color: '#A93226',
-        textAlign: 'center',
-        lineHeight: 24,
+    statusMessageBold: {
+        fontWeight: '900', 
     },
-    
-    // Status: APTO (READY)
-    readyText: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: '#2ECC71', // Verde
+    statusDateText: {
+        fontSize: 14,
         textAlign: 'center',
-        marginBottom: 10,
+        color: 'white',
     },
 
-    // Status: AGUARDANDO (WAIT)
-    waitText: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: '#F39C12', // Amarelo/Laranja
-        textAlign: 'center',
-        marginBottom: 10,
-    },
     subText: {
         fontSize: 14,
         color: '#666',
@@ -103,9 +84,9 @@ export const styles = StyleSheet.create({
         marginTop: 5,
     },
 
-    // --- Botões de Ação (Location, Profile) ---
+
     actionButton: {
-        backgroundColor: '#E74C3C', // Cor principal de doação
+        backgroundColor: '#E74C3C',
         padding: 15,
         borderRadius: 8,
         alignItems: 'center',

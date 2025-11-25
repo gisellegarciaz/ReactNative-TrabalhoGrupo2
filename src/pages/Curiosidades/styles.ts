@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F5F5F5', // Fundo claro geral
+    backgroundColor: '#F5F5F5', 
   },
   header: {
-    backgroundColor: '#C62828', // Vermelho escuro forte, cor associada à doação
+    backgroundColor: '#C62828',
     paddingVertical: 20,
     paddingHorizontal: 20,
-    elevation: 4, // Sombra para Android
-    shadowColor: '#000', // Sombra para iOS
+    elevation: 4, 
+    shadowColor: '#000', 
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
     borderLeftWidth: 5,
-    borderLeftColor: '#E53935', // Borda lateral vermelha vibrante
+    borderLeftColor: '#E53935', 
   },
   cardHeader: {
     flexDirection: 'row',
@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
   cardIcon: {
     fontSize: 28,
     marginRight: 10,
-    color: '#E53935', // Cor do ícone
+    color: '#E53935',
   },
   cardTitle: {
     flex: 1,
@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingBottom: 15,
     paddingTop: 5,
-    backgroundColor: '#FAFAFA', // Fundo leve para o conteúdo
+    backgroundColor: '#FAFAFA', 
     borderTopWidth: 1,
     borderTopColor: '#EEEEEE',
   },
