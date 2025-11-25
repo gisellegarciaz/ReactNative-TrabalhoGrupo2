@@ -11,7 +11,7 @@ const iconMap: { [key: string]: string } = {
     TabHome2: 'add',
     TabHome3: 'person-outline',
     Profile: 'person-circle-outline',
-    Checklist: 'checkmark-done-circle-outline',
+    PossoDoar: 'checkmark-done-circle-outline',
     Compatibilidade: 'person-outline',
 };
 
@@ -20,6 +20,7 @@ const labelMap: { [key: string]: string } = {
     Location: 'Hemocentros',
     TabHome2: '',
     TabHome3: 'Questionário',
+    PossoDoar: 'Posso Doar?',
     Profile: 'Perfil',
     Checklist: 'Checklist',
 };

@@ -6,9 +6,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center', 
         paddingHorizontal: 30,
-        paddingTop: 60, 
-        paddingBottom: 20,
-        backgroundColor: '#F7F7F7',
+        paddingTop: 50, 
+        paddingBottom: 10,
+        backgroundColor: '#fff9f9',
         borderBottomWidth: 1,
         borderColor: '#E0E0E0',
         shadowColor: '#000',
@@ -23,24 +23,26 @@ export const styles = StyleSheet.create({
         gap: 5
     },
     logoImage: {
-        width: 60, 
-        height: 60,
+        width: 50, 
+        height: 50,
         marginRight: 10,
         resizeMode: 'contain',
     },
     rightContent: {
+        justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'flex-start',
     },
     greetingText1: {
         fontSize: 22,
-        fontWeight: 'regular',
         color: '#333333',
+        fontFamily: 'NeulisRegular',
+        marginBottom: -10,
     },
     greetingText2: {
         fontSize: 25,
-        fontWeight: 'bold',
         color: '#333333',
+        fontFamily: 'NeulisBold'
     },
     button: {
         paddingHorizontal: 10,

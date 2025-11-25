@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         backgroundColor: '#FFF8E7',
-        padding: 20,
-        paddingBottom: 90
-
+        paddingTop: 0,
+        paddingBottom: 120,
+        paddingHorizontal: 20,
     },
     loadingContainer: {
         flex: 1,
@@ -19,83 +19,32 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         color: '#666',
     },
-    columnWrapper: {
-        justifyContent: 'space-around',
-        marginBottom: 24,
-    },
     gridItem: {
         flex: 1,
         alignItems: 'center',
     },
-
     listContent: {
+        height: 130,
         paddingHorizontal: 15,
-        paddingTop: 20,
-        gap: 6,
+        paddingTop: 0,
     },
-
-    statusBox: {
-        marginHorizontal: 20,
-        padding: 16,
-        borderRadius: 12,
-        marginBottom: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-        elevation: 5,
-    },
-    statusBoxReady: {
-        backgroundColor: '#E74C3C',
-    },
-    statusBoxWaiting: {
-        backgroundColor: '#F39C12', 
-    },
-    statusMessageContainer: {
-        marginBottom: 4,
-    },
-    statusMessageText: {
-        fontSize: 18,
+    badgesText: {
+        paddingHorizontal: 20,
         textAlign: 'center',
-        color: 'white', 
-    },
-    statusMessageBold: {
-        fontWeight: '900', 
-    },
-    statusDateText: {
-        fontSize: 14,
-        textAlign: 'center',
-        color: 'white',
-    },
-
-    subText: {
-        fontSize: 14,
+        marginTop: 22,
+        fontSize: 19,
+        fontWeight: 'regular',
         color: '#666',
+        fontFamily: 'NeulisSemiBold'
+    },
+    homeText: {
+        paddingHorizontal: 20,
         textAlign: 'center',
-        marginBottom: 5,
+        marginTop: 22,
+        marginBottom: 10,
+        fontSize: 19,
+        fontWeight: 'regular',
+        color: '#666',
+        fontFamily: 'NeulisSemiBold'
     },
-    nextDateText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#333',
-        textAlign: 'center',
-        marginTop: 5,
-    },
-
-
-    actionButton: {
-        backgroundColor: '#E74C3C',
-        padding: 15,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginTop: 15,
-        elevation: 3,
-    },
-    actionButtonText: {
-        color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold',
-    }
 });

@@ -5,12 +5,11 @@ export const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: 120, // Em RN não usamos 'px', é numérico
-        padding: 8,
+        width: 50,
     },
     imageWrapper: {
-        width: 120,
-        height: 120,
+        width: 130,
+        height: 130,
         alignItems: 'center',
         justifyContent: 'center',
         shadowColor: "#000",
@@ -29,19 +28,15 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        width: 120,
-        height: 120,
+        width: 130,
+        height: 130,
         resizeMode: 'contain',
     },
-    // Estilo específico para quando estiver bloqueado
     imageLocked: {
         opacity: 0.4, // Deixa transparente para parecer inativo
-        // Nota: O React Native padrão não tem grayscale real.
-        // Se quiser cinza absoluto, precisaria de uma lib externa ou tintColor (que remove as cores).
-        // tintColor: '#d1d1d1', // Descomente se preferir uma silhueta cinza
     },
     label: {
-        fontFamily: 'System', // Ou a fonte do seu app (ex: 'Roboto-Bold')
+        fontFamily: 'System',
         fontSize: 14,
         fontWeight: 'bold',
         color: '#333333',
