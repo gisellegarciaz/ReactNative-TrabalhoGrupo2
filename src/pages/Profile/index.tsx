@@ -97,7 +97,7 @@ export function Profile() {
             <Text style={styles.label}>Nome de Usuário (login):</Text>
             <TextInput
                 style={[styles.input, { backgroundColor: '#EEE' }]}
-                value={user.user}
+                value={user.name} // CORRIGIDO: Assumindo que o campo de login/usuário seja user.name ou user.email
                 editable={false}
             />
 

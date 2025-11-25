@@ -52,8 +52,6 @@ const ChecklistScreen: React.FC = ( ) => {
 
   const allCompleted = list.every(item => item.completed);
   const remainingCount = list.filter(i => !i.completed).length;
-
-  //Troquei o export do SafeAreaView para sair o aviso de deprecated
   return (
     <SafeAreaView style={styles.safeArea} edges={['top', 'right', 'left']}> 
       <ScrollView contentContainerStyle={styles.scrollContent}>

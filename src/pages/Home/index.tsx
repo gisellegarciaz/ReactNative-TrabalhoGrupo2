@@ -3,14 +3,11 @@ import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator, Fla
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 import { format, addDays, differenceInDays } from 'date-fns';
-
 import { styles } from './style';
 import { useAuth } from '../../hooks/useAuth';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 import HeaderComponent from '../../components/Header';
-
-import { Badge } from '../../components/CardBadges';
+import Badge from '../../components/CardBadges/index';
 import { BADGES_DATA } from '../../components/CardBadges/badgesData';
 import { CardHome } from '../../components/CardHome';
 
@@ -26,10 +23,8 @@ type NavigationProps = {
 const DONATION_INTERVAL_MALE = 60;
 const DONATION_INTERVAL_FEMALE = 90;
 
-
 export function Home() {
     const navigation = useNavigation<NavigationProps>();
-
     const { user, logout } = useAuth();
 
     const [statusMessage, setStatusMessage] = useState('Atualize seu perfil para calcular seu prazo.');
@@ -54,20 +49,17 @@ export function Home() {
             const lastDonationDate = new Date(user.lastDonation);
             const interval = user.gender === 'male' ? DONATION_INTERVAL_MALE : DONATION_INTERVAL_FEMALE;
 
-
             const nextPossibleDate = addDays(lastDonationDate, interval);
             const today = new Date();
 
             const daysRemaining = differenceInDays(nextPossibleDate, today);
 
             if (daysRemaining <= 0) {
-
                 setStatusMessage('Você está APTO para doar sangue!');
                 setNextDonationDate(`Data da Última Doação: ${format(lastDonationDate, 'dd/MM/yyyy')}`);
                 setIsReady(true);
             } else {
-
-                setStatusMessage(`Faltam **${daysRemaining} dias** para você poder doar novamente.`);
+                setStatusMessage(`Faltam ${daysRemaining} dias para você poder doar novamente.`);
                 setNextDonationDate(format(nextPossibleDate, 'dd/MM/yyyy'));
                 setIsReady(false);
             }
@@ -81,7 +73,6 @@ export function Home() {
     useEffect(() => {
         calculateNextDate();
     }, [user, calculateNextDate]);
-
 
     const handleLogout = () => {
         Alert.alert(
@@ -105,7 +96,6 @@ export function Home() {
                 </View>
             );
 
-
     if (!user) {
         return (
             <View style={styles.loadingContainer}>
@@ -126,8 +116,8 @@ export function Home() {
                 keyExtractor={(item) => item.id}
                 renderItem={renderBadge}
                 contentContainerStyle={styles.listContent}
-                style={{flexGrow: 0}}
-                horizontal={true}
+                style={{ flexGrow: 0 }}
+                horizontal
                 showsHorizontalScrollIndicator={false}
                 scrollEnabled={true}
                 bounces={false}

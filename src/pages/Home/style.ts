@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         backgroundColor: '#FFF8E7',
-        // backgroundColor: 'blue',
         paddingTop: 0,
         paddingBottom: 120,
         paddingHorizontal: 20,

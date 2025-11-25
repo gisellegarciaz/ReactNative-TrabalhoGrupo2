@@ -39,7 +39,7 @@ function StackNavigator() {
         <Stack.Navigator >
             {isAuthenticated ? (
 
-                    <Stack.Screen name='StackHome' component={TabRouters} options={{ headerShown: false }}/>
+                <Stack.Screen name='StackHome' component={TabRouters} options={{ headerShown: false }}/>
             ) : (
                 <>
                     <Stack.Screen name="Introducao" component={Intro} options={{ headerShown: false }} />
@@ -56,6 +56,3 @@ export function StackRouters() {
         <StackNavigator />
     );
 }
-
-
-
