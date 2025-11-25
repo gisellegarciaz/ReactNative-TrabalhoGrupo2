@@ -13,6 +13,7 @@ const iconMap: { [key: string]: string } = {
     Profile: 'person-circle-outline',
     PossoDoar: 'checkmark-done-circle-outline',
     Compatibilidade: 'person-outline',
+    ProximaDoacao: 'person-outline',
 };
 
 const labelMap: { [key: string]: string } = {
@@ -23,6 +24,7 @@ const labelMap: { [key: string]: string } = {
     PossoDoar: 'Posso Doar?',
     Profile: 'Perfil',
     Checklist: 'Checklist',
+    ProximaDoacao: 'Próxima Doação',
 };
 
 
@@ -42,6 +44,9 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigat
                     return
                 }
                 if(route.key.includes("Curiosidade")){
+                    return
+                }
+                if(route.key.includes("ProximaDoacao")){
                     return
                 }
                 const onPress = () => {
