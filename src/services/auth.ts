@@ -6,14 +6,12 @@ const API_URL = 'https://691f65c231e684d7bfc99eb2.mockapi.io/users';
 export interface Donor {
     id: string;
     name: string;
-
     user: string; 
     token: string;
     gender: 'male' | 'female' | '';
     birthDate: string; 
     lastDonation?: string; 
-    
-
+    totalDonations?: number;
     username?: string; 
     password?: string; 
 }

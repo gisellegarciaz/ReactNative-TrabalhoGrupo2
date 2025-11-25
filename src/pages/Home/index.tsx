@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { format, addDays, differenceInDays } from 'date-fns';
 
@@ -9,12 +9,16 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import HeaderComponent from '../../components/Header';
 
+import { Badge } from '../../components/CardBadges';
+import { BADGES_DATA } from '../../components/CardBadges/badgesData';
+
 type NavigationProps = {
     navigate: (screen: string) => void;
 };
 
 const DONATION_INTERVAL_MALE = 60;
 const DONATION_INTERVAL_FEMALE = 90;
+
 
 export function Home() {
     const navigation = useNavigation<NavigationProps>();
@@ -78,6 +82,17 @@ export function Home() {
         );
     };
 
+    const renderBadge = ({ item }: { item: typeof BADGES_DATA[0] }) => (
+                <View style={styles.gridItem}>
+                    <Badge
+                        label={item.label}
+                        imageSrc={item.image}
+                        goal={item.goal}
+                        donations={1}  //user.donations.length
+                    />
+                </View>
+            );
+
 
     if (!user) {
         return (
@@ -89,16 +104,19 @@ export function Home() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7' }} edges={['left', 'right']} >
-            <HeaderComponent username={user.name} logoff={handleLogout}/>
-            <ScrollView contentContainerStyle={styles.container}>
-                {/* <View style={styles.header}>
-                    <Text style={styles.headerTitle}>Olá, {user.name}!</Text>
-                    <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-                        <Text style={styles.logoutButtonText}>Sair</Text>
-                    </TouchableOpacity>
-                </View> */}
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8E7'}} edges={['left', 'right']} >
+            <HeaderComponent username={user.name} logoff={handleLogout} />
+            <FlatList
+                data={BADGES_DATA}
+                keyExtractor={(item) => item.id}
+                renderItem={renderBadge}
+                contentContainerStyle={styles.listContent}
+                style={{flexGrow: 0}}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+            />
 
+            <ScrollView contentContainerStyle={styles.container}>
                 <TouchableOpacity
                     style={styles.actionButton}
                     onPress={() => navigation.navigate('Profile')}
