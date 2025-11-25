@@ -86,21 +86,25 @@ export const signIn = async (credentials: LoginCredentials): Promise<AuthRespons
 
 
 export const registerDonor = async (data: DonorRegistrationData): Promise<AuthResponse> => {
+            console.log ("linha 89")
     if (!validateEmail(data.email)) {
         Alert.alert('Erro de Registro', 'O formato do e-mail é inválido.');
         return { success: false, user: null };
     }
 
+            console.log ("linha 93")
+
     try {
       
-        const checkResponse = await axios.get(`${API_URL}?email=${data.email}`);
-        const existingUsers: Donor[] = checkResponse.data;
+        //const checkResponse = await axios.get(`${API_URL}?email=${data.email}`);
+        //const existingUsers: Donor[] = checkResponse.data;
+        console.log ("linha 98")
 
-        if (existingUsers && existingUsers.length > 0) {
-            Alert.alert('Erro', 'Este e-mail já está cadastrado.');
-            return { success: false, user: null };
-        }
-
+        // if (existingUsers && existingUsers.length > 0) {
+        //     Alert.alert('Erro', 'Este e-mail já está cadastrado.');
+        //     return { success: false, user: null };
+        // }
+        console.log ("linha 104")
        
         const payload = { 
             name: data.name,
@@ -113,6 +117,7 @@ export const registerDonor = async (data: DonorRegistrationData): Promise<AuthRe
             totalDonations: 0,
             token: 'mock-token-init',
         }; 
+                console.log ("linha 117")
 
         const response = await axios.post(API_URL, payload);
 

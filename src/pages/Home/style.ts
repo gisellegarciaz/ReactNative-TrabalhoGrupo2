@@ -34,7 +34,6 @@ export const styles = StyleSheet.create({
         gap: 6,
     },
 
-    // --- NOVOS ESTILOS PARA O STATUS BOX ---
     statusBox: {
         marginHorizontal: 20,
         padding: 16,
@@ -42,7 +41,6 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        // Estilos de sombra para dar profundidade
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
@@ -50,10 +48,10 @@ export const styles = StyleSheet.create({
         elevation: 5,
     },
     statusBoxReady: {
-        backgroundColor: '#E74C3C', // Usando sua cor principal para status pronto (impacto)
+        backgroundColor: '#E74C3C',
     },
     statusBoxWaiting: {
-        backgroundColor: '#F39C12', // Usando sua cor de aviso/aguardando
+        backgroundColor: '#F39C12', 
     },
     statusMessageContainer: {
         marginBottom: 4,
@@ -61,25 +59,16 @@ export const styles = StyleSheet.create({
     statusMessageText: {
         fontSize: 18,
         textAlign: 'center',
-        color: 'white', // Cor branca para contraste com os fundos
+        color: 'white', 
     },
     statusMessageBold: {
-        fontWeight: '900', // Um negrito mais forte para o destaque
-        // Cor do texto de destaque muda dependendo do box
-        // A cor do texto para ready (Fundo E74C3C) será herdada (White)
+        fontWeight: '900', 
     },
     statusDateText: {
         fontSize: 14,
         textAlign: 'center',
         color: 'white',
     },
-    // --- FIM DOS NOVOS ESTILOS ---
-
-    // Status: APTO (READY) - Removidos para usar o statusBoxReady
-    // readyText: { ... },
-
-    // Status: AGUARDANDO (WAIT) - Removidos para usar o statusBoxWaiting
-    // waitText: { ... },
 
     subText: {
         fontSize: 14,
@@ -95,9 +84,9 @@ export const styles = StyleSheet.create({
         marginTop: 5,
     },
 
-    // --- Botões de Ação (Location, Profile) ---
+
     actionButton: {
-        backgroundColor: '#E74C3C', // Cor principal de doação
+        backgroundColor: '#E74C3C',
         padding: 15,
         borderRadius: 8,
         alignItems: 'center',
