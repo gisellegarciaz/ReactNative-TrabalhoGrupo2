@@ -136,6 +136,7 @@ const SignUp = () => {
                 Alert.alert('Erro', 'O registro falhou. Verifique os dados e tente novamente.');
             }
         } catch (error: any) {
+            console.log (error.response.data)
             let errorMessage = 'Um erro inesperado ocorreu durante o registro.';
             
             if (error.message && error.message.includes('404')) {
