@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
+import HeaderComponent from '../../components/Header';
 import { format } from 'date-fns';
 import { styles } from './styles';
 import { useAuth } from '@/src/hooks/useAuth';
@@ -18,9 +19,10 @@ import { useAuth } from '@/src/hooks/useAuth';
 type GenderType = 'male' | 'female' | '';
 
 export function Profile() {
+
     const navigation = useNavigation();
 
-    const { user, saveDonorData } = useAuth();
+    const { user, logout, saveDonorData } = useAuth();
 
     const [gender, setGender] = useState<GenderType>(user?.gender || '');
     const [birthDate, setBirthDate] = useState<Date | null>(user?.birthDate ? new Date(user.birthDate) : null);
@@ -38,21 +40,16 @@ export function Profile() {
         }
     }, [user]);
 
-    const handleDateChange = (event: any, selectedDate?: Date) => {
-        setShowDatePicker(false);
-        if (selectedDate) {
-            if (datePickerField === 'birthDate') {
-                setBirthDate(selectedDate);
-            } else if (datePickerField === 'lastDonation') {
-                setLastDonation(selectedDate);
-            }
-        }
-    };
-
-    const showPicker = (field: 'birthDate' | 'lastDonation') => {
-        setDatePickerField(field);
-        setShowDatePicker(true);
-    };
+    const handleLogout = () => {
+            Alert.alert(
+                "Sair",
+                "Tem certeza que deseja sair da sua conta?",
+                [
+                    { text: "Cancelar", style: "cancel" },
+                    { text: "Sim, Sair", onPress: logout, style: "destructive" },
+                ]
+            );
+        };
 
     const handleSave = async () => {
         if (!user || !gender || !birthDate) {
@@ -89,79 +86,64 @@ export function Profile() {
         );
     }
 
+    const calculateAge = () => {
+        if (!user.birthDate) return 'Idade não informada';
+        const today = new Date();
+        const birthDate = new Date(user.birthDate);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return `${age} anos`;
+    };
+
     return (
         <ScrollView contentContainerStyle={styles.contentContainer}>
-            <Text style={styles.headerTitle}>Meus Dados</Text>
-            <Text style={styles.subtitle}>Atualize suas informações para calcularmos seu prazo de doação.</Text>
 
-            <Text style={styles.label}>Nome de Usuário (login):</Text>
-            <TextInput
-                style={[styles.input, { backgroundColor: '#EEE' }]}
-                value={user.name} // CORRIGIDO: Assumindo que o campo de login/usuário seja user.name ou user.email
-                editable={false}
-            />
+            <HeaderComponent username={user.name} logoff={handleLogout} />
 
-            <Text style={styles.label}>Gênero:</Text>
-            <View style={styles.genderContainer}>
-                <TouchableOpacity
-                    style={[styles.genderButton, gender === 'male' && styles.genderSelected]}
-                    onPress={() => setGender('male')}
-                    disabled={loading}
-                >
-                    <Text style={[styles.genderText, gender === 'male' && styles.textSelected]}>Masculino</Text>
-                </TouchableOpacity>
+            <Text style={styles.headerTitle}>{user.name}</Text>
+            <Text style={styles.headerTitleLitle}>{calculateAge()}</Text>
 
-                <TouchableOpacity
-                    style={[styles.genderButton, gender === 'female' && styles.genderSelected]}
-                    onPress={() => setGender('female')}
-                    disabled={loading}
-                >
-                    <Text style={[styles.genderText, gender === 'female' && styles.textSelected]}>Feminino</Text>
-                </TouchableOpacity>
+            <Text style={styles.subtitle}>Nivel 2 - badge</Text>
+
+            <Text style={styles.infoValue}>4</Text>
+            <Text style={styles.infoLabel}>Doações</Text>
+    
+            <Text style={styles.infoValue}>{user.bloodType}</Text>
+            <Text style={styles.infoLabel}>Tipo sanguíneo</Text>
+          
+            <Text style={styles.infoValue}>16</Text>
+            <Text style={styles.infoLabel}>Vidas salvas</Text>
+
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Última Doação</Text>
+                
+                <View style={styles.donationCard}>
+                    <View style={styles.donationInfo}>
+                        <Text style={styles.donationDate}>Qui, 8 de maio</Text>
+                        <View style={styles.hospitalTag}>
+                            <Text style={styles.hospitalText}>Hospital</Text>
+                        </View>
+                    </View>
+                </View>
             </View>
 
-            <Text style={styles.label}>Data de Nascimento:</Text>
-            <TouchableOpacity
-                style={styles.datePickerButton}
-                onPress={() => showPicker('birthDate')}
-                disabled={loading}
-            >
-                <Text style={styles.datePickerText}>
-                    {birthDate ? format(birthDate, 'dd/MM/yyyy') : 'Selecione a Data'}
-                </Text>
-            </TouchableOpacity>
-
-            <Text style={styles.label}>Data da Última Doação (Opcional):</Text>
-            <TouchableOpacity
-                style={styles.datePickerButton}
-                onPress={() => showPicker('lastDonation')}
-                disabled={loading}
-            >
-                <Text style={styles.datePickerText}>
-                    {lastDonation ? format(lastDonation, 'dd/MM/yyyy') : 'Selecione a Data'}
-                </Text>
-            </TouchableOpacity>
-
-            {showDatePicker && (
-                <DateTimePicker
-                    value={datePickerField === 'birthDate' ? (birthDate || new Date()) : (lastDonation || new Date())}
-                    mode="date"
-                    display="default"
-                    onChange={handleDateChange}
-                    maximumDate={new Date()}
-                />
-            )}
 
             <TouchableOpacity
                 style={styles.saveButton}
-                onPress={handleSave}
-                disabled={loading}
+                onPress={() => navigation.navigate('Profile')}
             >
-                {loading ? (
-                    <ActivityIndicator size="small" color="#fff" />
-                ) : (
-                    <Text style={styles.saveButtonText}>SALVAR DADOS</Text>
-                )}
+                <Text style={styles.saveButtonText}>Editar meus dados</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.donationButton}
+                onPress={() => navigation.navigate('Profile')}
+            >
+                <Text style={styles.saveButtonText}>Cadastrar nova doação</Text>
             </TouchableOpacity>
 
         </ScrollView>

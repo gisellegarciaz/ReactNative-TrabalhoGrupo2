@@ -14,6 +14,7 @@ import { CardHome } from '../../components/CardHome';
 import MascoteNutricao from '../../assets/CardHomeImages/MascoteNutricao.png';
 import MascoteDoador from '../../assets/CardHomeImages/MascoteDoador.png';
 import MascoteProxDoacao from '../../assets/CardHomeImages/MascoteProxDoacao2.png';
+import Quemdoa from '../../assets/Mascote/Quemdoapraquem.png';
 import MascoteCuriosidades from '../../assets/CardHomeImages/MascoteCuriosidades.png';
 
 type NavigationProps = {

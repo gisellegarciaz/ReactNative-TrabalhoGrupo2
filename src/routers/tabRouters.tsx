@@ -7,8 +7,6 @@ import ChecklistScreen from "../pages/Checklist";
 import Compatibilidade from "../pages/Compatibilidade";
 import Nutricao from "../pages/Nutricao";
 import Curiosidade from "../pages/Curiosidades";
-import { ProximaDoacao } from "../pages/ProximaDoacao";
-
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +21,6 @@ export const TabRouters = () => {
             <Tab.Screen name="Compatibilidade" component={Compatibilidade}/>
             <Tab.Screen name="Nutricao" component={Nutricao} />
             <Tab.Screen name="Curiosidade" component={Curiosidade} />
-            <Tab.Screen name="ProximaDoacao" component={ProximaDoacao} />
 
         </Tab.Navigator>
     )
