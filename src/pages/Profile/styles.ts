@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
 
     infoValue: {
         fontSize: 26,
-        color: '#666',
+        color: '#be1d1dff',
         marginBottom: 20,
         textAlign: 'center',
     },
@@ -82,7 +82,7 @@ export const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 16,
         borderLeftWidth: 4,
-        borderLeftColor: '#2ECC71',
+        borderLeftColor: '#cc382eff',
     },
 
     donationInfo: {
@@ -106,7 +106,7 @@ export const styles = StyleSheet.create({
 
     hospitalText: {
         fontSize: 12,
-        color: '#2ECC71',
+        color: '#cc382eff',
         fontWeight: '500',
     },
 

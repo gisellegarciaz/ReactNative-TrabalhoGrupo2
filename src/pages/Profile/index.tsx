@@ -134,26 +134,16 @@ export function Profile() {
 
             <TouchableOpacity
                 style={styles.saveButton}
-                onPress={handleSave}
-                disabled={loading}
+                onPress={() => navigation.navigate('Profile')}
             >
-                {loading ? (
-                    <ActivityIndicator size="small" color="#fff" />
-                ) : (
-                    <Text style={styles.saveButtonText}>Editar meus dados</Text>
-                )}
+                <Text style={styles.saveButtonText}>Editar meus dados</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 style={styles.donationButton}
-                onPress={handleSave}
-                disabled={loading}
+                onPress={() => navigation.navigate('Profile')}
             >
-                {loading ? (
-                    <ActivityIndicator size="small" color="#fff" />
-                ) : (
-                    <Text style={styles.saveButtonText}>Cadastrar nova doação</Text>
-                )}
+                <Text style={styles.saveButtonText}>Cadastrar nova doação</Text>
             </TouchableOpacity>
 
         </ScrollView>
