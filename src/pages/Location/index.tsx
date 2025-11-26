@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
     View,
@@ -19,7 +18,6 @@ import {
 } from '../../services/location';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-
 const INITIAL_REGION: Region = {
     latitude: -22.5050,
     longitude: -43.1810,
@@ -34,11 +32,9 @@ export function Location() {
     const [mapRegion, setMapRegion] = useState<Region>(INITIAL_REGION);
     const [searchLocation, setSearchLocation] = useState('');
 
-
     useEffect(() => {
         if (hemocenters.length > 0) {
             const firstHemocenter = hemocenters[0];
-
 
             if (firstHemocenter.latitude && firstHemocenter.longitude) {
                 setMapRegion({
@@ -51,7 +47,6 @@ export function Location() {
         }
     }, [hemocenters]);
 
-
     const handleSearch = async () => {
         if (cep.length !== 8) {
             Alert.alert('Erro', 'Por favor, insira um CEP válido com 8 dígitos.');
@@ -63,7 +58,6 @@ export function Location() {
         setSearchLocation('');
 
         try {
-
             const address: CepAddress | null = await fetchAddressByCep(cep);
 
             if (!address) {
@@ -73,7 +67,6 @@ export function Location() {
             }
 
             const locationToSearch = address.localidade || address.uf;
-
 
             const list = await fetchHemocenters(locationToSearch);
 
@@ -96,7 +89,8 @@ export function Location() {
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
-                    placeholder="CEP (Somente números)"
+                    placeholder="Digite seu CEP"
+                    placeholderTextColor="#999"
                     keyboardType="numeric"
                     maxLength={8}
                     value={cep}
@@ -116,7 +110,6 @@ export function Location() {
                 </TouchableOpacity>
             </View>
 
-
             <MapView
                 style={styles.map}
                 region={mapRegion}
@@ -125,8 +118,7 @@ export function Location() {
                 loadingEnabled={true}
             >
                 {hemocenters.map((hemocenter) => (
-
-                    (hemocenter.latitude && hemocenter.longitude) ? (
+                    hemocenter.latitude && hemocenter.longitude ? (
                         <Marker
                             key={hemocenter.id}
                             coordinate={{
@@ -141,13 +133,16 @@ export function Location() {
                 ))}
             </MapView>
 
-
             {searchLocation && !loading && (
                 <Text style={styles.statusMessage}>
-                    {hemocenters.length > 0
-                        ? `Hemocentros encontrados em: **${searchLocation}**`
-                        : `Nenhum hemocentro encontrado para ${searchLocation}.`
-                    }
+                    {hemocenters.length > 0 ? (
+                        <>
+                            Hemocentros encontrados em:
+                            <Text style={{ fontWeight: 'bold' }}> {searchLocation}</Text>
+                        </>
+                    ) : (
+                        `Nenhum hemocentro encontrado para ${searchLocation}.`
+                    )}
                 </Text>
             )}
 
