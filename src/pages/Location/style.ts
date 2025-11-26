@@ -6,17 +6,33 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFF8E7',
+        paddingHorizontal: 24,
+        marginTop: 5,
+        alignItems: 'center'
+    },
+    titleContainer: {
+        paddingHorizontal: 24,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    title: {
+        width: 350,
+        fontSize: 26,
+        color: '#666',
+        fontFamily: 'NeulisSemiBold',
+        textAlign: 'center',
+        marginBottom: 10,
+        marginTop: 25,
+        lineHeight: 26,
         paddingHorizontal: 20,
         paddingTop: 10,
         paddingBottom: 20,
     },
-
     inputContainer: {
         flexDirection: 'row',
-        marginBottom: 20,
+        marginBottom: 15,
         marginTop: 10,
     },
-
     input: {
         flex: 1,
         height: 50,
@@ -32,7 +48,6 @@ export const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 2,
     },
-
     searchButton: {
         marginLeft: 10,
         height: 50,
@@ -41,14 +56,12 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.15,
         shadowRadius: 4,
         elevation: 4,
     },
-
     map: {
         width: '100%',
         height: height * 0.48,
@@ -64,15 +77,16 @@ export const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 4,
     },
-
     statusMessage: {
+        fontSize: 18,
+        color: '#333',
         fontSize: 17,
         color: '#3b3b3b',
+
         textAlign: 'center',
         marginBottom: 10,
         fontFamily: 'NeulisSemiBold',
     },
-
     loadingOverlay: {
         position: 'absolute',
         top: 0,

@@ -86,16 +86,21 @@ export function Location() {
 
     return (
         <SafeAreaView style={styles.container}>
+            <View style={styles.titleContainer}>
+                <Text style={styles.title}>Encontre hemocentros perto de você!</Text>
+            </View>
+
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
-                    placeholder="Digite seu CEP"
+                    placeholder="Insira seu CEP (Somente números)"
                     placeholderTextColor="#999"
                     keyboardType="numeric"
                     maxLength={8}
                     value={cep}
                     onChangeText={setCep}
                     editable={!loading}
+                    placeholderTextColor={'#9c9c9c'}
                 />
                 <TouchableOpacity
                     style={styles.searchButton}
@@ -135,6 +140,7 @@ export function Location() {
 
             {searchLocation && !loading && (
                 <Text style={styles.statusMessage}>
+
                     {hemocenters.length > 0 ? (
                         <>
                             Hemocentros encontrados em:
@@ -143,6 +149,7 @@ export function Location() {
                     ) : (
                         `Nenhum hemocentro encontrado para ${searchLocation}.`
                     )}
+
                 </Text>
             )}
 
