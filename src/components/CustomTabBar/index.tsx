@@ -27,12 +27,22 @@ const labelMap: { [key: string]: string } = {
     ProximaDoacao: 'Próxima Doação',
 };
 
+const HIDDEN_TABS = [
+    'ProfileEdit',  
+    'NewDonation'    
+];
+
 
 const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
 
     return (
         <View style={styles.tabBarContainer}>
             {state.routes.map((route, index) => {
+
+                if (HIDDEN_TABS.includes(route.name)) {
+                    return null;
+                }
+
                 const { options } = descriptors[route.key];
                 const isFocused = state.index === index;
                 const isCentralButton = route.name === 'TabHome2';

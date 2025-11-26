@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Auth from '../services/auth';
-import { LoginCredentials, Donor, DonorRegistrationData } from '../services/auth'; // Usando as tipagens de Email
+import { LoginCredentials, Donor, DonorRegistrationData, Donation } from '../services/auth'; // Usando as tipagens de Email
 
 // --- Tipagens ---
 
@@ -13,6 +14,9 @@ interface AuthContextData {
     register(data: DonorRegistrationData): Promise<boolean>;
     logout(): Promise<void>;
     saveDonorData(data: Partial<Donor>): Promise<boolean>;
+    registerDonation(donationData: Omit<Donation, 'id' | 'userId'>): Promise<boolean>;
+    getUserDonations(userId: string): Promise<Donation[]>;
+    calculateLivesSaved(donationCount: number): number;
 }
 
 interface AuthProviderProps {
@@ -107,6 +111,55 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     };
 
+    const registerDonation = async (donationData: Omit<Donation, 'id' | 'userId'>): Promise<boolean> => {
+        if (!user) return false;
+
+        try {
+            const donationResponse = await Auth.registerDonation({
+                ...donationData,
+                userId: user.id,
+            });
+
+            if (!donationResponse.success) {
+                Alert.alert('Erro', 'Falha ao registrar doação.');
+                return false;
+            }
+
+            const currentTotal = user.totalDonations || 0;
+            const newTotal = currentTotal + 1;
+
+            const updatedUser: Donor = {
+                ...user,
+                totalDonations: newTotal,
+                lastDonation: donationData.date,
+            };
+
+            setUser(updatedUser);
+            await AsyncStorage.setItem('@BloodCycle:user', JSON.stringify(updatedUser));
+       
+            return true;
+            
+        } catch (error) {
+            console.error('Erro ao registrar doação:', error);
+            Alert.alert('Erro', 'Não foi possível registrar a doação.');
+            return false;
+        }
+    };
+
+    const getUserDonations = async (userId: string): Promise<Donation[]> => {
+        try {
+            const response = await Auth.getUserDonations(userId);
+            return response.success ? response.donations || [] : [];
+        } catch (error) {
+            console.error('Erro ao buscar doações:', error);
+            return [];
+        }
+    };
+
+    const calculateLivesSaved = (donationCount: number): number => {
+        return Auth.calculateLivesSaved(donationCount);
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -116,7 +169,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 login,
                 register,
                 logout,
-                saveDonorData
+                saveDonorData,
+                registerDonation,
+                getUserDonations,
+                calculateLivesSaved
             }}
         >
             {children}

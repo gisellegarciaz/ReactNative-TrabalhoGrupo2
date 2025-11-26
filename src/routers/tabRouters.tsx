@@ -8,6 +8,8 @@ import Compatibilidade from "../pages/Compatibilidade";
 import Nutricao from "../pages/Nutricao";
 import Curiosidade from "../pages/Curiosidades";
 import { ProximaDoacao } from "../pages/ProximaDoacao";
+import { ProfileEdit } from "../pages/ProfileEdit";
+import { NewDonation } from "../pages/NewDonation";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,6 +25,8 @@ export const TabRouters = () => {
             <Tab.Screen name="Nutricao" component={Nutricao} />
             <Tab.Screen name="Curiosidade" component={Curiosidade} />
             <Tab.Screen name="ProximaDoacao" component={ProximaDoacao} />
+            <Tab.Screen name="ProfileEdit" component={ProfileEdit} />
+            <Tab.Screen name="NewDonation" component={NewDonation} />
 
         </Tab.Navigator>
     )

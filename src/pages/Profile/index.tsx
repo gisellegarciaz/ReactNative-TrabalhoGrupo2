@@ -1,81 +1,87 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
     View,
     Text,
     ScrollView,
     TouchableOpacity,
-    TextInput,
     Alert,
     ActivityIndicator
 } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import HeaderComponent from '../../components/Header';
-import { format } from 'date-fns';
 import { styles } from './styles';
 import { useAuth } from '@/src/hooks/useAuth';
-
-
-type GenderType = 'male' | 'female' | '';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 export function Profile() {
-
     const navigation = useNavigation();
+    const { user, logout, calculateLivesSaved } = useAuth();
 
-    const { user, logout, saveDonorData } = useAuth();
-
-    const [gender, setGender] = useState<GenderType>(user?.gender || '');
-    const [birthDate, setBirthDate] = useState<Date | null>(user?.birthDate ? new Date(user.birthDate) : null);
-    const [lastDonation, setLastDonation] = useState<Date | null>(user?.lastDonation ? new Date(user.lastDonation) : null);
     const [loading, setLoading] = useState(false);
+    const [lastDonationFormatted, setLastDonationFormatted] = useState<string>('Nenhuma doação registrada');
 
-    const [showDatePicker, setShowDatePicker] = useState(false);
-    const [datePickerField, setDatePickerField] = useState<'birthDate' | 'lastDonation' | null>(null);
+    useFocusEffect(
+        useCallback(() => {
+            if (user?.lastDonation) {
+                try {
+                    const lastDonationDate = new Date(user.lastDonation);
+                    setLastDonationFormatted(format(lastDonationDate, "EEE, d 'de' MMM", { locale: ptBR }));
+                } catch (error) {
+                    setLastDonationFormatted('Data inválida');
+                }
+            } else {
+                setLastDonationFormatted('Nenhuma doação registrada');
+            }
+        }, [user?.lastDonation])
+    );
 
-    useEffect(() => {
-        if (user) {
-            setGender(user.gender || '');
-            setBirthDate(user.birthDate ? new Date(user.birthDate) : null);
-            setLastDonation(user.lastDonation ? new Date(user.lastDonation) : null);
+    const handleLogout = useCallback(() => {
+        Alert.alert(
+            "Sair",
+            "Tem certeza que deseja sair da sua conta?",
+            [
+                { text: "Cancelar", style: "cancel" },
+                { text: "Sim, Sair", onPress: logout, style: "destructive" },
+            ]
+        );
+    }, [logout]);
+
+    const calculateAge = useCallback(() => {
+        if (!user?.birthDate) return 'Idade não informada';
+        try {
+            const today = new Date();
+            const birthDate = new Date(user.birthDate);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return `${age} anos`;
+        } catch (error) {
+            return 'Idade não informada';
         }
-    }, [user]);
+    }, [user?.birthDate]);
 
-    const handleLogout = () => {
-            Alert.alert(
-                "Sair",
-                "Tem certeza que deseja sair da sua conta?",
-                [
-                    { text: "Cancelar", style: "cancel" },
-                    { text: "Sim, Sair", onPress: logout, style: "destructive" },
-                ]
-            );
-        };
-
-    const handleSave = async () => {
-        if (!user || !gender || !birthDate) {
-            Alert.alert('Erro', 'Preencha Gênero e Data de Nascimento.');
-            return;
+    const getGenderDisplay = (gender: string): string => {
+        switch (gender) {
+            case 'male':
+                return 'Masculino';
+            case 'female':
+                return 'Feminino';
+            default:
+                return 'Não informado';
         }
-
-        setLoading(true);
-
-        const dataToSave = {
-            gender,
-            birthDate: birthDate.toISOString(),
-            lastDonation: lastDonation ? lastDonation.toISOString() : undefined,
-        };
-
-        const success = await saveDonorData(dataToSave);
-
-        if (success) {
-            Alert.alert('Sucesso', 'Dados do doador atualizados!');
-            navigation.goBack();
-        } else {
-            Alert.alert('Erro', 'Falha ao salvar os dados. Tente novamente.');
-        }
-
-        setLoading(false);
     };
+
+    const navigateToEdit = useCallback(() => {
+        navigation.navigate('ProfileEdit' as never);
+    }, [navigation]);
+
+    const navigateToNewDonation = useCallback(() => {
+        navigation.navigate('NewDonation' as never);
+    }, [navigation]);
 
     if (!user) {
         return (
@@ -86,66 +92,104 @@ export function Profile() {
         );
     }
 
-    const calculateAge = () => {
-        if (!user.birthDate) return 'Idade não informada';
-        const today = new Date();
-        const birthDate = new Date(user.birthDate);
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        return `${age} anos`;
+    const donationCount = user?.totalDonations || 0;
+    const livesSaved = calculateLivesSaved(donationCount);
+
+    const getLevel = (donations: number) => {
+        if (donations >= 10) return 'Nível 5 - Doador Master';
+        if (donations >= 7) return 'Nível 4 - Doador Avançado';
+        if (donations >= 4) return 'Nível 3 - Doador Regular';
+        if (donations >= 1) return 'Nível 2 - Doador Iniciante';
+        return 'Nível 1 - Novato';
+    };
+
+    const getLevelColor = (donations: number) => {
+        if (donations >= 10) return '#E74C3C';
+        if (donations >= 7) return '#E67E22';
+        if (donations >= 4) return '#F1C40F';
+        if (donations >= 1) return '#2ECC71';
+        return '#95A5A6';
     };
 
     return (
-        <ScrollView contentContainerStyle={styles.contentContainer}>
-
+        <ScrollView>
             <HeaderComponent username={user.name} logoff={handleLogout} />
+            <View style={styles.contentContainer}>
+                <Text style={styles.headerTitle}>{user.name}</Text>
+                <Text style={styles.headerTitleLitle}>
+                    {calculateAge()}, {getGenderDisplay(user.gender || '')}
+                </Text>
 
-            <Text style={styles.headerTitle}>{user.name}</Text>
-            <Text style={styles.headerTitleLitle}>{calculateAge()}</Text>
+                <View style={styles.levelBadge}>
+                    <Text style={[styles.levelText, { color: getLevelColor(donationCount) }]}>
+                        {getLevel(donationCount)}
+                    </Text>
+                </View>
 
-            <Text style={styles.subtitle}>Nivel 2 - badge</Text>
+                <View style={styles.statsContainer}>
+                    <View style={styles.statItem}>
+                        <Text style={styles.infoValue}>{donationCount}</Text>
+                        <Text style={styles.infoLabel}>Doações</Text>
+                    </View>
 
-            <Text style={styles.infoValue}>4</Text>
-            <Text style={styles.infoLabel}>Doações</Text>
-    
-            <Text style={styles.infoValue}>{user.bloodType}</Text>
-            <Text style={styles.infoLabel}>Tipo sanguíneo</Text>
-          
-            <Text style={styles.infoValue}>16</Text>
-            <Text style={styles.infoLabel}>Vidas salvas</Text>
+                    <View style={styles.statItem}>
+                        <Text style={styles.infoValue}>{user.bloodType || 'Não informado'}</Text>
+                        <Text style={styles.infoLabel}>Tipo sanguíneo</Text>
+                    </View>
 
-            <View style={styles.section}>
-                <Text style={styles.sectionTitle}>Última Doação</Text>
-                
-                <View style={styles.donationCard}>
-                    <View style={styles.donationInfo}>
-                        <Text style={styles.donationDate}>Qui, 8 de maio</Text>
-                        <View style={styles.hospitalTag}>
-                            <Text style={styles.hospitalText}>Hospital</Text>
-                        </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.infoValue}>{livesSaved}</Text>
+                        <Text style={styles.infoLabel}>Vidas salvas</Text>
                     </View>
                 </View>
+
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Última Doação</Text>
+                    
+                    <View style={styles.donationCard}>
+                        <View style={styles.donationInfo}>
+                            <Text style={styles.donationDate}>{lastDonationFormatted}</Text>
+                            {user.lastDonation && (
+                                <View style={styles.hospitalTag}>
+                                    <Text style={styles.hospitalText}>Registrada</Text>
+                                </View>
+                            )}
+                        </View>
+                        {!user.lastDonation && (
+                            <Text style={styles.noDonationText}>
+                                Você ainda não registrou nenhuma doação
+                            </Text>
+                        )}
+                    </View>
+                </View>
+
+                <View style={styles.actionsContainer}>
+                    <TouchableOpacity
+                        style={styles.editButton}
+                        onPress={navigateToEdit}
+                        disabled={loading}
+                    >
+                        <Text style={styles.editButtonText}>Editar meus dados</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.donationButton}
+                        onPress={navigateToNewDonation}
+                        disabled={loading}
+                    >
+                        <Text style={styles.donationButtonText}>Cadastrar nova doação</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {donationCount > 0 && (
+                    <View style={styles.achievementCard}>
+                        <Text style={styles.achievementTitle}>🎉 Parabéns!</Text>
+                        <Text style={styles.achievementText}>
+                            Você já salvou aproximadamente {livesSaved} vidas com suas doações!
+                        </Text>
+                    </View>
+                )}
             </View>
-
-
-            <TouchableOpacity
-                style={styles.saveButton}
-                onPress={() => navigation.navigate('Profile')}
-            >
-                <Text style={styles.saveButtonText}>Editar meus dados</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.donationButton}
-                onPress={() => navigation.navigate('Profile')}
-            >
-                <Text style={styles.saveButtonText}>Cadastrar nova doação</Text>
-            </TouchableOpacity>
-
         </ScrollView>
     );
 }

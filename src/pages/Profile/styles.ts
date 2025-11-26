@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
         backgroundColor: '#F7F7F7',
     },
     contentContainer: {
-        padding: 20,
+        padding: 25,
+        paddingBottom: 40,
     },
 
     loadingContainer: {
@@ -26,28 +27,49 @@ export const styles = StyleSheet.create({
     headerTitleLitle: {
         fontSize: 16,
         color: '#4e4e4eff',
-        marginBottom: 8,
+        marginBottom: 15,
         textAlign: 'center',
     },
 
-    subtitle: {
+    levelBadge: {
+        backgroundColor: '#F8F9FA',
+        borderRadius: 20,
+        paddingHorizontal: 15,
+        paddingVertical: 8,
+        alignSelf: 'center',
+        marginBottom: 25,
+        borderWidth: 1,
+        borderColor: '#E8E8E8',
+    },
+
+    levelText: {
         fontSize: 14,
-        color: '#666',
-        marginBottom: 30,
+        fontWeight: 'bold',
         textAlign: 'center',
+    },
+
+    statsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 25,
+    },
+
+    statItem: {
+        alignItems: 'center',
+        flex: 1,
     },
 
     infoLabel: {
-        fontSize: 20,
-        color: '#000000ff',
-        marginBottom: 20,
+        fontSize: 14,
+        color: '#666',
+        marginTop: 5,
         textAlign: 'center',
     },
 
     infoValue: {
-        fontSize: 26,
+        fontSize: 24,
+        fontWeight: 'bold',
         color: '#be1d1dff',
-        marginBottom: 20,
         textAlign: 'center',
     },
 
@@ -74,9 +96,6 @@ export const styles = StyleSheet.create({
     },
 
     donationCard: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         backgroundColor: '#F8F9FA',
         borderRadius: 8,
         padding: 16,
@@ -95,6 +114,14 @@ export const styles = StyleSheet.create({
         marginBottom: 6,
     },
 
+    noDonationText: {
+        fontSize: 14,
+        color: '#666',
+        fontStyle: 'italic',
+        textAlign: 'center',
+        marginTop: 10,
+    },
+
     hospitalTag: {
         alignSelf: 'flex-start',
         backgroundColor: '#E8F5E8',
@@ -109,26 +136,66 @@ export const styles = StyleSheet.create({
         fontWeight: '500',
     },
 
-    saveButton: {
-        marginTop: 30,
+    actionsContainer: {
+        marginBottom: 20,
+    },
+
+    editButton: {
         height: 55,
         backgroundColor: '#2ECC71',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 15,
+        flexDirection: 'row',
     },
-    saveButtonText: {
+
+    editButtonText: {
         color: '#fff',
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold',
     },
 
     donationButton: {
-        marginTop: 30,
         height: 55,
         backgroundColor: '#df1212ff',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'row',
+    },
+
+    donationButtonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+
+    achievementCard: {
+        backgroundColor: '#FFF3CD',
+        borderRadius: 8,
+        padding: 15,
+        borderLeftWidth: 4,
+        borderLeftColor: '#FFC107',
+    },
+
+    achievementTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#856404',
+        marginBottom: 5,
+    },
+
+    achievementText: {
+        fontSize: 14,
+        color: '#856404',
+        lineHeight: 20,
+    },
+
+    subtitle: {
+        fontSize: 14,
+        color: '#666',
+        marginBottom: 30,
+        textAlign: 'center',
     },
 });

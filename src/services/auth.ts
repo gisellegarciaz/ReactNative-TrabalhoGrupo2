@@ -4,7 +4,6 @@ import { Alert } from 'react-native';
 
 const API_URL = 'https://691f65c231e684d7bfc99eb2.mockapi.io/users';
 
-
 export interface Donor {
     id: string;
     name: string;
@@ -32,11 +31,102 @@ export interface DonorRegistrationData {
     bloodType?: string | null; 
 }
 
+export interface Donation {
+  date: string;
+  location: string;
+}
+
+export interface DonationResponse {
+  success: boolean;
+  error?: string;
+}
+
+export interface DonationsListResponse {
+  success: boolean;
+  donations?: Donation[];
+  error?: string;
+}
+
 interface AuthResponse {
     success: boolean;
     user: Donor | null;
 }
 
+export const registerDonation = async (donationData: Donation & { userId: string }): Promise<DonationResponse> => {
+  try {
+    console.log('Registrando doação para usuário:', donationData.userId);
+
+    const userResponse = await axios.get(`${API_URL}/${donationData.userId}`);
+    const currentUser = userResponse.data;
+
+    const currentTotal = currentUser.totalDonations || 0;
+    const newTotal = currentTotal + 1;
+
+    const updatedUser = {
+      ...currentUser,
+      totalDonations: newTotal,
+      lastDonation: donationData.date,
+    };
+
+    delete updatedUser.token;
+    delete updatedUser.password;
+
+    console.log('Atualizando usuário:', {
+      totalDonations: newTotal,
+      lastDonation: donationData.date
+    });
+
+    const response = await axios.put(`${API_URL}/${donationData.userId}`, updatedUser);
+
+    console.log('Doação registrada com sucesso! Total:', newTotal);
+
+    if (response.status === 200) {
+      return { success: true };
+    }
+    
+    return { success: false, error: `Status ${response.status}` };
+    
+  } catch (error) {
+    console.error('Erro ao registrar doação:', error);
+    
+    if (axios.isAxiosError(error)) {
+      console.error('Detalhes do erro:', {
+        status: error.response?.status,
+        data: error.response?.data,
+        message: error.message
+      });
+    }
+    
+    Alert.alert("Erro", "Não foi possível registrar a doação.");
+    return { success: false, error: 'Erro de conexão' };
+  }
+};
+
+export const getUserDonations = async (userId: string): Promise<DonationsListResponse> => {
+  try {
+    const response = await axios.get(`${API_URL}/${userId}`);
+    
+    if (response.status === 200) {
+      const userData = response.data;
+      
+      const donations = userData.lastDonation ? [{
+        date: userData.lastDonation,
+        location: 'Registrada no sistema' 
+      }] : [];
+      
+      console.log('Informações de doação encontradas');
+      return { success: true, donations };
+    }
+    return { success: false, error: 'Falha ao buscar informações' };
+  } catch (error) {
+    console.error('Erro ao buscar doações:', error);
+    return { success: false, error: 'Erro de conexão' };
+  }
+};
+
+export const calculateLivesSaved = (donationCount: number): number => {
+  return donationCount * 4;
+};
 
 const validateEmail = (email: string): boolean => {
     // Regex simples para verificar o formato básico de e-mail

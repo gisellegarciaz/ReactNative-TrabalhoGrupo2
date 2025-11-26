@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
     View,
     Text,
@@ -17,21 +17,21 @@ import { useAuth } from '@/src/hooks/useAuth';
 
 export function NewDonation() {
     const navigation = useNavigation();
-    const { user, logout } = useAuth();
+    const { user, logout, registerDonation } = useAuth();
 
     const [donationDate, setDonationDate] = useState<Date | null>(new Date());
     const [location, setLocation] = useState('');
     const [loading, setLoading] = useState(false);
     const [showDatePicker, setShowDatePicker] = useState(false);
 
-    const handleDateChange = (event: any, selectedDate?: Date) => {
+    const handleDateChange = useCallback((event: any, selectedDate?: Date) => {
         setShowDatePicker(false);
         if (selectedDate) {
             setDonationDate(selectedDate);
         }
-    };
+    }, []);
 
-    const handleLogout = () => {
+    const handleLogout = useCallback(() => {
         Alert.alert(
             "Sair",
             "Tem certeza que deseja sair da sua conta?",
@@ -40,9 +40,9 @@ export function NewDonation() {
                 { text: "Sim, Sair", onPress: logout, style: "destructive" },
             ]
         );
-    };
+    }, [logout]);
 
-    const handleRegisterDonation = async () => {
+    const handleRegisterDonation = useCallback(async () => {
         if (!donationDate) {
             Alert.alert('Erro', 'Selecione a data da doação.');
             return;
@@ -53,26 +53,39 @@ export function NewDonation() {
             return;
         }
 
+        if (donationDate > new Date()) {
+            Alert.alert('Erro', 'A data da doação não pode ser futura.');
+            return;
+        }
+
         setLoading(true);
 
         try {
-            
-            Alert.alert(
-                'Sucesso', 
-                'Doação registrada com sucesso!',
-                [
-                    {
-                        text: 'OK',
-                        onPress: () => navigation.goBack()
-                    }
-                ]
-            );
+            const success = await registerDonation({
+                date: donationDate.toISOString(),
+                location: location.trim(),
+            });
+
+            if (success) {
+                Alert.alert(
+                    'Sucesso!', 
+                    'Doação registrada com sucesso!\n\nCada doação pode salvar até 4 vidas! 🩸',
+                    [
+                        {
+                            text: 'OK',
+                            onPress: () => navigation.goBack()
+                        }
+                    ]
+                );
+            } else {
+                Alert.alert('Erro', 'Falha ao registrar doação. Tente novamente.');
+            }
         } catch (error) {
             Alert.alert('Erro', 'Falha ao registrar doação. Tente novamente.');
         } finally {
             setLoading(false);
         }
-    };
+    }, [donationDate, location, registerDonation, navigation]);
 
     if (!user) {
         return (
@@ -84,55 +97,75 @@ export function NewDonation() {
     }
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView>
             <HeaderComponent username={user.name} logoff={handleLogout} />
+            <View style={styles.container}>
+                <Text style={styles.headerTitle}>Registrar Nova Doação</Text>
+                <Text style={styles.subtitle}>Registre sua doação para acompanhar seu histórico</Text>
 
-            <Text style={styles.headerTitle}>Registrar nova doação</Text>
+                <Text style={styles.label}>Data da Doação *</Text>
+                <TouchableOpacity
+                    style={styles.datePickerButton}
+                    onPress={() => setShowDatePicker(true)}
+                    disabled={loading}
+                >
+                    <Text style={styles.datePickerText}>
+                        {donationDate ? format(donationDate, 'dd/MM/yyyy') : 'Selecione a data'}
+                    </Text>
+                </TouchableOpacity>
 
-            <Text style={styles.label}>Data</Text>
-            <TouchableOpacity
-                style={styles.datePickerButton}
-                onPress={() => setShowDatePicker(true)}
-                disabled={loading}
-            >
-                <Text style={styles.datePickerText}>
-                    {donationDate ? format(donationDate, 'dd/MM/yyyy') : 'dd/mm/aaaa'}
-                </Text>
-            </TouchableOpacity>
-
-            <Text style={styles.label}>Local</Text>
-            <TextInput
-                style={styles.input}
-                value={location}
-                onChangeText={setLocation}
-                placeholder="Informe o local da doação"
-                placeholderTextColor="#999"
-                editable={!loading}
-            />
-
-            {showDatePicker && (
-                <DateTimePicker
-                    value={donationDate || new Date()}
-                    mode="date"
-                    display="default"
-                    onChange={handleDateChange}
-                    maximumDate={new Date()}
+                <Text style={styles.label}>Local da Doação *</Text>
+                <TextInput
+                    style={styles.input}
+                    value={location}
+                    onChangeText={setLocation}
+                    placeholder="Ex: Hemocentro Regional de Guarapuava, Hemonúcleo de Teresópolis..."
+                    placeholderTextColor="#999"
+                    editable={!loading}
+                    multiline
+                    numberOfLines={3}
+                    textAlignVertical="top"
                 />
-            )}
 
-            <TouchableOpacity
-                style={[styles.registerButton, loading && styles.registerButtonDisabled]}
-                onPress={handleRegisterDonation}
-                disabled={loading}
-            >
-                {loading ? (
-                    <ActivityIndicator size="small" color="#fff" />
-                ) : (
-                    <Text style={styles.registerButtonText}>Registrar</Text>
+                <View style={styles.infoCard}>
+                    <Text style={styles.infoTitle}>💡 Informação Importante</Text>
+                    <Text style={styles.infoText}>
+                        Cada doação de sangue pode salvar até <Text style={styles.highlight}>4 vidas</Text> diferentes!
+                    </Text>
+                </View>
+
+                {showDatePicker && (
+                    <DateTimePicker
+                        value={donationDate || new Date()}
+                        mode="date"
+                        display="default"
+                        onChange={handleDateChange}
+                        maximumDate={new Date()}
+                    />
                 )}
-            </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[styles.registerButton, loading && styles.registerButtonDisabled]}
+                    onPress={handleRegisterDonation}
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <ActivityIndicator size="small" color="#fff" />
+                    ) : (
+                        <Text style={styles.registerButtonText}>Registrar Doação</Text>
+                    )}
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.cancelButton}
+                    onPress={() => navigation.navigate('Profile')}
+                    disabled={loading}
+                >
+                    <Text style={styles.cancelButtonText}>Cancelar</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     );
 }
 
-export default NewDonation
+export default NewDonation;

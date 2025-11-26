@@ -2,10 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        flexGrow: 1,
+        flex: 1,
         backgroundColor: '#F7F7F7',
-        paddingHorizontal: 20,
-        paddingTop: 20,
+    },
+    contentContainer: {
+        padding: 20,
         paddingBottom: 40,
     },
     
@@ -15,29 +16,20 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F7F7F7',
     },
-    
-    loadingText: {
-        marginTop: 10,
-        fontSize: 16,
-        color: '#666',
-    },
-
     headerTitle: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#333',
+        color: '#E74C3C',
         marginBottom: 5,
-        marginTop: 50,
+        marginTop: 35,
         textAlign: 'center',
     },
-
     subtitle: {
         fontSize: 14,
         color: '#666',
-        marginBottom: 30,
+        marginBottom: 25,
         textAlign: 'center',
     },
-
     label: {
         fontSize: 16,
         color: '#333',
@@ -45,18 +37,45 @@ export const styles = StyleSheet.create({
         marginBottom: 8,
         fontWeight: 'bold',
     },
-
     input: {
-        minHeight: 50,
+        height: 50,
         backgroundColor: '#fff',
         borderRadius: 8,
         paddingHorizontal: 15,
-        paddingVertical: 12,
         fontSize: 16,
         borderWidth: 1,
         borderColor: '#ccc',
+        marginBottom: 5,
+    },
+
+    genderContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         marginBottom: 10,
-        textAlignVertical: 'top',
+    },
+    genderButton: {
+        flex: 1,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        marginHorizontal: 5,
+    },
+    genderSelected: {
+        backgroundColor: '#E74C3C',
+        borderColor: '#C0392B',
+    },
+    genderText: {
+        fontSize: 16,
+        color: '#333',
+        fontWeight: '500',
+    },
+    textSelected: {
+        color: '#fff',
+        fontWeight: 'bold',
     },
 
     datePickerButton: {
@@ -67,46 +86,68 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         borderColor: '#ccc',
-        marginBottom: 20,
+        marginBottom: 15,
     },
-
     datePickerText: {
         fontSize: 16,
         color: '#333',
     },
 
-    infoCard: {
-        backgroundColor: '#E8F5E8',
-        borderRadius: 8,
-        padding: 15,
-        marginTop: 10,
+    bloodTypeContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
         marginBottom: 20,
-        borderLeftWidth: 4,
-        borderLeftColor: '#2ECC71',
+    },
+    bloodTypeButton: {
+        width: '23%',
+        height: 45,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        marginBottom: 8,
+    },
+    bloodTypeSelected: {
+        backgroundColor: '#E74C3C',
+        borderColor: '#C0392B',
+    },
+    bloodTypeText: {
+        fontSize: 14,
+        color: '#333',
+        fontWeight: 'bold',
+    },
+    bloodTypeTextSelected: {
+        color: '#fff',
     },
 
+    infoCard: {
+        backgroundColor: '#ebd5d2ff',
+        borderRadius: 8,
+        padding: 15,
+        marginBottom: 25,
+        marginTop: 25,
+        borderLeftWidth: 4,
+        borderLeftColor: '#C0392B',
+    },
     infoTitle: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#333',
-        marginBottom: 5,
+        color: '#242323ff',
+        marginBottom: 8,
     },
-
     infoText: {
         fontSize: 14,
-        color: '#666',
+        color: '#4b4b4bff',
         lineHeight: 20,
     },
 
-    highlight: {
-        color: '#E74C3C',
-        fontWeight: 'bold',
-    },
-
-    registerButton: {
-        marginTop: 20,
+    saveButton: {
+        marginTop: 10,
         height: 55,
-        backgroundColor: '#E74C3C',
+        backgroundColor: '#2ECC71',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -119,17 +160,14 @@ export const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 3,
     },
-
-    registerButtonDisabled: {
+    saveButtonDisabled: {
         backgroundColor: '#CCCCCC',
     },
-
-    registerButtonText: {
+    saveButtonText: {
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',
     },
-
     cancelButton: {
         marginTop: 15,
         height: 50,
@@ -140,7 +178,6 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
     },
-
     cancelButtonText: {
         color: '#666',
         fontSize: 16,
