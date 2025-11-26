@@ -98,7 +98,6 @@ export function NewDonation() {
 
     return (
         <ScrollView>
-            <HeaderComponent username={user.name} logoff={handleLogout} />
             <View style={styles.container}>
                 <Text style={styles.headerTitle}>Registrar Nova Doação</Text>
                 <Text style={styles.subtitle}>Registre sua doação para acompanhar seu histórico</Text>

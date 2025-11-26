@@ -8,7 +8,6 @@ import {
     ActivityIndicator
 } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import HeaderComponent from '../../components/Header';
 import { styles } from './styles';
 import { useAuth } from '@/src/hooks/useAuth';
 import { format } from 'date-fns';
@@ -36,16 +35,6 @@ export function Profile() {
         }, [user?.lastDonation])
     );
 
-    const handleLogout = useCallback(() => {
-        Alert.alert(
-            "Sair",
-            "Tem certeza que deseja sair da sua conta?",
-            [
-                { text: "Cancelar", style: "cancel" },
-                { text: "Sim, Sair", onPress: logout, style: "destructive" },
-            ]
-        );
-    }, [logout]);
 
     const calculateAge = useCallback(() => {
         if (!user?.birthDate) return 'Idade não informada';
@@ -113,7 +102,6 @@ export function Profile() {
 
     return (
         <ScrollView>
-            <HeaderComponent username={user.name} logoff={handleLogout} />
             <View style={styles.contentContainer}>
                 <Text style={styles.headerTitle}>{user.name}</Text>
                 <Text style={styles.headerTitleLitle}>

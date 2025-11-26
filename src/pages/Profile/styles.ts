@@ -3,11 +3,13 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#FFF8E7',
     },
     contentContainer: {
         padding: 25,
-        paddingBottom: 40,
+        paddingBottom: 80,
+        paddingTop: 40,
+        backgroundColor: '#FFF8E7',
     },
 
     loadingContainer: {
@@ -32,7 +34,7 @@ export const styles = StyleSheet.create({
     },
 
     levelBadge: {
-        backgroundColor: '#F8F9FA',
+        backgroundColor: '#ffffffff',
         borderRadius: 20,
         paddingHorizontal: 15,
         paddingVertical: 8,
@@ -69,12 +71,12 @@ export const styles = StyleSheet.create({
     infoValue: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#be1d1dff',
+        color: '#CA1741',
         textAlign: 'center',
     },
 
     section: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#fffbf2ff',
         borderRadius: 12,
         padding: 20,
         marginBottom: 20,
@@ -96,11 +98,11 @@ export const styles = StyleSheet.create({
     },
 
     donationCard: {
-        backgroundColor: '#F8F9FA',
+        backgroundColor: '#f1f0edff',
         borderRadius: 8,
         padding: 16,
         borderLeftWidth: 4,
-        borderLeftColor: '#cc382eff',
+        borderLeftColor: '#CA1741',
     },
 
     donationInfo: {
@@ -132,7 +134,7 @@ export const styles = StyleSheet.create({
 
     hospitalText: {
         fontSize: 12,
-        color: '#cc382eff',
+        color: '#CA1741',
         fontWeight: '500',
     },
 
@@ -142,7 +144,7 @@ export const styles = StyleSheet.create({
 
     editButton: {
         height: 55,
-        backgroundColor: '#2ECC71',
+        backgroundColor: '#31C9EB',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -158,7 +160,7 @@ export const styles = StyleSheet.create({
 
     donationButton: {
         height: 55,
-        backgroundColor: '#df1212ff',
+        backgroundColor: '#CA1741',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
