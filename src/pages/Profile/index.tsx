@@ -112,7 +112,7 @@ export function Profile() {
             <Text style={styles.infoValue}>4</Text>
             <Text style={styles.infoLabel}>Doações</Text>
     
-            <Text style={styles.infoValue}>A+</Text>
+            <Text style={styles.infoValue}>{user.bloodType}</Text>
             <Text style={styles.infoLabel}>Tipo sanguíneo</Text>
           
             <Text style={styles.infoValue}>16</Text>

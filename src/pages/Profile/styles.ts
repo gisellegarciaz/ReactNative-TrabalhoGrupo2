@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
         padding: 20,
     },
 
-    
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',
