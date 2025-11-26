@@ -135,7 +135,7 @@ export function Home() {
                 </View>
 
                 <CardHome 
-                    imageSrc={MascoteProxDoacao as ImageSourcePropType}
+                    imageSrc={MascoteDoador as ImageSourcePropType}
                     title="Quando posso doar novamente?"
                     onPress={() => navigation.navigate('ProximaDoacao')}
                 />
@@ -147,7 +147,7 @@ export function Home() {
                 />
                 
                 <CardHome 
-                    imageSrc={MascoteDoador as ImageSourcePropType}
+                    imageSrc={Quemdoa as ImageSourcePropType}
                     title="Quem doa para quem?"
                     onPress={() => navigation.navigate('Compatibilidade')}
                 />

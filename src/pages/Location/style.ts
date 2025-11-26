@@ -80,8 +80,6 @@ export const styles = StyleSheet.create({
     statusMessage: {
         fontSize: 18,
         color: '#333',
-        fontSize: 17,
-        color: '#3b3b3b',
 
         textAlign: 'center',
         marginBottom: 10,
