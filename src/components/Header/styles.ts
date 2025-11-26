@@ -34,13 +34,13 @@ export const styles = StyleSheet.create({
         alignItems: 'flex-start',
     },
     greetingText1: {
-        fontSize: 22,
+        fontSize: 18,
         color: '#333333',
         fontFamily: 'NeulisRegular',
-        marginBottom: -10,
+        marginBottom: -8,
     },
     greetingText2: {
-        fontSize: 25,
+        fontSize: 22,
         color: '#333333',
         fontFamily: 'NeulisBold'
     },

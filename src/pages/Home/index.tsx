@@ -13,7 +13,7 @@ import { CardHome } from '../../components/CardHome';
 
 import MascoteNutricao from '../../assets/CardHomeImages/MascoteNutricao.png';
 import MascoteDoador from '../../assets/CardHomeImages/MascoteDoador.png';
-import MascoteRegistro from '../../assets/Mascote/MascoteRegistro.png';
+import MascoteProxDoacao from '../../assets/CardHomeImages/MascoteProxDoacao2.png';
 import MascoteCuriosidades from '../../assets/CardHomeImages/MascoteCuriosidades.png';
 
 type NavigationProps = {
@@ -134,7 +134,7 @@ export function Home() {
                 </View>
 
                 <CardHome 
-                    imageSrc={MascoteDoador as ImageSourcePropType}
+                    imageSrc={MascoteProxDoacao as ImageSourcePropType}
                     title="Quando posso doar novamente?"
                     onPress={() => navigation.navigate('ProximaDoacao')}
                 />

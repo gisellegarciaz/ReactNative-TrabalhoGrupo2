@@ -6,13 +6,25 @@ const { height } = Dimensions.get('window');
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7F7F7',
-        padding: 20,
+        backgroundColor: '#FFF8E7',
+        paddingHorizontal: 24,
+        marginTop: 5,
+        alignItems: 'center'
     },
-
-    inputContainer: {
-        flexDirection: 'row',
-        marginBottom: 15,
+    titleContainer: {
+        paddingHorizontal: 24,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    title: {
+        width: 350,
+        fontSize: 26,
+        color: '#666',
+        fontFamily: 'NeulisSemiBold',
+        textAlign: 'center',
+        marginBottom: 10,
+        marginTop: 25,
+        lineHeight: 26,
     },
     input: {
         flex: 1,
@@ -24,11 +36,16 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
     },
+    inputContainer: {
+        flexDirection: 'row',
+        marginBottom: 15,
+        paddingTop: 10,
+    },
     searchButton: {
         marginLeft: 10,
         height: 50,
         width: 50,
-        backgroundColor: '#E74C3C',
+        backgroundColor: '#CA1741',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -42,15 +59,13 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
     },
-
     statusMessage: {
-        fontSize: 16,
+        fontSize: 18,
         color: '#333',
         textAlign: 'center',
         marginBottom: 10,
         fontWeight: '500',
     },
-
     loadingOverlay: {
         position: 'absolute',
         top: 0,

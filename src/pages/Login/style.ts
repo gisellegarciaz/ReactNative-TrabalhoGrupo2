@@ -22,11 +22,6 @@ export const styles = StyleSheet.create({
         maxWidth: 400,
         borderRadius: 15,
         paddingHorizontal: 25,
-        shadowColor: '#212121ff',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        elevation: 8,
     },
     cardTitle: {
         fontSize: 22,
@@ -50,6 +45,11 @@ export const styles = StyleSheet.create({
         marginBottom: 15,
         borderWidth: 1,
         borderColor: '#ddd',
+        shadowColor: '#212121ff',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 8,
     },
     loginButton: {
         height: 50,
