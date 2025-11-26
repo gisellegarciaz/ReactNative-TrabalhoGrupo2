@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     contentContainer: {
         padding: 20,
     },
-    
+
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -16,75 +16,97 @@ export const styles = StyleSheet.create({
         backgroundColor: '#F7F7F7',
     },
     headerTitle: {
-        fontSize: 24,
+        fontSize: 28,
         fontWeight: 'bold',
         color: '#333',
-        marginBottom: 5,
+        marginBottom: 3,
+        marginTop: 17,
+        textAlign: 'center',
     },
+    headerTitleLitle: {
+        fontSize: 16,
+        color: '#4e4e4eff',
+        marginBottom: 8,
+        textAlign: 'center',
+    },
+
     subtitle: {
         fontSize: 14,
         color: '#666',
-        marginBottom: 20,
-    },
-    label: {
-        fontSize: 16,
-        color: '#333',
-        marginTop: 15,
-        marginBottom: 5,
-        fontWeight: 'bold',
-    },
-    input: {
-        height: 50,
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        paddingHorizontal: 15,
-        fontSize: 16,
-        borderWidth: 1,
-        borderColor: '#ccc',
+        marginBottom: 30,
+        textAlign: 'center',
     },
 
-    genderContainer: {
+    infoLabel: {
+        fontSize: 20,
+        color: '#000000ff',
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+
+    infoValue: {
+        fontSize: 26,
+        color: '#be1d1dff',
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+
+    section: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 12,
+        padding: 20,
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 15,
+    },
+
+    donationCard: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 5,
-        marginBottom: 10,
-    },
-    genderButton: {
-        flex: 1,
-        height: 50,
-        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#F8F9FA',
         borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        marginHorizontal: 5,
-    },
-    genderSelected: {
-        backgroundColor: '#E74C3C',
-        borderColor: '#C0392B',
-    },
-    genderText: {
-        fontSize: 16,
-        color: '#333',
-    },
-    textSelected: {
-        color: '#fff',
-        fontWeight: 'bold',
+        padding: 16,
+        borderLeftWidth: 4,
+        borderLeftColor: '#cc382eff',
     },
 
-    datePickerButton: {
-        height: 50,
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        paddingHorizontal: 15,
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: '#ccc',
+    donationInfo: {
+        flex: 1,
     },
-    datePickerText: {
+
+    donationDate: {
         fontSize: 16,
+        fontWeight: '600',
         color: '#333',
+        marginBottom: 6,
+    },
+
+    hospitalTag: {
+        alignSelf: 'flex-start',
+        backgroundColor: '#E8F5E8',
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+        borderRadius: 4,
+    },
+
+    hospitalText: {
+        fontSize: 12,
+        color: '#cc382eff',
+        fontWeight: '500',
     },
 
     saveButton: {
@@ -99,5 +121,14 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',
+    },
+
+    donationButton: {
+        marginTop: 30,
+        height: 55,
+        backgroundColor: '#df1212ff',
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
