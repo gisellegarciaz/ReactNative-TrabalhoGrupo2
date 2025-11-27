@@ -8,6 +8,7 @@ import {
     ActivityIndicator,
     TextInput
 } from 'react-native';
+import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { format } from 'date-fns';
@@ -23,6 +24,12 @@ export function NewDonation() {
     const [location, setLocation] = useState('');
     const [loading, setLoading] = useState(false);
     const [showDatePicker, setShowDatePicker] = useState(false);
+
+    const [fontsLoaded] = useFonts({
+                'NeulisRegular': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Regular.otf'),
+                'NeulisSemiBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Semi_Bold.otf'),
+                'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
+    });
 
     const handleDateChange = useCallback((event: any, selectedDate?: Date) => {
         setShowDatePicker(false);
@@ -98,7 +105,6 @@ export function NewDonation() {
 
     return (
         <ScrollView>
-            <HeaderComponent username={user.name} logoff={handleLogout} />
             <View style={styles.container}>
                 <Text style={styles.headerTitle}>Registrar Nova Doação</Text>
                 <Text style={styles.subtitle}>Registre sua doação para acompanhar seu histórico</Text>

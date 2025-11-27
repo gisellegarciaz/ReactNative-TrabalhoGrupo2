@@ -3,11 +3,13 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#FFF8E7',
     },
     contentContainer: {
         padding: 25,
-        paddingBottom: 40,
+        paddingBottom: 80,
+        paddingTop: 40,
+        backgroundColor: '#FFF8E7',
     },
 
     loadingContainer: {
@@ -18,21 +20,22 @@ export const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 28,
-        fontWeight: 'bold',
         color: '#333',
         marginBottom: 3,
         marginTop: 17,
         textAlign: 'center',
+        fontFamily: 'NeulisBold',
     },
     headerTitleLitle: {
         fontSize: 16,
         color: '#4e4e4eff',
         marginBottom: 15,
         textAlign: 'center',
+        fontFamily: 'NeulisRegular',
     },
 
     levelBadge: {
-        backgroundColor: '#F8F9FA',
+        backgroundColor: '#ffffffff',
         borderRadius: 20,
         paddingHorizontal: 15,
         paddingVertical: 8,
@@ -44,8 +47,8 @@ export const styles = StyleSheet.create({
 
     levelText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
+        fontFamily: 'NeulisSemiBold',
     },
 
     statsContainer: {
@@ -64,17 +67,19 @@ export const styles = StyleSheet.create({
         color: '#666',
         marginTop: 5,
         textAlign: 'center',
+        fontFamily: 'NeulisRegular',
     },
 
     infoValue: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#be1d1dff',
+        color: '#CA1741',
         textAlign: 'center',
+        fontFamily: 'NeulisBold',
     },
 
     section: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#fffbf2ff',
         borderRadius: 12,
         padding: 20,
         marginBottom: 20,
@@ -90,17 +95,17 @@ export const styles = StyleSheet.create({
 
     sectionTitle: {
         fontSize: 18,
-        fontWeight: 'bold',
         color: '#333',
         marginBottom: 15,
+        fontFamily: 'NeulisSemiBold',
     },
 
     donationCard: {
-        backgroundColor: '#F8F9FA',
+        backgroundColor: '#f1f0edff',
         borderRadius: 8,
         padding: 16,
         borderLeftWidth: 4,
-        borderLeftColor: '#cc382eff',
+        borderLeftColor: '#CA1741',
     },
 
     donationInfo: {
@@ -112,6 +117,7 @@ export const styles = StyleSheet.create({
         fontWeight: '600',
         color: '#333',
         marginBottom: 6,
+        fontFamily: 'NeulisSemiBold',
     },
 
     noDonationText: {
@@ -120,6 +126,7 @@ export const styles = StyleSheet.create({
         fontStyle: 'italic',
         textAlign: 'center',
         marginTop: 10,
+        fontFamily: 'NeulisSemiBold',
     },
 
     hospitalTag: {
@@ -132,8 +139,9 @@ export const styles = StyleSheet.create({
 
     hospitalText: {
         fontSize: 12,
-        color: '#cc382eff',
+        color: '#CA1741',
         fontWeight: '500',
+        fontFamily: 'NeulisRegular',
     },
 
     actionsContainer: {
@@ -142,7 +150,7 @@ export const styles = StyleSheet.create({
 
     editButton: {
         height: 55,
-        backgroundColor: '#2ECC71',
+        backgroundColor: '#31C9EB',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -158,7 +166,7 @@ export const styles = StyleSheet.create({
 
     donationButton: {
         height: 55,
-        backgroundColor: '#df1212ff',
+        backgroundColor: '#CA1741',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -181,15 +189,16 @@ export const styles = StyleSheet.create({
 
     achievementTitle: {
         fontSize: 16,
-        fontWeight: 'bold',
         color: '#856404',
         marginBottom: 5,
+        fontFamily: 'NeulisSemiBold',
     },
 
     achievementText: {
         fontSize: 14,
         color: '#856404',
         lineHeight: 20,
+        fontFamily: 'NeulisRegular',
     },
 
     subtitle: {

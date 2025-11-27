@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#FFF8E7',
         paddingHorizontal: 20,
         paddingTop: 20,
-        paddingBottom: 40,
+        paddingBottom: 120,
     },
     
     loadingContainer: {
@@ -24,11 +24,11 @@ export const styles = StyleSheet.create({
 
     headerTitle: {
         fontSize: 24,
-        fontWeight: 'bold',
-        color: '#333',
+        color: '#CA1741',
         marginBottom: 5,
         marginTop: 50,
         textAlign: 'center',
+        fontFamily: 'NeulisBold',
     },
 
     subtitle: {
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
         color: '#333',
         marginTop: 15,
         marginBottom: 8,
-        fontWeight: 'bold',
+        fontFamily: 'NeulisBold',
     },
 
     input: {
@@ -76,37 +76,38 @@ export const styles = StyleSheet.create({
     },
 
     infoCard: {
-        backgroundColor: '#E8F5E8',
+        backgroundColor: '#fde5ebff',
         borderRadius: 8,
         padding: 15,
         marginTop: 10,
         marginBottom: 20,
         borderLeftWidth: 4,
-        borderLeftColor: '#2ECC71',
+        borderLeftColor: '#CA1741',
     },
 
     infoTitle: {
         fontSize: 16,
-        fontWeight: 'bold',
         color: '#333',
         marginBottom: 5,
+        fontFamily: 'NeulisSemiBold',
     },
 
     infoText: {
         fontSize: 14,
         color: '#666',
         lineHeight: 20,
+        fontFamily: 'NeulisRegular',
     },
 
     highlight: {
-        color: '#E74C3C',
+        color: '#CA1741',
         fontWeight: 'bold',
     },
 
     registerButton: {
         marginTop: 20,
         height: 55,
-        backgroundColor: '#E74C3C',
+        backgroundColor: '#CA1741',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -133,7 +134,7 @@ export const styles = StyleSheet.create({
     cancelButton: {
         marginTop: 15,
         height: 50,
-        backgroundColor: 'transparent',
+        backgroundColor: '#fff',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',

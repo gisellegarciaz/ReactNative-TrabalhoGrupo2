@@ -3,11 +3,12 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#FFF8E7',
     },
     contentContainer: {
         padding: 20,
         paddingBottom: 40,
+        backgroundColor: '#FFF8E7',
     },
     
     loadingContainer: {
@@ -18,11 +19,11 @@ export const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 24,
-        fontWeight: 'bold',
-        color: '#E74C3C',
+        color: '#CA1741',
         marginBottom: 5,
         marginTop: 35,
         textAlign: 'center',
+        fontFamily: 'NeulisSemiBold',
     },
     subtitle: {
         fontSize: 14,
@@ -35,7 +36,7 @@ export const styles = StyleSheet.create({
         color: '#333',
         marginTop: 15,
         marginBottom: 8,
-        fontWeight: 'bold',
+        fontFamily: 'NeulisBold',
     },
     input: {
         height: 50,
@@ -65,7 +66,7 @@ export const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     genderSelected: {
-        backgroundColor: '#E74C3C',
+        backgroundColor: '#CA1741',
         borderColor: '#C0392B',
     },
     genderText: {
@@ -111,7 +112,7 @@ export const styles = StyleSheet.create({
         marginBottom: 8,
     },
     bloodTypeSelected: {
-        backgroundColor: '#E74C3C',
+        backgroundColor: '#CA1741',
         borderColor: '#C0392B',
     },
     bloodTypeText: {
@@ -130,24 +131,25 @@ export const styles = StyleSheet.create({
         marginBottom: 25,
         marginTop: 25,
         borderLeftWidth: 4,
-        borderLeftColor: '#C0392B',
+        borderLeftColor: '#CA1741',
     },
     infoTitle: {
         fontSize: 16,
-        fontWeight: 'bold',
         color: '#242323ff',
         marginBottom: 8,
+        fontFamily: 'NeulisSemiBold',
     },
     infoText: {
         fontSize: 14,
         color: '#4b4b4bff',
         lineHeight: 20,
+        fontFamily: 'NeulisRegular',
     },
 
     saveButton: {
         marginTop: 10,
         height: 55,
-        backgroundColor: '#2ECC71',
+        backgroundColor: '#31C9EB',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
@@ -171,7 +173,7 @@ export const styles = StyleSheet.create({
     cancelButton: {
         marginTop: 15,
         height: 50,
-        backgroundColor: 'transparent',
+        backgroundColor: '#fff',
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',

@@ -7,8 +7,8 @@ import {
     Alert,
     ActivityIndicator
 } from 'react-native';
+import { useFonts } from 'expo-font';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import HeaderComponent from '../../components/Header';
 import { styles } from './styles';
 import { useAuth } from '@/src/hooks/useAuth';
 import { format } from 'date-fns';
@@ -16,10 +16,16 @@ import { ptBR } from 'date-fns/locale';
 
 export function Profile() {
     const navigation = useNavigation();
-    const { user, logout, calculateLivesSaved } = useAuth();
+    const { user, calculateLivesSaved } = useAuth();
 
-    const [loading, setLoading] = useState(false);
+    const [loading] = useState(false);
     const [lastDonationFormatted, setLastDonationFormatted] = useState<string>('Nenhuma doação registrada');
+
+    const [fontsLoaded] = useFonts({
+            'NeulisRegular': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Regular.otf'),
+            'NeulisSemiBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Semi_Bold.otf'),
+            'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
+    });
 
     useFocusEffect(
         useCallback(() => {
@@ -36,16 +42,6 @@ export function Profile() {
         }, [user?.lastDonation])
     );
 
-    const handleLogout = useCallback(() => {
-        Alert.alert(
-            "Sair",
-            "Tem certeza que deseja sair da sua conta?",
-            [
-                { text: "Cancelar", style: "cancel" },
-                { text: "Sim, Sair", onPress: logout, style: "destructive" },
-            ]
-        );
-    }, [logout]);
 
     const calculateAge = useCallback(() => {
         if (!user?.birthDate) return 'Idade não informada';
@@ -113,7 +109,6 @@ export function Profile() {
 
     return (
         <ScrollView>
-            <HeaderComponent username={user.name} logoff={handleLogout} />
             <View style={styles.contentContainer}>
                 <Text style={styles.headerTitle}>{user.name}</Text>
                 <Text style={styles.headerTitleLitle}>
