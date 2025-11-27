@@ -106,16 +106,19 @@ export function Profile() {
     const livesSaved = calculateLivesSaved(donationCount);
 
     const getLevel = (donations: number) => {
-        if (donations >= 10) return 'Nível 5 - Doador Master';
-        if (donations >= 7) return 'Nível 4 - Doador Avançado';
-        if (donations >= 4) return 'Nível 3 - Doador Regular';
-        if (donations >= 1) return 'Nível 2 - Doador Iniciante';
-        return 'Nível 1 - Novato';
+        if (donations >= 7) return 'Nível Máximo - Mago das Doações';
+        if (donations == 6) return 'Nível 6 - Doador Esmagador';
+        if (donations == 5) return 'Nível 5 - Doador Escarlate';
+        if (donations == 4) return 'Nível 4 - BatDoador';
+        if (donations == 3) return 'Nível 3 - Doador Maravilha';
+        if (donations == 2) return 'Nível 2 - Super Doador';
+        if (donations == 1) return 'Nível 1 - Salva Vidas';
+        return 'Novato';
     };
 
     const getLevelColor = (donations: number) => {
-        if (donations >= 10) return '#E74C3C';
-        if (donations >= 7) return '#E67E22';
+        if (donations >= 7) return '#E74C3C';
+        if (donations >= 6) return '#E67E22';
         if (donations >= 4) return '#F1C40F';
         if (donations >= 1) return '#2ECC71';
         return '#95A5A6';
