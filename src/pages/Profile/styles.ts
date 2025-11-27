@@ -20,17 +20,18 @@ export const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 28,
-        fontWeight: 'bold',
         color: '#333',
         marginBottom: 3,
         marginTop: 17,
         textAlign: 'center',
+        fontFamily: 'NeulisBold',
     },
     headerTitleLitle: {
         fontSize: 16,
         color: '#4e4e4eff',
         marginBottom: 15,
         textAlign: 'center',
+        fontFamily: 'NeulisRegular',
     },
 
     levelBadge: {
@@ -46,8 +47,8 @@ export const styles = StyleSheet.create({
 
     levelText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
+        fontFamily: 'NeulisSemiBold',
     },
 
     statsContainer: {
@@ -66,6 +67,7 @@ export const styles = StyleSheet.create({
         color: '#666',
         marginTop: 5,
         textAlign: 'center',
+        fontFamily: 'NeulisRegular',
     },
 
     infoValue: {
@@ -73,6 +75,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#CA1741',
         textAlign: 'center',
+        fontFamily: 'NeulisBold',
     },
 
     section: {
@@ -92,9 +95,9 @@ export const styles = StyleSheet.create({
 
     sectionTitle: {
         fontSize: 18,
-        fontWeight: 'bold',
         color: '#333',
         marginBottom: 15,
+        fontFamily: 'NeulisSemiBold',
     },
 
     donationCard: {
@@ -114,6 +117,7 @@ export const styles = StyleSheet.create({
         fontWeight: '600',
         color: '#333',
         marginBottom: 6,
+        fontFamily: 'NeulisSemiBold',
     },
 
     noDonationText: {
@@ -122,6 +126,7 @@ export const styles = StyleSheet.create({
         fontStyle: 'italic',
         textAlign: 'center',
         marginTop: 10,
+        fontFamily: 'NeulisSemiBold',
     },
 
     hospitalTag: {
@@ -136,6 +141,7 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         color: '#CA1741',
         fontWeight: '500',
+        fontFamily: 'NeulisRegular',
     },
 
     actionsContainer: {
@@ -183,15 +189,16 @@ export const styles = StyleSheet.create({
 
     achievementTitle: {
         fontSize: 16,
-        fontWeight: 'bold',
         color: '#856404',
         marginBottom: 5,
+        fontFamily: 'NeulisSemiBold',
     },
 
     achievementText: {
         fontSize: 14,
         color: '#856404',
         lineHeight: 20,
+        fontFamily: 'NeulisRegular',
     },
 
     subtitle: {

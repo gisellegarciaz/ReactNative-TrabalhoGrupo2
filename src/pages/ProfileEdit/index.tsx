@@ -8,6 +8,7 @@ import {
     Alert,
     ActivityIndicator
 } from 'react-native';
+import { useFonts } from 'expo-font';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
 import { format } from 'date-fns';
@@ -29,6 +30,12 @@ export function ProfileEdit() {
     const [loading, setLoading] = useState(false);
 
     const [showDatePicker, setShowDatePicker] = useState(false);
+
+    const [fontsLoaded] = useFonts({
+                    'NeulisRegular': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Regular.otf'),
+                    'NeulisSemiBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Semi_Bold.otf'),
+                    'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
+    });
 
     useEffect(() => {
         if (user) {

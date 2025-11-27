@@ -19,11 +19,11 @@ export const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 24,
-        fontWeight: 'bold',
         color: '#CA1741',
         marginBottom: 5,
         marginTop: 35,
         textAlign: 'center',
+        fontFamily: 'NeulisSemiBold',
     },
     subtitle: {
         fontSize: 14,
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
         color: '#333',
         marginTop: 15,
         marginBottom: 8,
-        fontWeight: 'bold',
+        fontFamily: 'NeulisBold',
     },
     input: {
         height: 50,
@@ -135,14 +135,15 @@ export const styles = StyleSheet.create({
     },
     infoTitle: {
         fontSize: 16,
-        fontWeight: 'bold',
         color: '#242323ff',
         marginBottom: 8,
+        fontFamily: 'NeulisSemiBold',
     },
     infoText: {
         fontSize: 14,
         color: '#4b4b4bff',
         lineHeight: 20,
+        fontFamily: 'NeulisRegular',
     },
 
     saveButton: {

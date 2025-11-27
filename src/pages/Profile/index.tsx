@@ -7,6 +7,7 @@ import {
     Alert,
     ActivityIndicator
 } from 'react-native';
+import { useFonts } from 'expo-font';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { styles } from './styles';
 import { useAuth } from '@/src/hooks/useAuth';
@@ -15,10 +16,16 @@ import { ptBR } from 'date-fns/locale';
 
 export function Profile() {
     const navigation = useNavigation();
-    const { user, logout, calculateLivesSaved } = useAuth();
+    const { user, calculateLivesSaved } = useAuth();
 
-    const [loading, setLoading] = useState(false);
+    const [loading] = useState(false);
     const [lastDonationFormatted, setLastDonationFormatted] = useState<string>('Nenhuma doação registrada');
+
+    const [fontsLoaded] = useFonts({
+            'NeulisRegular': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Regular.otf'),
+            'NeulisSemiBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Semi_Bold.otf'),
+            'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
+    });
 
     useFocusEffect(
         useCallback(() => {
