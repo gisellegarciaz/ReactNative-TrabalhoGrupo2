@@ -2,12 +2,11 @@ import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
 
 const WHITE = '#fff';
-const LIGHT_CREAM = '#FFF8E7'; 
-const RED_PRIMARY = '#dc2626'; 
+const LIGHT_CREAM = '#FFF8E7';
+const RED_PRIMARY = '#dc2626';
 const GRAY_TEXT = '#333';
-const GRAY_DISABLED = '#A9A9A9'; 
+const GRAY_DISABLED = '#A9A9A9';
 const FONT_FAMILY = 'NeulisSemiBold';
-
 
 interface Style {
     safeArea: ViewStyle;
@@ -21,7 +20,6 @@ interface Style {
     buttonText: TextStyle;
 }
 
-
 interface ItemStyle {
     itemContainer: ViewStyle;
     checkbox: ViewStyle;
@@ -34,30 +32,29 @@ interface ItemStyle {
 export const styles = StyleSheet.create<Style>({
     safeArea: {
         flex: 1,
-        backgroundColor: LIGHT_CREAM, 
+        backgroundColor: LIGHT_CREAM,
     },
     scrollContent: {
         flexGrow: 1,
     },
     container: {
         padding: 20,
-        backgroundColor: LIGHT_CREAM, 
+        backgroundColor: LIGHT_CREAM,
     },
     title: {
-        fontSize: 28,
-        fontWeight: 'bold',
-        color: RED_PRIMARY, 
+        fontSize: 30,
+        color: RED_PRIMARY,
         marginBottom: 10,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     subtitle: {
         fontSize: 16,
-        color: GRAY_TEXT, 
+        color: GRAY_TEXT,
         marginBottom: 20,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     listContainer: {
-        backgroundColor: WHITE, 
+        backgroundColor: WHITE,
         borderRadius: 12,
         paddingHorizontal: 15,
         paddingVertical: 10,
@@ -68,20 +65,20 @@ export const styles = StyleSheet.create<Style>({
         elevation: 5,
     },
     button: {
-        backgroundColor: RED_PRIMARY, 
+        backgroundColor: RED_PRIMARY,
         padding: 15,
         borderRadius: 8,
         alignItems: 'center',
         marginTop: 30,
     },
     buttonDisabled: {
-        backgroundColor: GRAY_DISABLED, 
+        backgroundColor: GRAY_DISABLED,
     },
     buttonText: {
         color: WHITE,
         fontSize: 18,
         fontWeight: '700',
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
 });
 
@@ -98,30 +95,30 @@ export const itemStyles = StyleSheet.create<ItemStyle>({
         height: 24,
         borderRadius: 12,
         borderWidth: 2,
-        borderColor: RED_PRIMARY, 
+        borderColor: RED_PRIMARY,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 15,
     },
     checked: {
-        backgroundColor: RED_PRIMARY, 
+        backgroundColor: RED_PRIMARY,
         borderColor: RED_PRIMARY,
     },
     checkText: {
         color: WHITE,
         fontWeight: 'bold',
         fontSize: 16,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     itemText: {
         fontSize: 16,
-        color: GRAY_TEXT, 
+        color: GRAY_TEXT,
         flex: 1,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     itemCompleted: {
         textDecorationLine: 'line-through',
-        color: GRAY_DISABLED, 
-        fontFamily: FONT_FAMILY, 
+        color: GRAY_DISABLED,
+        fontFamily: FONT_FAMILY,
     }
 });

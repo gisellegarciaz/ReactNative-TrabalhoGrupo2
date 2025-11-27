@@ -3,19 +3,20 @@ import { StyleSheet, Dimensions, TextStyle, ViewStyle } from 'react-native';
 const { width } = Dimensions.get('window');
 
 const WHITE = '#fff';
-const LIGHT_CREAM = '#FFF8E7'; 
-const RED_PRIMARY = '#dc2626'; 
+const LIGHT_CREAM = '#FFF8E7';
+const RED_PRIMARY = '#dc2626';
 const GRAY_TEXT = '#333';
 const FONT_FAMILY = 'NeulisSemiBold';
+const FONT_FORTE = 'NeulisBold';
 
 
-const WARNING_BACKGROUND = '#FFFBEB'; 
-const WARNING_BORDER = '#F59E0B'; 
+const WARNING_BACKGROUND = '#FFFBEB';
+const WARNING_BORDER = '#F59E0B';
 const WARNING_TEXT_COLOR = '#B45309';
 
-const ALERT_BACKGROUND = '#FEF2F2'; 
-const ALERT_BORDER = '#EF4444'; 
-const ALERT_TEXT_COLOR = '#991B1B'; 
+const ALERT_BACKGROUND = '#FEF2F2';
+const ALERT_BORDER = '#EF4444';
+const ALERT_TEXT_COLOR = '#991B1B';
 
 interface Style {
     safeArea: ViewStyle;
@@ -55,7 +56,7 @@ interface Style {
 export const styles = StyleSheet.create<Style>({
     safeArea: {
         flex: 1,
-        backgroundColor: LIGHT_CREAM, 
+        backgroundColor: LIGHT_CREAM,
     },
     contentContainer: {
         paddingVertical: 40,
@@ -75,18 +76,17 @@ export const styles = StyleSheet.create<Style>({
     },
     h1: {
         fontSize: width > 600 ? 40 : 30,
-        fontWeight: '800',
-        color: RED_PRIMARY, 
+        color: RED_PRIMARY,
         textAlign: 'center',
         marginBottom: 5,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FORTE,
     },
     subtitle: {
         fontSize: 16,
-        color: RED_PRIMARY, 
+        color: RED_PRIMARY,
         textAlign: 'center',
         paddingHorizontal: 10,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     section: {
         marginBottom: 30,
@@ -94,20 +94,19 @@ export const styles = StyleSheet.create<Style>({
     },
     h2: {
         fontSize: width > 600 ? 28 : 22,
-        fontWeight: '700',
-        color: GRAY_TEXT, 
+        color: GRAY_TEXT,
         paddingBottom: 5,
         marginBottom: 15,
         borderBottomWidth: 3,
-        borderBottomColor: RED_PRIMARY, 
-        fontFamily: FONT_FAMILY, 
+        borderBottomColor: RED_PRIMARY,
+        fontFamily: FONT_FORTE,
     },
     sectionText: {
-        color: GRAY_TEXT, 
+        color: GRAY_TEXT,
         marginBottom: 20,
         fontSize: 16,
         lineHeight: 24,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     cardsRow: {
         flexDirection: width > 600 ? 'row' : 'column',
@@ -128,7 +127,7 @@ export const styles = StyleSheet.create<Style>({
         shadowRadius: 5,
         elevation: 5,
         borderWidth: 1,
-        borderColor: RED_PRIMARY, 
+        borderColor: RED_PRIMARY,
     },
     cardHeader: {
         flexDirection: 'row',
@@ -138,24 +137,23 @@ export const styles = StyleSheet.create<Style>({
     cardIcon: {
         fontSize: 28,
         marginRight: 10,
-        color: RED_PRIMARY, 
+        color: RED_PRIMARY,
     },
     cardTitle: {
         fontSize: 18,
-        fontWeight: '700',
-        color: RED_PRIMARY, 
-        fontFamily: FONT_FAMILY, 
+        color: RED_PRIMARY,
+        fontFamily: FONT_FAMILY,
     },
     cardContent: {
         flexGrow: 1,
     },
     listText: {
         fontSize: 14,
-        color: GRAY_TEXT, 
+        color: GRAY_TEXT,
         lineHeight: 20,
         marginBottom: 5,
         flexShrink: 1,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     listItem: {
         flexDirection: 'row',
@@ -166,14 +164,13 @@ export const styles = StyleSheet.create<Style>({
     listBullet: {
         marginRight: 5,
         fontSize: 14,
-        color: GRAY_TEXT, 
-        fontFamily: FONT_FAMILY, 
+        color: GRAY_TEXT,
+        fontFamily: FONT_FAMILY,
     },
     boldText: {
-        fontWeight: '600',
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
-    
+
     warningBox: {
         backgroundColor: WARNING_BACKGROUND,
         borderLeftWidth: 4,
@@ -195,28 +192,27 @@ export const styles = StyleSheet.create<Style>({
     warningIcon: {
         fontSize: 20,
         marginRight: 8,
-        color: WARNING_BORDER, 
+        color: WARNING_BORDER,
     },
     warningTitle: {
         fontSize: 16,
-        fontWeight: '600',
         color: WARNING_TEXT_COLOR,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     warningBullet: {
         marginRight: 5,
         fontSize: 14,
         color: WARNING_TEXT_COLOR,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     warningText: {
         fontSize: 14,
         color: WARNING_TEXT_COLOR,
         lineHeight: 20,
         flexShrink: 1,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
-   
+
     alertBox: {
         backgroundColor: ALERT_BACKGROUND,
         borderLeftWidth: 4,
@@ -238,21 +234,20 @@ export const styles = StyleSheet.create<Style>({
     alertIcon: {
         fontSize: 20,
         marginRight: 8,
-        color: ALERT_BORDER, 
+        color: ALERT_BORDER,
     },
     alertTitle: {
         fontSize: 16,
-        fontWeight: '600',
         color: ALERT_TEXT_COLOR,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
     alertText: {
         fontSize: 13,
         color: ALERT_TEXT_COLOR,
         lineHeight: 18,
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FORTE,
     },
-   
+
     footer: {
         marginTop: 30,
         paddingTop: 10,
@@ -263,8 +258,8 @@ export const styles = StyleSheet.create<Style>({
     },
     footerText: {
         fontSize: 11,
-        color: '#6B7280', 
+        color: '#6B7280',
         textAlign: 'center',
-        fontFamily: FONT_FAMILY, 
+        fontFamily: FONT_FAMILY,
     },
 });

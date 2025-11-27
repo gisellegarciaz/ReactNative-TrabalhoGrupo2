@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native';
 
 const WHITE = '#fff';
-const LIGHT_CREAM = '#FFF8E7'; 
-const RED_PRIMARY = '#dc2626'; 
-const RED_SECONDARY = '#b91c1c'; 
+const LIGHT_CREAM = '#FFF8E7';
+const RED_PRIMARY = '#dc2626';
+const RED_SECONDARY = '#b91c1c';
 const GRAY_TEXT = '#333';
 const FONT_FAMILY = 'NeulisSemiBold';
 
+
 export const COLORS = {
-    
+
     red500: '#ef4444',
     red700: '#b91c1c',
     blue500: '#3b82f6',
@@ -20,20 +21,19 @@ export const COLORS = {
 };
 
 export const styles = StyleSheet.create({
-    
+
     container: {
-        paddingVertical: 30,
+        paddingVertical: 60,
         paddingHorizontal: 18,
         alignItems: 'center',
-        backgroundColor: LIGHT_CREAM, 
+        backgroundColor: LIGHT_CREAM,
     },
 
-    
+
     title: {
         fontSize: 32,
-        fontWeight: '800',
         textAlign: 'center',
-        color: RED_PRIMARY, 
+        color: RED_PRIMARY,
         marginBottom: 10,
         fontFamily: FONT_FAMILY,
     },
@@ -41,24 +41,22 @@ export const styles = StyleSheet.create({
     subtitle: {
         fontSize: 18,
         textAlign: 'center',
-        color: GRAY_TEXT, 
+        color: GRAY_TEXT,
         marginBottom: 20,
         fontFamily: FONT_FAMILY,
     },
 
     bloodButtonText: {
         fontSize: 22,
-        fontWeight: '800',
-        color: GRAY_TEXT, 
+        color: GRAY_TEXT,
         fontFamily: FONT_FAMILY,
     },
 
     cardTitle: {
         fontSize: 26,
-        fontWeight: '700',
         textAlign: 'center',
         marginBottom: 15,
-        color: RED_SECONDARY, 
+        color: RED_SECONDARY,
         fontFamily: FONT_FAMILY,
     },
 
@@ -70,8 +68,7 @@ export const styles = StyleSheet.create({
 
     statsNumber: {
         fontSize: 40,
-        fontWeight: '900',
-        color: RED_PRIMARY, 
+        color: RED_PRIMARY,
         fontFamily: FONT_FAMILY,
     },
 
@@ -86,7 +83,6 @@ export const styles = StyleSheet.create({
 
     boxTitle: {
         fontSize: 20,
-        fontWeight: '700',
         textAlign: 'center',
         marginBottom: 10,
         fontFamily: FONT_FAMILY,
@@ -94,7 +90,6 @@ export const styles = StyleSheet.create({
 
     pillText: {
         fontSize: 16,
-        fontWeight: '600',
         fontFamily: FONT_FAMILY,
     },
 
@@ -107,13 +102,12 @@ export const styles = StyleSheet.create({
 
     nextButtonText: {
         fontSize: 20,
-        color: WHITE, 
-        fontWeight: '800',
+        color: WHITE,
         textTransform: 'uppercase',
         fontFamily: FONT_FAMILY,
     },
-    
-   
+
+
     buttonsBox: {
         flexDirection: 'row',
         flexWrap: 'wrap',
@@ -124,15 +118,15 @@ export const styles = StyleSheet.create({
     bloodButton: {
         padding: 15,
         borderRadius: 12,
-        backgroundColor: WHITE, 
+        backgroundColor: WHITE,
         borderWidth: 3,
-        borderColor: RED_SECONDARY, 
+        borderColor: RED_SECONDARY,
         margin: 5,
     },
 
     card: {
         marginTop: 25,
-        backgroundColor: WHITE, 
+        backgroundColor: WHITE,
         padding: 20,
         borderRadius: 16,
         width: '100%',
@@ -146,8 +140,8 @@ export const styles = StyleSheet.create({
         borderColor: '#ddd',
     },
 
-        boxDonate: { 
-        backgroundColor: '#d1fae5', 
+    boxDonate: {
+        backgroundColor: '#d1fae5',
         padding: 12,
         borderRadius: 10,
         marginBottom: 15,
@@ -184,7 +178,7 @@ export const styles = StyleSheet.create({
     nextButton: {
         marginTop: 30,
         padding: 15,
-        backgroundColor: RED_PRIMARY, 
+        backgroundColor: RED_PRIMARY,
         borderRadius: 12,
         width: '100%',
         alignItems: 'center',
