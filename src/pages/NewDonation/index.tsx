@@ -116,6 +116,15 @@ export function NewDonation() {
                         {donationDate ? format(donationDate, 'dd/MM/yyyy') : 'Selecione a data'}
                     </Text>
                 </TouchableOpacity>
+                {showDatePicker && (
+                    <DateTimePicker
+                        value={donationDate || new Date()}
+                        mode="date"
+                        display="default"
+                        onChange={handleDateChange}
+                        maximumDate={new Date()}
+                    />
+                )}
 
                 <Text style={styles.label}>Local da Doação *</Text>
                 <TextInput
@@ -136,16 +145,6 @@ export function NewDonation() {
                         Cada doação de sangue pode salvar até <Text style={styles.highlight}>4 vidas</Text> diferentes!
                     </Text>
                 </View>
-
-                {showDatePicker && (
-                    <DateTimePicker
-                        value={donationDate || new Date()}
-                        mode="date"
-                        display="default"
-                        onChange={handleDateChange}
-                        maximumDate={new Date()}
-                    />
-                )}
 
                 <TouchableOpacity
                     style={[styles.registerButton, loading && styles.registerButtonDisabled]}
