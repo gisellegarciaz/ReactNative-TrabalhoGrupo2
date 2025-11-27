@@ -93,13 +93,6 @@ export default function Compatibilidade() {
         </View>
       )}
 
-      {/* BOTÃO FINAL
-      <TouchableOpacity
-        onPress={() => console.log("Checklist")}
-        style={styles.nextButton}
-      >
-        <Text style={styles.nextButtonText}>Verificar Próximos Passos</Text>
-      </TouchableOpacity> */}
     </ScrollView>
   );
 }
