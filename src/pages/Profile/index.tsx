@@ -14,10 +14,14 @@ import { useAuth } from '@/src/hooks/useAuth';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
+type NavigationProps = {
+    navigate: (screen: string) => void;
+};
+
 export function Profile() {
     const navigation = useNavigation();
     const { user, calculateLivesSaved, logout } = useAuth();
-    
+
 
     const [loading] = useState(false);
     const [lastDonationFormatted, setLastDonationFormatted] = useState<string>('Nenhuma doação registrada');
@@ -61,7 +65,7 @@ export function Profile() {
         }
     }, [user?.birthDate]);
 
-    const getGenderDisplay = (gender: string): string => {
+    const getGenderDisplay = (gender: string | undefined): string => {
         switch (gender) {
             case 'male':
                 return 'Masculino';
@@ -73,11 +77,11 @@ export function Profile() {
     };
 
     const navigateToEdit = useCallback(() => {
-        navigation.navigate('ProfileEdit' as never);
+        navigation.navigate('ProfileEdit');
     }, [navigation]);
 
     const navigateToNewDonation = useCallback(() => {
-        navigation.navigate('NewDonation' as never);
+        navigation.navigate('NewDonation');
     }, [navigation]);
 
     if (!user) {

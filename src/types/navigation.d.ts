@@ -16,4 +16,15 @@ export type RootStackParamList = {
     
     Profile: undefined; 
     Settings: undefined;
+
+    PossoDoar: undefined;
+    Checklist: undefined;
+    
+    Compatibilidade: undefined;
+    Nutricao: undefined;
+    Curiosidade: undefined;
+    ProximaDoacao: undefined;
+
+    ProfileEdit: undefined;
+    NewDonation: undefined;
 };
