@@ -136,7 +136,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
             setUser(updatedUser);
             await AsyncStorage.setItem('@BloodCycle:user', JSON.stringify(updatedUser));
-       
             return true;
             
         } catch (error) {

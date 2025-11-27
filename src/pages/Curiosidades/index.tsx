@@ -56,14 +56,14 @@ const CuriosityCard: React.FC<CuriosityCardProps> = ({ item }) => {
 
   return (
     <View style={styles.cardContainer}>
-    
+
       <TouchableOpacity onPress={toggleExpand} style={styles.cardHeader}>
         <Text style={styles.cardIcon}>{item.icon}</Text>
         <Text style={styles.cardTitle}>{item.title}</Text>
         <Text style={styles.expandIndicator}>{isExpanded ? '▲' : '▼'}</Text>
       </TouchableOpacity>
 
-   
+
       {isExpanded && (
         <View style={styles.cardContent}>
           <Text style={styles.cardDescription}>{item.description}</Text>
@@ -72,7 +72,6 @@ const CuriosityCard: React.FC<CuriosityCardProps> = ({ item }) => {
     </View>
   );
 };
-
 
 const Curiosidade = () => {
   return (
@@ -89,7 +88,7 @@ const Curiosidade = () => {
         renderItem={({ item }) => <CuriosityCard item={item} />}
         contentContainerStyle={styles.listContainer}
         showsVerticalScrollIndicator={false}
-        ListFooterComponent={<View style={{ height: 30 }} />} 
+        ListFooterComponent={<View style={{ height: 30 }} />}
       />
     </SafeAreaView>
   );

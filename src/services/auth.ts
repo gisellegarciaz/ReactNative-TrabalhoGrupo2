@@ -56,6 +56,7 @@ export const registerDonation = async (donationData: Donation & { userId: string
   try {
     console.log('Registrando doação para usuário:', donationData.userId);
 
+    const simplifiedDate = donationData.date.substring(0, 10);
     const userResponse = await axios.get(`${API_URL}/${donationData.userId}`);
     const currentUser = userResponse.data;
 
@@ -65,7 +66,7 @@ export const registerDonation = async (donationData: Donation & { userId: string
     const updatedUser = {
       ...currentUser,
       totalDonations: newTotal,
-      lastDonation: donationData.date,
+      lastDonation: simplifiedDate,
     };
 
     delete updatedUser.token;
@@ -129,8 +130,7 @@ export const calculateLivesSaved = (donationCount: number): number => {
 };
 
 const validateEmail = (email: string): boolean => {
-    // Regex simples para verificar o formato básico de e-mail
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 };
 
@@ -181,21 +181,8 @@ export const registerDonor = async (data: DonorRegistrationData): Promise<AuthRe
         Alert.alert('Erro de Registro', 'O formato do e-mail é inválido.');
         return { success: false, user: null };
     }
-
-            console.log ("linha 93")
-
+     
     try {
-      
-        //const checkResponse = await axios.get(`${API_URL}?email=${data.email}`);
-        //const existingUsers: Donor[] = checkResponse.data;
-        console.log ("linha 98")
-
-        // if (existingUsers && existingUsers.length > 0) {
-        //     Alert.alert('Erro', 'Este e-mail já está cadastrado.');
-        //     return { success: false, user: null };
-        // }
-        console.log ("linha 104")
-       
         const payload = { 
             name: data.name,
             email: data.email,
@@ -207,7 +194,6 @@ export const registerDonor = async (data: DonorRegistrationData): Promise<AuthRe
             totalDonations: 0,
             token: 'mock-token-init',
         }; 
-                console.log ("linha 117")
 
         const response = await axios.post(API_URL, payload);
 

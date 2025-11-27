@@ -18,7 +18,7 @@ export const introSlides: SlideData[] = [
     {
        id: 1,
         title: 'O que Fazer Antes de Doar',
-        description: 'Te ajudamos na preparação para doar sangue com um passo a passo.',
+        description: 'Te ajudamos com várias dicas de preparação para doação.',
         image: MascoteOQueFazer as ImageSourcePropType,
         buttonText: 'Arraste para o lado ➠ (1/4)',
     },
@@ -32,14 +32,14 @@ export const introSlides: SlideData[] = [
     {
         id: 3,
         title: 'Registro de Doações',
-        description: 'Acompanhe seu histórico e descubra quando estará elegível para doar novamente.',
+        description: 'Registre uma data e descubra quando estará elegível para doar novamente.',
         image: MascoteRegistro as ImageSourcePropType, 
         buttonText: 'Próximo (3/4)',
     },
     {
         id: 4,
-        title: 'Comunidade',
-        description: 'Conecte-se com amigos doadores e encontre locais de doação perto de você.',
+        title: 'Badges',
+        description: 'Ganhe medalhas e celebre seu impacto em vidas. Você é um herói!',
         image: MascoteComunidade as ImageSourcePropType,
         buttonText: 'Fechar Tour',
     },

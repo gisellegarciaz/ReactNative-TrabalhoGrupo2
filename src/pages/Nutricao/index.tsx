@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, SafeAreaView } from 'react-native';
-import { styles } from './styles'; 
+import { styles } from './styles';
 interface InfoCardProps {
   title: string;
   icon: string;
@@ -10,8 +10,8 @@ interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = ({ title, children, icon }) => (
   <View style={styles.cardContainer}>
     <View style={styles.cardHeader}>
-          <Text style={styles.cardIcon}>{icon}</Text>
-         <Text style={styles.cardTitle}>{title}</Text>
+      <Text style={styles.cardIcon}>{icon}</Text>
+      <Text style={styles.cardTitle}>{title}</Text>
     </View>
     <View style={styles.cardContent}>{children}</View>
   </View>
@@ -21,17 +21,17 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, children, icon }) => (
 const Nutricao: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
-     
+
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-        
+
           <Text style={styles.h1}>🩸 Guia de Nutrição para Doação de Sangue</Text>
-         
+
           <Text style={styles.subtitle}>Recomendações essenciais para antes e depois do seu ato de generosidade.</Text>
         </View>
 
         <View style={styles.mainContent}>
-          
+
           <View style={styles.section}>
             <Text style={styles.h2}>1. Nutrição PRÉ-DOAÇÃO</Text>
             <Text style={styles.sectionText}>
@@ -39,7 +39,7 @@ const Nutricao: React.FC = () => {
             </Text>
 
             <View style={styles.cardsRow}>
-              
+
               <InfoCard title="Hidratação é a Chave" icon="💧">
                 <Text style={styles.listText}>Um corpo bem hidratado mantém o volume sanguíneo, o que facilita a coleta e reduz o risco de reações adversas (tonturas, desmaios).</Text>
                 <View style={styles.listItem}>
@@ -52,7 +52,7 @@ const Nutricao: React.FC = () => {
                 </View>
               </InfoCard>
 
-              
+
               <InfoCard title="Foco no Ferro e Vitamina C" icon="🥦">
                 <Text style={styles.listText}>O ferro é vital para repor as células vermelhas. A Vitamina C potencializa a sua absorção.</Text>
                 <View style={styles.listItem}>
@@ -90,7 +90,7 @@ const Nutricao: React.FC = () => {
             </View>
           </View>
 
-         
+
           <View style={styles.section}>
             <Text style={styles.h2}>2. Nutrição PÓS-DOAÇÃO</Text>
             <Text style={styles.sectionText}>
@@ -98,7 +98,7 @@ const Nutricao: React.FC = () => {
             </Text>
 
             <View style={styles.cardsRow}>
-          
+
               <InfoCard title="Reposição Imediata de Fluidos" icon="🥤">
                 <Text style={styles.listText}>A reposição do volume de plasma é a prioridade zero após a doação.</Text>
                 <View style={styles.listItem}>
@@ -115,7 +115,7 @@ const Nutricao: React.FC = () => {
                 </View>
               </InfoCard>
 
-             
+
               <InfoCard title="Refeição de Recuperação" icon="🍽️">
                 <Text style={styles.listText}>Faça uma refeição completa para iniciar a regeneração celular.</Text>
                 <View style={styles.listItem}>
@@ -134,7 +134,7 @@ const Nutricao: React.FC = () => {
             </View>
           </View>
 
-         
+
           <View style={styles.alertBox}>
             <View style={styles.alertHeader}>
               <Text style={styles.alertIcon}>⚠️</Text>
@@ -146,7 +146,7 @@ const Nutricao: React.FC = () => {
           </View>
         </View>
 
-       
+
         <View style={styles.footer}>
           <Text style={styles.footerText}>A sua doação salva vidas. Este guia foi elaborado para otimizar a sua segurança e recuperação.</Text>
         </View>
