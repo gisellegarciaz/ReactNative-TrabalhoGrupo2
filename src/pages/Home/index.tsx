@@ -127,7 +127,7 @@ export function Home() {
         <SafeAreaView style={{ flexGrow: 1, backgroundColor: '#FFF8E7'}} edges={['left', 'right']} >
             <HeaderComponent username={user.name} logoff={handleLogout} />
             <View style={{ width: '100%' }}>
-                <Text style={styles.badgesText}> Badges conquistadas: </Text>
+                <Text style={styles.badgesText}> Medalhas conquistadas: </Text>
             </View>
             <FlatList
                 data={BADGES_DATA}
