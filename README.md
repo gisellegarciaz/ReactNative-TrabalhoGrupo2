@@ -28,12 +28,15 @@ CRUD de Usuário: Integração com MockAPI para: Registrar nova doação, Visual
 
 <h4>4. APIs usadas:</h4>
 <p>O aplicativo usa três serviços externos principais, todos acessados via Axios (nossa biblioteca de comunicação):</p>
-<h5>- MockAPI (Usuários e Doações):</h5>
+
+<h5>MockAPI (Usuários e Doações):</h5>
+
 - Função: Atua como nosso backend. Armazena os perfis de doadores (cadastro e login).<br>
 - Fluxo: Login/Cadastro: O MockAPI valida as credenciais e armazena os dados do usuário.<br>
 - Registro de Doação: Atualizamos o perfil do usuário (campo lastDonation e totalDonations) diretamente no MockAPI.<br>
-<br>
-<h5>- MockAPI (Hemocentros):</h5>
+
+<h5>MockAPI (Hemocentros):</h5>
+
 - Função: Lista todos os locais de doação.<br>
 - Fluxo: A lista completa é baixada e depois filtrada localmente para mostrar apenas os hemocentros da cidade desejada.<br>
 
@@ -41,6 +44,7 @@ CRUD de Usuário: Integração com MockAPI para: Registrar nova doação, Visual
 
 - Função: Conversão de endereço.<br>
 - Fluxo (Localização): O usuário digita o CEP → o ViaCEP retorna a cidade/estado → usamos essa cidade/estado para filtrar a lista do MockAPI/hemocenters.<br>
+
 Em resumo: O MockAPI guarda nossos dados de usuário e hemocentros, e o ViaCEP ajuda a descobrir a cidade de um CEP para encontrarmos os hemocentros mais próximos.
 
 <h3>Telas do App:</h3>
