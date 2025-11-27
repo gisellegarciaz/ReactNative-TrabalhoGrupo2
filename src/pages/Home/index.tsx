@@ -16,6 +16,7 @@ import MascoteDoador from '../../assets/CardHomeImages/MascoteDoador.png';
 import MascoteProxDoacao from '../../assets/CardHomeImages/MascoteProxDoacao2.png';
 import Quemdoa from '../../assets/Mascote/Quemdoapraquem.png';
 import MascoteCuriosidades from '../../assets/CardHomeImages/MascoteCuriosidades.png';
+import ProximaDoacaoModal from '@/src/components/ProximaDoacaoModal';
 
 type NavigationProps = {
     navigate: (screen: string) => void;
@@ -27,6 +28,7 @@ const DONATION_INTERVAL_FEMALE = 90;
 export function Home() {
     const navigation = useNavigation<NavigationProps>();
     const { user, logout } = useAuth();
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     const [statusMessage, setStatusMessage] = useState('Atualize seu perfil para calcular seu prazo.');
     const [nextDonationDate, setNextDonationDate] = useState<string | null>(null);
@@ -96,6 +98,21 @@ export function Home() {
                     />
                 </View>
             );
+    if (!user) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#E74C3C" />
+                <Text style={styles.loadingText}>Carregando dados do usuário...</Text>
+            </View>
+        );
+    }
+
+    const handleOpenProxDoacaoModal = () => {
+        setIsModalVisible(true);
+    };
+    const handleCloseProxDoacaoModal = () => {
+        setIsModalVisible(false);
+    };
 
     if (!user) {
         return (
@@ -137,7 +154,7 @@ export function Home() {
                 <CardHome 
                     imageSrc={MascoteDoador as ImageSourcePropType}
                     title="Quando posso doar novamente?"
-                    onPress={() => navigation.navigate('ProximaDoacao')}
+                    onPress={handleOpenProxDoacaoModal}
                 />
 
                 <CardHome 
@@ -159,6 +176,7 @@ export function Home() {
                 />
             </View>
             </ScrollView>
+            < ProximaDoacaoModal isVisible = {isModalVisible} onClose={handleCloseProxDoacaoModal} userGender={user?.gender || "male"} lastDonation={user?.lastDonation || ""}/>
         </SafeAreaView>
     );
 }
