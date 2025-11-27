@@ -37,17 +37,6 @@ export function NewDonation() {
         }
     }, []);
 
-    const handleLogout = useCallback(() => {
-        Alert.alert(
-            "Sair",
-            "Tem certeza que deseja sair da sua conta?",
-            [
-                { text: "Cancelar", style: "cancel" },
-                { text: "Sim, Sair", onPress: logout, style: "destructive" },
-            ]
-        );
-    }, [logout]);
-
     const handleRegisterDonation = useCallback(async () => {
         if (!donationDate) {
             Alert.alert('Erro', 'Selecione a data da doação.');
