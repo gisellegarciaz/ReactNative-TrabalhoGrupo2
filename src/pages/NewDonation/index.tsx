@@ -93,6 +93,15 @@ export function NewDonation() {
         }
     }, [donationDate, location, registerDonation, navigation]);
 
+    if (!fontsLoaded) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#E74C3C" />
+                <Text style={styles.subtitle}>A carregar...</Text>
+            </View>
+        );
+    }
+
     if (!user) {
         return (
             <View style={styles.loadingContainer}>

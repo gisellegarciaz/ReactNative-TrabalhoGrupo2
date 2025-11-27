@@ -114,6 +114,15 @@ export function Home() {
         setIsModalVisible(false);
     };
 
+    if (!fontsLoaded) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#E74C3C" />
+                <Text style={styles.loadingText}>A carregar...</Text>
+            </View>
+        );
+    }
+
     if (!user) {
         return (
             <View style={styles.loadingContainer}>
