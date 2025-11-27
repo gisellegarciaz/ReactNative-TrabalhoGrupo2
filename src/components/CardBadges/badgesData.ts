@@ -37,24 +37,24 @@ export const BADGES_DATA: BadgeItem[] = [
         id: '4',
         label: 'BatDoador - \n4 Doações',
         image: BadgeQuarta as ImageSourcePropType,
-        goal: 5,
+        goal: 4,
     },
     {
         id: '5',
         label: 'Doador Escarlate - \n5 Doações',
         image: BadgeQuinta as ImageSourcePropType,
-        goal: 6,
+        goal: 5,
     },
     {
         id: '6',
         label: 'Doador Esmagador - \n6 Doações',
         image: BadgeSexta as ImageSourcePropType,
-        goal: 7,
+        goal: 6,
     },
     {
         id: '7',
         label: 'Mago das Doações - \n7 Doações',
         image: BadgeSetima as ImageSourcePropType,
-        goal: 8,
+        goal: 7,
     }
 ];
