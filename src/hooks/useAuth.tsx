@@ -2,10 +2,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Auth from '../services/auth';
-import { LoginCredentials, Donor, DonorRegistrationData, Donation } from '../services/auth'; // Usando as tipagens de Email
-
-// --- Tipagens ---
-
+import { LoginCredentials, Donor, DonorRegistrationData, Donation } from '../services/auth'; 
 interface AuthContextData {
     user: Donor | null;
     isAuthenticated: boolean;
@@ -56,7 +53,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const login = async (credentials: LoginCredentials): Promise<boolean> => {
         try {
-            // credentials agora é { email: string, password: string }
+
             const response = await Auth.signIn(credentials); 
 
             if (response.success && response.user) {
@@ -73,7 +70,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const register = async (data: DonorRegistrationData): Promise<boolean> => {
         try {
-            // data agora é { name, email, password, gender, birthDate }
             const response = await Auth.registerDonor(data);
 
             if (response.success) {
