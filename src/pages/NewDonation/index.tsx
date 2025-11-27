@@ -69,7 +69,7 @@ export function NewDonation() {
 
         try {
             const success = await registerDonation({
-                date: donationDate.toISOString(),
+                date: format(donationDate, 'yyyy-MM-dd'),
                 location: location.trim(),
             });
 

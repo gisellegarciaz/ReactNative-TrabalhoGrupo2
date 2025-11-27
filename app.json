@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "DoeMais",
+    "name": "",
     "slug": "DoeMais",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/MascoteSplashIcon.png",
+    "icon": "./assets/images/LogoSplash.png",
     "scheme": "bloodcycleapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,24 +13,24 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/MascoteSplashIcon.png",
-        "backgroundImage": "./assets/images/MascoteSplashIcon.png",
-        "monochromeImage": "./assets/images/MascoteSplashIcon.png"
+        "backgroundColor": "##FFF8E7",
+        "foregroundImage": "./assets/images/LogoSplash.png",
+        "backgroundImage": "./assets/images/LogoSplash.png",
+        "monochromeImage": "./assets/images/LogoSplash.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/MascoteSplashIcon.png"
+      "favicon": "./assets/images/LogoSplash.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/MascoteSplashIcon.png",
+          "image": "./assets/images/LogoSplash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#FFF8E7",

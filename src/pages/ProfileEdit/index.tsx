@@ -32,9 +32,9 @@ export function ProfileEdit() {
     const [showDatePicker, setShowDatePicker] = useState(false);
 
     const [fontsLoaded] = useFonts({
-                    'NeulisRegular': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Regular.otf'),
-                    'NeulisSemiBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Semi_Bold.otf'),
-                    'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
+        'NeulisRegular': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Regular.otf'),
+        'NeulisSemiBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Semi_Bold.otf'),
+        'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
     });
 
     useEffect(() => {
@@ -94,7 +94,7 @@ export function ProfileEdit() {
         const dataToSave = {
             name: name.trim(),
             gender,
-            birthDate: birthDate.toISOString(),
+            birthDate: format(birthDate, 'yyyy-MM-dd'),
             bloodType: bloodType || null,
         };
 
@@ -112,12 +112,12 @@ export function ProfileEdit() {
 
     const calculateAge = useCallback(() => {
         if (!birthDate) return '';
-        
+
         const today = new Date();
         const age = today.getFullYear() - birthDate.getFullYear();
         const monthDiff = today.getMonth() - birthDate.getMonth();
         const actualAge = monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate()) ? age - 1 : age;
-        
+
         return `${actualAge} anos`;
     }, [birthDate]);
 
@@ -174,6 +174,16 @@ export function ProfileEdit() {
                     {birthDate ? `${format(birthDate, 'dd/MM/yyyy')} (${calculateAge()})` : 'Selecione a Data'}
                 </Text>
             </TouchableOpacity>
+            {showDatePicker && (
+                <DateTimePicker
+                    value={birthDate || new Date('2000-01-01')}
+                    mode="date"
+                    display="default"
+                    onChange={handleDateChange}
+                    maximumDate={new Date()}
+                    minimumDate={new Date('1900-01-01')}
+                />
+            )}
 
             <Text style={styles.label}>Tipo Sanguíneo</Text>
             <View style={styles.bloodTypeContainer}>
@@ -214,16 +224,6 @@ export function ProfileEdit() {
                 </Text>
             </View>
 
-            {showDatePicker && (
-                <DateTimePicker
-                    value={birthDate || new Date('2000-01-01')}
-                    mode="date"
-                    display="default"
-                    onChange={handleDateChange}
-                    maximumDate={new Date()}
-                    minimumDate={new Date('1900-01-01')}
-                />
-            )}
 
             <TouchableOpacity
                 style={[styles.saveButton, loading && styles.saveButtonDisabled]}
