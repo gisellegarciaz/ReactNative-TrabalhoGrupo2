@@ -7,7 +7,6 @@ import ChecklistScreen from "../pages/Checklist";
 import Compatibilidade from "../pages/Compatibilidade";
 import Nutricao from "../pages/Nutricao";
 import Curiosidade from "../pages/Curiosidades";
-import { ProximaDoacao } from "../pages/ProximaDoacao";
 import { ProfileEdit } from "../pages/ProfileEdit";
 import { NewDonation } from "../pages/NewDonation";
 
@@ -19,12 +18,11 @@ export const TabRouters = () => {
 
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Location" component={Location} />
-            <Tab.Screen name="Profile" component={Profile} />
             <Tab.Screen name="PossoDoar" component={ChecklistScreen}/>
+            <Tab.Screen name="Profile" component={Profile} />
             <Tab.Screen name="Compatibilidade" component={Compatibilidade}/>
             <Tab.Screen name="Nutricao" component={Nutricao} />
             <Tab.Screen name="Curiosidade" component={Curiosidade} />
-            <Tab.Screen name="ProximaDoacao" component={ProximaDoacao} />
             <Tab.Screen name="ProfileEdit" component={ProfileEdit} />
             <Tab.Screen name="NewDonation" component={NewDonation} />
 
