@@ -16,7 +16,8 @@ import { ptBR } from 'date-fns/locale';
 
 export function Profile() {
     const navigation = useNavigation();
-    const { user, calculateLivesSaved } = useAuth();
+    const { user, calculateLivesSaved, logout } = useAuth();
+    
 
     const [loading] = useState(false);
     const [lastDonationFormatted, setLastDonationFormatted] = useState<string>('Nenhuma doação registrada');
@@ -184,6 +185,12 @@ export function Profile() {
                         </Text>
                     </View>
                 )}
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={logout} //Foi só tirar a arrow function (() =>) de antes da função
+                    >
+                    <Text style={styles.buttonText}>Sair</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );

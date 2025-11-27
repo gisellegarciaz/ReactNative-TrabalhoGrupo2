@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         color: '#333333',
         fontFamily: 'NeulisRegular',
-        marginBottom: -8,
+        marginBottom: -5,
     },
     greetingText2: {
         fontSize: 22,
