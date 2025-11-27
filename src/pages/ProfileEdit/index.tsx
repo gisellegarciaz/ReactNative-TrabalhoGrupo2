@@ -17,10 +17,14 @@ import { useAuth } from '@/src/hooks/useAuth';
 
 type GenderType = 'male' | 'female' | '';
 
+type NavigationProps = {
+    navigate: (screen: string) => void;
+};
+
 const BLOOD_TYPES = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
 export function ProfileEdit() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProps>();
     const { user, saveDonorData } = useAuth();
 
     const [name, setName] = useState(user?.name || '');
@@ -46,7 +50,7 @@ export function ProfileEdit() {
         }
     }, [user]);
 
-    const handleDateChange = useCallback((event: any, selectedDate?: Date) => {
+    const handleDateChange = useCallback((event: { type: string }, selectedDate?: Date) => {
         setShowDatePicker(false);
         if (selectedDate) {
             setBirthDate(selectedDate);

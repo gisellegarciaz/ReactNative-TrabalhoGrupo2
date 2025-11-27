@@ -13,7 +13,6 @@ import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { format } from 'date-fns';
 import { styles } from './styles';
-import HeaderComponent from '../../components/Header';
 import { useAuth } from '@/src/hooks/useAuth';
 
 export function NewDonation() {
@@ -31,7 +30,7 @@ export function NewDonation() {
                 'NeulisBold': require('../../assets/Fonts/fonnts.com-Neulis_Cursive_Bold.otf'),
     });
 
-    const handleDateChange = useCallback((event: any, selectedDate?: Date) => {
+    const handleDateChange = useCallback((event: { type: string }, selectedDate?: Date) => {
         setShowDatePicker(false);
         if (selectedDate) {
             setDonationDate(selectedDate);
