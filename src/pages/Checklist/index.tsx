@@ -81,7 +81,7 @@ const ChecklistScreen: React.FC = ( ) => {
               disabled={!allCompleted}
           >
               <Text style={styles.buttonText}>
-                {allCompleted ? 'Confirmar e Voltar à Home' : `Complete ${remainingCount} Item${remainingCount !== 1 ? 's' : ''} Faltante${remainingCount !== 1 ? 's' : ''}`}
+                {allCompleted ? 'Parabéns você está apto a doar 🎉 ' : `Complete ${remainingCount} Iten${remainingCount !== 1 ? 's' : ''} Faltante${remainingCount !== 1 ? 's' : ''}`}
               </Text>
           </TouchableOpacity>
 
