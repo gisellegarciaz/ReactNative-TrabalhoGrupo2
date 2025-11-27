@@ -56,6 +56,7 @@ export const registerDonation = async (donationData: Donation & { userId: string
   try {
     console.log('Registrando doação para usuário:', donationData.userId);
 
+    const simplifiedDate = donationData.date.substring(0, 10);
     const userResponse = await axios.get(`${API_URL}/${donationData.userId}`);
     const currentUser = userResponse.data;
 
@@ -65,7 +66,7 @@ export const registerDonation = async (donationData: Donation & { userId: string
     const updatedUser = {
       ...currentUser,
       totalDonations: newTotal,
-      lastDonation: donationData.date,
+      lastDonation: simplifiedDate,
     };
 
     delete updatedUser.token;
